@@ -1,44 +1,132 @@
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import styled from 'styled-components';
 import { Menu, X } from 'lucide-react';
+
+const NavContainer = styled.nav`
+  background: #214592;
+  width: 100%;
+`;
+
+const NavContent = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+`;
+
+const Logo = styled(Link)`
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+`;
+
+const NavLinks = styled.div`
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+    gap: 2rem;
+  }
+`;
+
+const NavLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+
+  &.active {
+    background: #E04837;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+`;
+
+const MobileMenuButton = styled.button`
+  color: white;
+  display: flex;
+  align-items: center;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const MobileMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: #214592;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   return (
-    <nav className="bg-primary text-white">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          <Link to="/" className="font-bold text-xl">CCL</Link>
-          
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
+    <NavContainer>
+      <NavContent>
+        <Logo to="/">CCL</Logo>
+        
+        <NavLinks>
+          <NavLink 
+            to="/teams" 
+            className={location.pathname === '/teams' ? 'active' : ''}
           >
-            {isOpen ? <X /> : <Menu />}
-          </button>
+            Teams
+          </NavLink>
+          <NavLink 
+            to="/schedule"
+            className={location.pathname === '/schedule' ? 'active' : ''}
+          >
+            Schedule
+          </NavLink>
+          <NavLink 
+            to="/gallery"
+            className={location.pathname === '/gallery' ? 'active' : ''}
+          >
+            Gallery
+          </NavLink>
+        </NavLinks>
 
-          {/* Desktop menu */}
-          <div className="hidden md:flex space-x-8">
-            <Link to="/teams" className="hover:text-gray-300">Teams</Link>
-            <Link to="/schedule" className="hover:text-gray-300">Schedule</Link>
-            <Link to="/gallery" className="hover:text-gray-300">Gallery</Link>
-          </div>
-        </div>
+        <MobileMenuButton onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </MobileMenuButton>
+      </NavContent>
 
-        {/* Mobile menu */}
-        {isOpen && (
-          <div className="md:hidden">
-            <div className="flex flex-col space-y-4 pb-4">
-              <Link to="/teams" className="hover:text-gray-300">Teams</Link>
-              <Link to="/schedule" className="hover:text-gray-300">Schedule</Link>
-              <Link to="/gallery" className="hover:text-gray-300">Gallery</Link>
-            </div>
-          </div>
-        )}
-      </div>
-    </nav>
+      {isOpen && (
+        <MobileMenu>
+          <NavLink 
+            to="/teams"
+            className={location.pathname === '/teams' ? 'active' : ''}
+          >
+            Teams
+          </NavLink>
+          <NavLink 
+            to="/schedule"
+            className={location.pathname === '/schedule' ? 'active' : ''}
+          >
+            Schedule
+          </NavLink>
+          <NavLink 
+            to="/gallery"
+            className={location.pathname === '/gallery' ? 'active' : ''}
+          >
+            Gallery
+          </NavLink>
+        </MobileMenu>
+      )}
+    </NavContainer>
   );
 };
 
