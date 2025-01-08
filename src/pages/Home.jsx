@@ -1,4 +1,3 @@
-
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -20,15 +19,7 @@ import Sonu from '../assets/Sonu.png';
 import cclbackground from '../assets/cclbackground.png';
 import ccl from '../assets/ccl.png';
 import CCLWhite from '../assets/CCLWhite.png';
-// import excitinglogo from '../assets/excitinglogo.png';
-// import exciting from '../assets/exciting.png';
-// import INNINGS from '../assets/2INNINGS.png';
-// import EXCITING  from '../assets/EXCITING NEW FORMAT.png';
-// import theteam from '../assets/theteam.png';
-// import excitingbackground from '../assets/excitingbackground.png';
-// import schedule from '../assets/schedule.png';
-// import schedulebackground from '../assets/schedulebackground.png';
-// import match from '../assets/match.png';
+
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -180,7 +171,7 @@ const InfoSection = styled.div`
   }
 `;
 
-const SchedulePage = () => {
+const HomePage = () => {
   const teams = [
     { img: bengal, name: 'BENGAL TIGERS' },
     { img: chennai, name: 'CHENNAI RHINOS' },
@@ -273,4 +264,4 @@ const SchedulePage = () => {
   );
 };
 
-export default SchedulePage;
+export default HomePage;
