@@ -1,5 +1,14 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+// import CCL2025SCHEDULE from '../assets/CCL2025SCHEDULE.png';
+// import JanuaryFriday from '../assets/JanuaryFriday.png';
+// import HYDERABAAD from '../assets/HYDERABAAD.png';
+// import vs from '../assets/vs.png';
+// import sixtime from '../assets/sixtime.png';
+
+
 
 const CclSchedule = () => {
   const { teamId } = useParams();

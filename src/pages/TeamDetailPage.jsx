@@ -1,5 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+
 
 const TeamDetailPage = () => {
   const { teamId } = useParams();
