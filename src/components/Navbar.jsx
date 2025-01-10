@@ -1,61 +1,112 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import logo from '../assets/logo.png';
 
 const NavContainer = styled.nav`
-  position: relative;
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: #214592;
+  z-index: 50;
+  transition: background-color 0.3s ease;
 `;
 
 const NavBackground = styled.div`
   position: absolute;
   inset: 0;
-  background: #214592;
+  background: inherit;
   transform: skewX(12deg);
   transform-origin: top right;
+  z-index: -1;
 `;
 
 const NavWrapper = styled.div`
-  position: relative;
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 1rem;
-  height: 5rem;
-`;
-
-const NavContent = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 0 1.5rem;
   height: 100%;
 `;
 
-const Logo = styled(Link)`
-  position: relative;
-  z-index: 10;
-  img {
-    width: 4rem;
-    height: 4rem;
+const NavContent = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const PoweredByLink = styled.a`
+  display: none;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.25rem 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  
+  @media (min-width: 1024px) {
+    display: flex;
+    align-items: center;
+  }
+
+  &:hover {
+    background: #E04837;
+    transform: translateY(-1px);
+  }
+
+  span {
+    font-weight: 700;
+    margin-left: 0.25rem;
   }
 `;
 
-const NavLinks = styled.div`
+const NavigationSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-right: auto;
+`;
+
+const LogoLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  
+  img {
+    height: 50px;
+    width: auto;
+  }
+`;
+
+const DesktopNav = styled.div`
   display: none;
+  
   @media (min-width: 768px) {
     display: flex;
-    gap: 2rem;
     align-items: center;
+    gap: 1rem;
   }
+`;
+
+const NavItem = styled.div`
+  position: relative;
 `;
 
 const NavLink = styled(Link)`
-  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
   color: white;
   font-weight: bold;
-  padding: 0.5rem 1.5rem;
-  transition: all 0.3s;
+  text-decoration: none;
+  transition: all 0.3s ease;
 
   &.active {
     background: #E04837;
@@ -63,37 +114,42 @@ const NavLink = styled(Link)`
   }
 
   &:hover:not(.active) {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  svg {
+    margin-left: 0.25rem;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: rotate(180deg);
   }
 `;
 
-const DropdownContainer = styled.div`
-  position: relative;
-`;
-
-const DropdownMenu = styled.div`
+const Dropdown = styled.div`
   position: absolute;
   top: 100%;
   left: 0;
   min-width: 260px;
   background: #214592;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   border-radius: 0 0 8px 8px;
   padding: 0.5rem;
-  z-index: 50;
   opacity: ${props => props.$isOpen ? 1 : 0};
-  transform: translateY(${props => props.$isOpen ? '0' : '-10px'});
   visibility: ${props => props.$isOpen ? 'visible' : 'hidden'};
+  transform: translateY(${props => props.$isOpen ? '0' : '-10px'});
   transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 `;
 
 const DropdownLink = styled(Link)`
   display: block;
+  padding: 0.75rem 1rem;
   color: white;
-  padding: 0.75rem 1.5rem;
-  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
   border-radius: 4px;
-  transition: all 0.2s;
 
   &:hover {
     background: #E04837;
@@ -101,174 +157,247 @@ const DropdownLink = styled(Link)`
   }
 `;
 
-const MobileButton = styled.button`
-  position: relative;
-  z-index: 10;
+const MobileMenuButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
   color: white;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  z-index: 10;
+
   @media (min-width: 768px) {
     display: none;
   }
 `;
 
-const MobileMenu = styled.div`
-  position: absolute;
-  top: 100%;
+const MobileNav = styled.div`
+  position: fixed;
+  top: 80px;
   left: 0;
-  width: 100%;
+  right: 0;
+  bottom: 0;
   background: #214592;
   padding: 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  z-index: 20;
-  transform: translateY(${props => props.$isOpen ? '0' : '-10px'});
-  opacity: ${props => props.$isOpen ? 1 : 0};
-  visibility: ${props => props.$isOpen ? 'visible' : 'hidden'};
-  transition: all 0.3s ease;
+  transform: translateX(${props => props.$isOpen ? '0' : '-100%'});
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  z-index: 40;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
-const MobileLink = styled(Link)`
-  display: block;
-  color: white;
-  font-weight: bold;
-  padding: 1rem 1.5rem;
-  border-radius: 4px;
-  transition: all 0.2s;
+const MobileNavItem = styled.div`
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+`;
 
+const MobileNavLink = styled(Link)`
+  display: block;
+  padding: 1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  
   &.active {
     background: #E04837;
   }
+`;
 
-  &:hover:not(.active) {
-    background: rgba(255, 255, 255, 0.1);
+const MobileDropdownButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+  color: white;
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  
+  svg {
+    transition: transform 0.3s ease;
+    transform: ${props => props.$isOpen ? 'rotate(90deg)' : 'none'};
   }
 `;
 
+const MobileDropdown = styled.div`
+  padding-left: 1rem;
+  background: rgba(0, 0, 0, 0.1);
+  display: ${props => props.$isOpen ? 'block' : 'none'};
+`;
+
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [mobileDropdowns, setMobileDropdowns] = useState({});
   const location = useLocation();
 
-  const teamsDropdownItems = [
-    { to: "/bengal", label: "BENGAL TIGERS" },
-    { to: "/bhojpuri", label: "BHOJPURI DABANGGS" },
-    { to: "/chennal", label: "CHENNAI RHINOS" },
-    { to: "/karnatka", label: "KARNATAKA BULLDOZERS" },
-    { to: "/kerla", label: "C3 KERALA STRIKERS" },
-    { to: "/mumbai", label: "MUMBAI HEROES" },
-    { to: "/punjab", label: "PUNJAB DE SHER" },
-    { to: "/telugu", label: "TELUGU WARRIORS" }
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setActiveDropdown(null);
+  }, [location]);
+
+  const navItems = [
+    { label: 'HOME', path: '/home' },
+    {
+      label: 'TEAMS',
+      path: '/teams',
+      dropdown: [
+        { label: 'BENGAL TIGERS', path: '/bengal' },
+        { label: 'BHOJPURI DABANGGS', path: '/bhojpuri' },
+        { label: 'CHENNAI RHINOS', path: '/chennai' },
+        { label: 'KARNATAKA BULLDOZERS', path: '/karnataka' },
+        { label: 'C3 KERALA STRIKERS', path: '/kerala' },
+        { label: 'MUMBAI HEROES', path: '/mumbai' },
+        { label: 'PUNJAB DE SHER', path: '/punjab' },
+        { label: 'TELUGU WARRIORS', path: '/telugu' }
+      ]
+    },
+    {
+      label: 'CCL 2025',
+      path: '/ccl2025',
+      dropdown: [
+        { label: 'SCHEDULE', path: '/schedule' },
+        { label: 'STANDINGS', path: '/standings' }
+      ]
+    },
+    {
+      label: 'GALLERY',
+      path: '/gallery',
+      dropdown: [
+        { label: 'PHOTOS', path: '/photos' },
+        { label: 'VIDEOS', path: '/videos' }
+      ]
+    },
+    { label: 'NEWS', path: '/news' },
+    { label: 'ABOUT US', path: '/aboutus' }
   ];
 
-  const ccl2025DropdownItems = [
-    { to: "/cclschedule", label: "SCHEDULE" },
-    // { to: "/standings", label: "STANDINGS" }
-  ];
-
-  const galleryDropdownItems = [
-    { to: "/photo", label: "PHOTOS" },
-    { to: "/video", label: "VIDEOS" }
-  ];
+  const toggleMobileDropdown = (label) => {
+    setMobileDropdowns(prev => ({
+      ...prev,
+      [label]: !prev[label]
+    }));
+  };
 
   return (
-    <NavContainer>
+    <NavContainer style={{ 
+      backgroundColor: isScrolled ? 'rgba(33, 69, 146, 0.95)' : '#214592',
+      backdropFilter: isScrolled ? 'blur(8px)' : 'none'
+    }}>
       <NavBackground />
       <NavWrapper>
         <NavContent>
-          <Logo to="/">
-            <img src={logo} alt="logo"/>
-          </Logo>
-          
-          <NavLinks>
-            <NavLink to="/home" className={location.pathname === '/home' ? 'active' : ''}>
-              HOME
-            </NavLink>
-            
-            <DropdownContainer 
-              onMouseEnter={() => setActiveDropdown('teams')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <NavLink to="/teams" className={location.pathname === '/teams' ? 'active' : ''}>
-                TEAMS
-              </NavLink>
-              <DropdownMenu $isOpen={activeDropdown === 'teams'}>
-                {teamsDropdownItems.map(item => (
-                  <DropdownLink key={item.to} to={item.to}>
+          <NavigationSection>
+            <LogoLink to="/">
+              <img src={logo} alt="CCL Logo" />
+            </LogoLink>
+
+            <DesktopNav>
+              {navItems.map((item) => (
+                <NavItem
+                  key={item.label}
+                  onMouseEnter={() => setActiveDropdown(item.label)}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <NavLink
+                    to={item.path}
+                    className={location.pathname === item.path ? 'active' : ''}
+                  >
                     {item.label}
-                  </DropdownLink>
-                ))}
-              </DropdownMenu>
-            </DropdownContainer>
+                    {item.dropdown && <ChevronDown size={16} />}
+                  </NavLink>
 
-            <DropdownContainer
-              onMouseEnter={() => setActiveDropdown('ccl2025')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <NavLink to="/schedule" className={location.pathname === '/schedule' ? 'active' : ''}>
-                CCL 2025
-              </NavLink>
-              <DropdownMenu $isOpen={activeDropdown === 'ccl2025'}>
-                {ccl2025DropdownItems.map(item => (
-                  <DropdownLink key={item.to} to={item.to}>
-                    {item.label}
-                  </DropdownLink>
-                ))}
-              </DropdownMenu>
-            </DropdownContainer>
+                  {item.dropdown && (
+                    <Dropdown $isOpen={activeDropdown === item.label}>
+                      {item.dropdown.map((dropItem) => (
+                        <DropdownLink
+                          key={dropItem.path}
+                          to={dropItem.path}
+                        >
+                          {dropItem.label}
+                        </DropdownLink>
+                      ))}
+                    </Dropdown>
+                  )}
+                </NavItem>
+              ))}
+            </DesktopNav>
+          </NavigationSection>
 
-            <DropdownContainer
-              onMouseEnter={() => setActiveDropdown('gallery')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <NavLink to="/gallery" className={location.pathname === '/gallery' ? 'active' : ''}>
-                GALLERY
-              </NavLink>
-              <DropdownMenu $isOpen={activeDropdown === 'gallery'}>
-                {galleryDropdownItems.map(item => (
-                  <DropdownLink key={item.to} to={item.to}>
-                    {item.label}
-                  </DropdownLink>
-                ))}
-              </DropdownMenu>
-            </DropdownContainer>
+          <PoweredByLink 
+            href="https://colladome.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            Powered by <span>COLLADOME</span>
+          </PoweredByLink>
 
-            <NavLink to="/news" className={location.pathname === '/news' ? 'active' : ''}>
-              NEWS
-            </NavLink>
-            
-            <NavLink to="/aboutus" className={location.pathname === '/aboutus' ? 'active' : ''}>
-              ABOUT US
-            </NavLink>
-          </NavLinks>
-
-          <MobileButton onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </MobileButton>
+          <MobileMenuButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </MobileMenuButton>
         </NavContent>
       </NavWrapper>
 
-      <MobileMenu $isOpen={isOpen}>
-        <MobileLink to="/home" className={location.pathname === '/home' ? 'active' : ''}>
-          HOME
-        </MobileLink>
-        <MobileLink to="/teams" className={location.pathname === '/teams' ? 'active' : ''}>
-          TEAMS
-        </MobileLink>
-        <MobileLink to="/schedule" className={location.pathname === '/schedule' ? 'active' : ''}>
-          CCL 2025
-        </MobileLink>
-        <MobileLink to="/gallery" className={location.pathname === '/gallery' ? 'active' : ''}>
-          GALLERY
-        </MobileLink>
-        <MobileLink to="/news" className={location.pathname === '/news' ? 'active' : ''}>
-          NEWS
-        </MobileLink>
-        <MobileLink to="/aboutus" className={location.pathname === '/aboutus' ? 'active' : ''}>
-          ABOUT US
-        </MobileLink>
-      </MobileMenu>
+      <MobileNav $isOpen={isMobileMenuOpen}>
+        {navItems.map((item) => (
+          <MobileNavItem key={item.label}>
+            {item.dropdown ? (
+              <>
+                <MobileDropdownButton
+                  $isOpen={mobileDropdowns[item.label]}
+                  onClick={() => toggleMobileDropdown(item.label)}
+                >
+                  {item.label}
+                  <ChevronRight size={20} />
+                </MobileDropdownButton>
+                <MobileDropdown $isOpen={mobileDropdowns[item.label]}>
+                  {item.dropdown.map((dropItem) => (
+                    <MobileNavLink
+                      key={dropItem.path}
+                      to={dropItem.path}
+                      className={location.pathname === dropItem.path ? 'active' : ''}
+                    >
+                      {dropItem.label}
+                    </MobileNavLink>
+                  ))}
+                </MobileDropdown>
+              </>
+            ) : (
+              <MobileNavLink
+                to={item.path}
+                className={location.pathname === item.path ? 'active' : ''}
+              >
+                {item.label}
+              </MobileNavLink>
+            )}
+          </MobileNavItem>
+        ))}
+        <MobileNavItem>
+          <MobileNavLink 
+            as="a"
+            href="https://colladome.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            POWERED BY COLLADOME
+          </MobileNavLink>
+        </MobileNavItem>
+      </MobileNav>
     </NavContainer>
   );
 };

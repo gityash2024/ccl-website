@@ -56,7 +56,16 @@ import semifinatwowinner from '../assets/semifinalonewinner.png';
 
 
 
-
+const HomeContainer = styled.div`
+  width: 100%;
+  overflow-x: hidden;
+`;
+const HeroTitle = styled(motion.h1)`
+  font-size: 48px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+`;
 
 const HeroSection = styled.div`
   position: relative;
