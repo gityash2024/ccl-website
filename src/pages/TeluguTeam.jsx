@@ -31,11 +31,7 @@ import teluguteam_14 from '../assets/teluguteam_14.png';
 import teluguteam_15 from '../assets/teluguteam_15.png';
 import teluguteam_16 from '../assets/teluguteam_16.png';
 
-// const TeamContainer = styled.div`
-//   width: 100%;
-//   min-height: 100vh;
-//   background: linear-gradient(180deg, #FFFFFF 0%, #E8E8FF 50%, #D51256 100%);
-// `;
+
 
 const TitleSection = styled.div`
   text-align: center;
@@ -70,14 +66,7 @@ const TeamPhoto = styled.div`
   }
 `;
 
-// const ManagementSection = styled.div`
-//   max-width: 1200px;
-//   margin: 60px auto;
-//   padding: 0 20px;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 40px;
-// `;
+
 
 const CategoryRow = styled.div`
   display: grid;
@@ -96,23 +85,7 @@ const SectionTitle = styled.h2`
   margin-bottom: 20px;
 `;
 
-// const ProfileCard = styled(motion.div)`
-//   text-align: center;
 
-//   img {
-//     width: 180px;
-//     height: 180px;
-//     border-radius: 10px;
-//     margin-bottom: 15px;
-//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-//   }
-
-//   h3 {
-//     color: #214592;
-//     font-weight: bold;
-//     margin-bottom: 5px;
-//   }
-// `;
 
 const TeamSection = styled.div`
   max-width: 1200px;

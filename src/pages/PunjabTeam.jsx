@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 
 import bhojpuribackground from '../assets/bhojpuribackground.png';
-// import PUNJABDESHER from '../assets/PUNJABDESHER.png';
+import PUNJABDESHER from '../assets/PUNJABDESHER.png';
 import punjabimage from '../assets/punjabimage.png';
 import punjabowner_1 from '../assets/punjabowner_1.png';
 import punjabowner_2 from '../assets/punjabowner_2.png';
@@ -30,6 +30,7 @@ import punjab_14 from '../assets/punjab_14.png';
 import punjab_15 from '../assets/punjab_15.png';
 import punjab_16 from '../assets/punjab_16.png';
 import punjab_17 from '../assets/punjab_17.png';
+import MudasirZafar_18 from '../assets/MudasirZafar_18.png';
 import punjabteambackgroud from '../assets/punjabteambackgroud.png';
 
 
@@ -206,7 +207,15 @@ const Punjab = () => {
     { img: punjab_7, name: "GULZAR CHAHAL", role: "Batsman" },
     { img: punjab_8, name: "ARYAMAN SAPRU", role: "Batsman" },
     { img: punjab_9, name: "NAVRAJ HANS", role: "Batsman" },
-    { img: punjab_10, name: "YUVRAJ HANS", role: "Batsman" }
+    { img: punjab_10, name: "YUVRAJ HANS", role: "Batsman" },
+    { img: punjab_11, name: "JIMMY SHERGIL ", role: "Batsman" },
+    { img: punjab_12, name: "AYUSHMANN KHURRANA ", role: "Batsman" },
+    { img: punjab_13, name: "JASSI GILL ", role: "Batsman" },
+    { img: punjab_14, name: "BABBAL RAI", role: "Batsman" },
+    { img: punjab_15, name: "Mukul Dev", role: "Batsman" },
+    { img: punjab_16, name: "Arjan Bajwa ", role: "All Rounder" },
+    { img: punjab_17, name: "Harmeet Singh", role: "All Rounder" },
+    { img: MudasirZafar_18, name: "Mudasir Zafar",},
     // Add the rest of the players
   ];
 
@@ -214,7 +223,14 @@ const Punjab = () => {
     <TeamContainer>
       <ContentWrapper>
         <TopSection>
-          <Title>PUNJAB DE SHER</Title>
+          <motion.img 
+                   src={PUNJABDESHER}
+                   alt="Telugu Warriors"
+                   style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
+                   initial={{ y: 20, opacity: 0 }}
+                   animate={{ y: 0, opacity: 1 }}
+                   transition={{ duration: 0.6 }}
+                 />
           <Description>
             The Punjab De Sher is a Cricket Franchise of Celebrity Cricket League. The Franchise is owned by Mr. Navraj Hans and Mr. Puneet Singh with the best of Punjab Film Industry coming together in an exciting match of cricket.
           </Description>
