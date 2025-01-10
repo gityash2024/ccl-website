@@ -17,6 +17,8 @@ import punjabdesher from '../assets/punjabdesher.png';
 import twotosiz from '../assets/twotosiz.png';
 import chennairhinors from '../assets/chennairhinors.png';
 import sixtotenthird from '../assets/sixtotenthird.png';
+import cclbackground from '../assets/cclbackground.png';
+
 // 2 february
 import twoFebruary from '../assets/twoFebruary.png';
 import keralastrikers from '../assets/keralastrikers.png';
