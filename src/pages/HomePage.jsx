@@ -1,8 +1,15 @@
-
+// src/pages/HomePage.jsx
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+
+// Import background images
 import background from '../assets/background.png';
+import teamcaptains from '../assets/teamcaptains.png';
+import cclbackground from '../assets/cclbackground.png';
+import CCLWhite from '../assets/CCLWhite.png';
+
+// Import team logos
 import bengal from '../assets/bengal.png';
 import chennai from '../assets/chennai.png';
 import kerala from '../assets/kerala.png';
@@ -11,52 +18,61 @@ import bhojpuri from '../assets/bhojpuri.png';
 import karnataka from '../assets/karnataka.png';
 import punjab from '../assets/punjab.png';
 import telugu from '../assets/telugu.png';
-import PngItem from '../assets/PngItem.png';
-import teamcaptains from '../assets/teamcaptains.png';
+
+// Import captain images
 import Akhil from '../assets/Akhil.png';
 import Sudeep from '../assets/Sudeep.png';
 import indrajith from '../assets/indrajith.png';
 import Sonu from '../assets/Sonu.png';
-import cclbackground from '../assets/cclbackground.png';
-import ccl from '../assets/ccl.png';
-import CCLWhite from '../assets/CCLWhite.png';
 
-
-const HomeContainer = styled.div`
+// Styled Components
+const PageContainer = styled.div`
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 `;
 
-const HeroSection = styled.div`
+const HeroSection = styled.section`
   position: relative;
+  height: 100vh;
   width: 100%;
-  height: 600px;
-  background: url(${background});
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 4rem;
+  background-image: url(${background});
   background-size: cover;
   background-position: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding-bottom: 50px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+  }
 `;
 
-const HeroTitle = styled(motion.h1)`
-  font-size: 48px;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin-bottom: 20px;
+const SectionContainer = styled.div`
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+
+  @media (min-width: 1024px) {
+    padding: 0 2.5rem;
+  }
 `;
 
-const TeamsContainer = styled.div`
-  padding: 50px 20px;
+const TeamsSection = styled.section`
   background: white;
+  padding: 5rem 0;
 `;
 
-const TeamsTitle = styled.div`
+const SectionTitle = styled.div`
   text-align: center;
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 4rem;
 
   &::before,
   &::after {
@@ -77,98 +93,124 @@ const TeamsTitle = styled.div`
   }
 
   h2 {
-    color: #214592;
-    font-size: 36px;
+    font-size: 2.25rem;
     font-weight: bold;
+    color: #214592;
   }
 `;
 
 const TeamsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 `;
 
 const TeamCard = styled(motion.div)`
   text-align: center;
-
+  padding: 1rem;
+  
   img {
     width: 100%;
     max-width: 150px;
     height: auto;
-    margin-bottom: 15px;
+    margin: 0 auto 1rem;
   }
-
+  
   p {
     color: #214592;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 0.875rem;
+    
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
   }
 `;
 
-const CaptainsSection = styled.div`
-  background: url(${teamcaptains});
+const CaptainsSection = styled.section`
+  background-image: url(${teamcaptains});
   background-size: cover;
-  padding: 50px 20px;
-  margin-top: 50px;
+  background-position: center;
+  padding: 5rem 0;
 `;
 
 const CaptainsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
   
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 `;
 
 const CaptainCard = styled(motion.div)`
   text-align: center;
   
-  img {
-    width: 100%;
-    max-width: 200px;
-    border-radius: 10px;
-    margin-bottom: 15px;
+  .image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    &:hover::before {
+      opacity: 1;
+    }
+    
+    img {
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto;
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover img {
+      transform: scale(1.1);
+    }
   }
-
+  
   h3 {
     color: white;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 0.25rem;
   }
-
+  
   p {
     color: #cccccc;
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 `;
 
-const InfoSection = styled.div`
-  background: url(${cclbackground});
+const InfoSection = styled.section`
+  position: relative;
+  background-image: url(${cclbackground});
   background-size: cover;
-  padding: 100px 20px;
+  background-position: center;
+  padding: 8rem 0;
   text-align: center;
   
-  img {
-    max-width: 300px;
-    margin-bottom: 30px;
-  }
-
-  h2 {
-    color: white;
-    font-size: 36px;
-    font-weight: bold;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
   }
 `;
 
@@ -192,76 +234,124 @@ const HomePage = () => {
   ];
 
   return (
-    <HomeContainer>
+    <PageContainer>
       <HeroSection>
-        <HeroTitle
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          JANUARY 31ST 2025 ONWARDS
-        </HeroTitle>
+        <SectionContainer>
+          <motion.h1
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            style={{
+              fontSize: '2.5rem',
+              fontWeight: 'bold',
+              color: 'white',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+              textAlign: 'center',
+              position: 'relative'
+            }}
+          >
+            JANUARY 31ST 2025 ONWARDS
+          </motion.h1>
+        </SectionContainer>
       </HeroSection>
 
-      <TeamsContainer>
-        <TeamsTitle>
-          <h2>CCL 2025 TEAMS</h2>
-        </TeamsTitle>
-
-        <TeamsGrid>
-          {teams.map((team, index) => (
-            <TeamCard
-              key={team.name}
+      <TeamsSection>
+        <SectionContainer>
+          <SectionTitle>
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
-              <img src={team.img} alt={team.name} />
-              <p>{team.name}</p>
-            </TeamCard>
-          ))}
-        </TeamsGrid>
-      </TeamsContainer>
+              CCL 2025 TEAMS
+            </motion.h2>
+          </SectionTitle>
+
+          <TeamsGrid>
+            {teams.map((team, index) => (
+              <TeamCard
+                key={team.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <img src={team.img} alt={team.name} />
+                <p>{team.name}</p>
+              </TeamCard>
+            ))}
+          </TeamsGrid>
+        </SectionContainer>
+      </TeamsSection>
 
       <CaptainsSection>
-        <TeamsTitle>
-          <h2>TEAM CAPTAINS</h2>
-        </TeamsTitle>
-
-        <CaptainsGrid>
-          {captains.map((captain, index) => (
-            <CaptainCard
-              key={captain.name}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.2 }}
+        <SectionContainer>
+          <SectionTitle>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              style={{ color: 'white' }}
             >
-              <img src={captain.img} alt={captain.name} />
-              <h3>{captain.name}</h3>
-              <p>{captain.team}</p>
-            </CaptainCard>
-          ))}
-        </CaptainsGrid>
+              TEAM CAPTAINS
+            </motion.h2>
+          </SectionTitle>
+
+          <CaptainsGrid>
+            {captains.map((captain, index) => (
+              <CaptainCard
+                key={captain.name}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+              >
+                <div className="image-container">
+                  <img src={captain.img} alt={captain.name} />
+                </div>
+                <h3>{captain.name}</h3>
+                <p>{captain.team}</p>
+              </CaptainCard>
+            ))}
+          </CaptainsGrid>
+        </SectionContainer>
       </CaptainsSection>
 
       <InfoSection>
-        <motion.img
-          src={CCLWhite}
-          alt="CCL Logo"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-        />
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          EVERYTHING YOU NEED TO KNOW
-        </motion.h2>
+        <SectionContainer>
+          <motion.img
+            src={CCLWhite}
+            alt="CCL Logo"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            style={{
+              width: '200px',
+              marginBottom: '2rem',
+              position: 'relative'
+            }}
+          />
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            style={{
+              fontSize: '2rem',
+              fontWeight: 'bold',
+              color: 'white',
+              position: 'relative'
+            }}
+          >
+            EVERYTHING YOU NEED TO KNOW
+          </motion.h2>
+        </SectionContainer>
       </InfoSection>
-    </HomeContainer>
+    </PageContainer>
   );
 };
 

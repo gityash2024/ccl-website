@@ -1,27 +1,21 @@
+// src/components/Footer.jsx
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
+import { Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
 import footerbackground from '../assets/footerbackground.png';
-import facebook from '../assets/facebook.png';
-import twitter from '../assets/twitter.png';
-import insta from '../assets/insta.png';
-import youtube from '../assets/youtube.png';
+import logo from '../assets/logo.png';
 
 const FooterContainer = styled.footer`
   background: linear-gradient(180deg, #4F378B 40.98%, #D51256 100%);
   color: white;
-  padding: 2rem 4rem;
   position: relative;
   overflow: hidden;
 
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: url(${footerbackground}) no-repeat;
     background-size: cover;
     opacity: 0.1;
@@ -32,163 +26,194 @@ const FooterContainer = styled.footer`
 const FooterContent = styled.div`
   position: relative;
   z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
+  padding: 4rem 1.5rem;
+`;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
+const FooterGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 2fr 1fr 1fr;
   }
 `;
 
 const DescriptionSection = styled.div`
-  flex: 2;
-  max-width: 600px;
-
   img {
-    width: 120px;
-    margin-bottom: 1rem;
+    height: 60px;
+    width: auto;
+    margin-bottom: 1.5rem;
   }
 
   p {
-    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1.6;
-    margin-top: 1rem;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    max-width: 600px;
   }
 `;
-
-const LinksSection = styled.div`
-  flex: 1;
-
-  h3 {
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-`;
-
-const TeamsList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  li {
-    margin-bottom: 0.5rem;
-    
-    a {
-      color: white;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: opacity 0.3s;
-
-      &:hover {
-        opacity: 0.8;
-      }
-    }
-  }
-`;
-
-const QuickLinksList = styled(TeamsList)``;
 
 const SocialLinks = styled.div`
   display: flex;
   gap: 1rem;
-  margin-top: 2rem;
+`;
 
-  a {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    border-radius: 50%;
-    transition: transform 0.3s;
+const SocialLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 
-    &:hover {
-      transform: scale(1.1);
-    }
+  &:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.9);
+  }
 
-    img {
-      width: 24px;
-      height: 24px;
-    }
+  svg {
+    width: 20px;
+    height: 20px;
+    color: #4F378B;
+  }
+`;
+
+const LinksSection = styled.div`
+  h3 {
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+`;
+
+const LinksList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+`;
+
+const FooterLink = styled(Link)`
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+
+  &:hover {
+    color: white;
+    transform: translateX(5px);
   }
 `;
 
 const Copyright = styled.div`
-  text-align: center;
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  color: white;
   position: relative;
   z-index: 2;
+  text-align: center;
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 3rem;
+
+  p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+  }
 `;
 
 const Footer = () => {
+  const socialLinks = [
+    { icon: Facebook, href: '#', label: 'Facebook' },
+    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Youtube, href: '#', label: 'YouTube' }
+  ];
+
+  const teamLinks = [
+    { name: 'BENGAL TIGERS', path: '/teams/bengal-tigers' },
+    { name: 'BHOJPURI DABANGGS', path: '/teams/bhojpuri-dabanggs' },
+    { name: 'CHENNAI RHINOS', path: '/teams/chennai-rhinos' },
+    { name: 'KARNATAKA BULLDOZERS', path: '/teams/karnataka-bulldozers' },
+    { name: 'C3 KERALA STRIKERS', path: '/teams/kerala-strikers' },
+    { name: 'MUMBAI HEROES', path: '/teams/mumbai-heroes' },
+    { name: 'PUNJAB DE SHER', path: '/teams/punjab-de-sher' },
+    { name: 'TELUGU WARRIORS', path: '/teams/telugu-warriors' }
+  ];
+
+  const quickLinks = [
+    { name: 'News', path: '/news' },
+    { name: 'Schedule', path: '/schedule' },
+    { name: 'Photos', path: '/photos' },
+    { name: 'Videos', path: '/videos' },
+    { name: 'About Us', path: '/aboutus' },
+    { name: 'Contact Us', path: '/contact' },
+    { name: 'CCL SUPER FAN T&C', path: '/ccl-super-fan' }
+  ];
+
   return (
     <FooterContainer>
       <FooterContent>
-        <DescriptionSection>
-          <img src="/logo.png" alt="CCL Logo" />
-          <p>
-            Celebrity Cricket League, brings together India's biggest entertainment industries-
-            Cricket and Films, where India's top actors showcase their cricketing skills giving
-            the audiences a sight of a thrilling run to the finish game. It is contested by eight
-            teams comprising of film actors, representing eight major regional film industries
-            of Indian Cinema. Commenced in 2011, CCL has grown leaps and bounds and
-            has also increased in its television viewership, with its wide reporting done in the
-            media, across India.
-          </p>
-          <SocialLinks>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src={facebook} alt="Facebook" />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src={twitter} alt="Twitter" />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src={insta} alt="Instagram" />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src={youtube} alt="YouTube" />
-            </a>
-          </SocialLinks>
-        </DescriptionSection>
+        <FooterGrid>
+          <DescriptionSection>
+            <img src={logo} alt="CCL Logo" />
+            <p>
+              Celebrity Cricket League, brings together India's biggest entertainment industries-
+              Cricket and Films, where India's top actors showcase their cricketing skills giving
+              the audiences a sight of a thrilling run to the finish game. It is contested by eight
+              teams comprising of film actors, representing eight major regional film industries
+              of Indian Cinema. Commenced in 2011, CCL has grown leaps and bounds and
+              has also increased in its television viewership, with its wide reporting done in the
+              media, across India.
+            </p>
+            <SocialLinks>
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <SocialLink 
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                >
+                  <Icon />
+                </SocialLink>
+              ))}
+            </SocialLinks>
+          </DescriptionSection>
 
-        <LinksSection>
-          <h3>TEAMS</h3>
-          <TeamsList>
-            <li><Link to="/teams/bengal-tigers">BENGAL TIGERS</Link></li>
-            <li><Link to="/teams/bhojpuri-dabanggs">BHOJPURI DABANGGS</Link></li>
-            <li><Link to="/teams/chennai-rhinos">CHENNAI RHINOS</Link></li>
-            <li><Link to="/teams/karnataka-bulldozers">KARNATAKA BULLDOZERS</Link></li>
-            <li><Link to="/teams/kerala-strikers">C3 KERALA STRIKERS</Link></li>
-            <li><Link to="/teams/mumbai-heroes">MUMBAI HEROES</Link></li>
-            <li><Link to="/teams/punjab-de-sher">PUNJAB DE SHER</Link></li>
-            <li><Link to="/teams/telugu-warriors">TELUGU WARRIORS</Link></li>
-          </TeamsList>
-        </LinksSection>
+          <LinksSection>
+            <h3>TEAMS</h3>
+            <LinksList>
+              {teamLinks.map((link) => (
+                <li key={link.path}>
+                  <FooterLink to={link.path}>{link.name}</FooterLink>
+                </li>
+              ))}
+            </LinksList>
+          </LinksSection>
 
-        <LinksSection>
-          <h3>QUICK LINKS</h3>
-          <QuickLinksList>
-            <li><Link to="/news">News</Link></li>
-            <li><Link to="/schedule">Schedule</Link></li>
-            <li><Link to="/photos">Photos</Link></li>
-            <li><Link to="/videos">Videos</Link></li>
-            <li><Link to="/aboutus">About Us</Link></li>
-            <li><Link to="/contact">Contact Us</Link></li>
-            <li><Link to="/ccl-super-fan">CCL SUPER FAN T&C;</Link></li>
-          </QuickLinksList>
-        </LinksSection>
+          <LinksSection>
+            <h3>QUICK LINKS</h3>
+            <LinksList>
+              {quickLinks.map((link) => (
+                <li key={link.path}>
+                  <FooterLink to={link.path}>{link.name}</FooterLink>
+                </li>
+              ))}
+            </LinksList>
+          </LinksSection>
+        </FooterGrid>
       </FooterContent>
 
       <Copyright>
-        All Rights Reserved @Colladome
+        <p>All Rights Reserved @Colladome</p>
       </Copyright>
     </FooterContainer>
   );
