@@ -11,8 +11,8 @@ const NavContainer = styled.nav`
   right: 0;
   height: 80px;
   background: #214592;
-  z-index: 50;
-  transition: background-color 0.3s ease;
+  z-index: 9999;
+  transition: all 0.3s ease;
 `;
 
 const NavBackground = styled.div`
@@ -181,10 +181,12 @@ const MobileNav = styled.div`
   bottom: 0;
   background: #214592;
   padding: 1rem;
-  transform: translateX(${props => props.$isOpen ? '0' : '-100%'});
+  transform: translateX(${props => props.$isOpen ? '0' : '100%'});
   transition: transform 0.3s ease;
   overflow-y: auto;
   z-index: 40;
+  display: flex;
+  flex-direction: column;
 
   @media (min-width: 768px) {
     display: none;
@@ -196,14 +198,20 @@ const MobileNavItem = styled.div`
 `;
 
 const MobileNavLink = styled(Link)`
-  display: block;
+  display: flex;
+  align-items: center;
   padding: 1rem;
   color: white;
   text-decoration: none;
   font-weight: bold;
+  transition: background-color 0.3s ease;
   
   &.active {
     background: #E04837;
+  }
+
+  &:active {
+    background: rgba(224, 72, 55, 0.8);
   }
 `;
 
@@ -218,17 +226,40 @@ const MobileDropdownButton = styled.button`
   border: none;
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.3s ease;
   
   svg {
     transition: transform 0.3s ease;
     transform: ${props => props.$isOpen ? 'rotate(90deg)' : 'none'};
   }
+
+  &:active {
+    background: rgba(255, 255, 255, 0.1);
+  }
 `;
 
 const MobileDropdown = styled.div`
-  padding-left: 1rem;
   background: rgba(0, 0, 0, 0.1);
-  display: ${props => props.$isOpen ? 'block' : 'none'};
+  max-height: ${props => props.$isOpen ? '500px' : '0'};
+  overflow: hidden;
+  transition: all 0.3s ease;
+`;
+
+const MobileDropdownLink = styled(Link)`
+  display: block;
+  padding: 1rem 1rem 1rem 2rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  
+  &.active {
+    background: #E04837;
+  }
+
+  &:active {
+    background: rgba(224, 72, 55, 0.8);
+  }
 `;
 
 const Navbar = () => {
@@ -249,6 +280,7 @@ const Navbar = () => {
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
+    setMobileDropdowns({});
   }, [location]);
 
   const navItems = [
@@ -306,7 +338,6 @@ const Navbar = () => {
             <LogoLink to="/">
               <img src={logo} alt="CCL Logo" />
             </LogoLink>
-
             <DesktopNav>
               {navItems.map((item) => (
                 <NavItem
@@ -321,7 +352,6 @@ const Navbar = () => {
                     {item.label}
                     {item.dropdown && <ChevronDown size={16} />}
                   </NavLink>
-
                   {item.dropdown && (
                     <Dropdown $isOpen={activeDropdown === item.label}>
                       {item.dropdown.map((dropItem) => (
@@ -338,7 +368,6 @@ const Navbar = () => {
               ))}
             </DesktopNav>
           </NavigationSection>
-
           <PoweredByLink 
             href="https://colladome.com" 
             target="_blank" 
@@ -346,13 +375,11 @@ const Navbar = () => {
           >
             Powered by <span>COLLADOME</span>
           </PoweredByLink>
-
           <MobileMenuButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </MobileMenuButton>
         </NavContent>
       </NavWrapper>
-
       <MobileNav $isOpen={isMobileMenuOpen}>
         {navItems.map((item) => (
           <MobileNavItem key={item.label}>
@@ -367,13 +394,13 @@ const Navbar = () => {
                 </MobileDropdownButton>
                 <MobileDropdown $isOpen={mobileDropdowns[item.label]}>
                   {item.dropdown.map((dropItem) => (
-                    <MobileNavLink
+                    <MobileDropdownLink
                       key={dropItem.path}
                       to={dropItem.path}
                       className={location.pathname === dropItem.path ? 'active' : ''}
                     >
                       {dropItem.label}
-                    </MobileNavLink>
+                    </MobileDropdownLink>
                   ))}
                 </MobileDropdown>
               </>
