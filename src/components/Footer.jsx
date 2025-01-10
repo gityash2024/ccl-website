@@ -1,8 +1,7 @@
-// src/components/Footer.jsx
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, ArrowUpRight } from 'lucide-react';
 import footerbackground from '../assets/footerbackground.png';
 import logo from '../assets/logo.png';
 
@@ -11,16 +10,15 @@ const FooterContainer = styled.footer`
   color: white;
   position: relative;
   overflow: hidden;
+`;
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url(${footerbackground}) no-repeat;
-    background-size: cover;
-    opacity: 0.1;
-    z-index: 1;
-  }
+const BackgroundOverlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background: url(${footerbackground}) no-repeat;
+  background-size: cover;
+  opacity: 0.1;
+  z-index: 1;
 `;
 
 const FooterContent = styled.div`
@@ -29,12 +27,16 @@ const FooterContent = styled.div`
   max-width: 1440px;
   margin: 0 auto;
   padding: 4rem 1.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem 1rem;
+  }
 `;
 
 const FooterGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 1rem;
 
   @media (min-width: 768px) {
     grid-template-columns: 2fr 1fr 1fr;
@@ -60,6 +62,7 @@ const DescriptionSection = styled.div`
 const SocialLinks = styled.div`
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 `;
 
 const SocialLink = styled.a`
@@ -70,11 +73,13 @@ const SocialLink = styled.a`
   height: 40px;
   background: white;
   border-radius: 50%;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
   &:hover {
     transform: translateY(-3px);
     background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
 
   svg {
@@ -89,7 +94,14 @@ const LinksSection = styled.div`
     color: white;
     font-size: 1.125rem;
     font-weight: 600;
-    margin-bottom: 1.5rem;
+    // margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 1rem;
   }
 `;
 
@@ -107,11 +119,33 @@ const FooterLink = styled(Link)`
   text-decoration: none;
   font-size: 0.875rem;
   transition: all 0.3s ease;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 
   &:hover {
     color: white;
     transform: translateX(5px);
+  }
+`;
+
+const ExternalLink = styled.a`
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &:hover {
+    color: white;
+    transform: translateX(5px);
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
   }
 `;
 
@@ -121,11 +155,40 @@ const Copyright = styled.div`
   text-align: center;
   padding: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: 3rem;
+  // margin-top: 1rem;
 
   p {
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+`;
+
+const CTAButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #D51256;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
+
+  &:hover {
+    transform: translateY(-2px);
+    background: #E61864;
+    box-shadow: 0 4px 15px rgba(213, 18, 86, 0.3);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
   }
 `;
 
@@ -160,6 +223,7 @@ const Footer = () => {
 
   return (
     <FooterContainer>
+      <BackgroundOverlay />
       <FooterContent>
         <FooterGrid>
           <DescriptionSection>
@@ -186,6 +250,13 @@ const Footer = () => {
                 </SocialLink>
               ))}
             </SocialLinks>
+            {/* <CTAButton
+              href="https://colladome.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit Colladome <ArrowUpRight />
+            </CTAButton> */}
           </DescriptionSection>
 
           <LinksSection>
@@ -207,13 +278,31 @@ const Footer = () => {
                   <FooterLink to={link.path}>{link.name}</FooterLink>
                 </li>
               ))}
+              <li>
+                <ExternalLink
+                  href="https://colladome.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  COLLADOME <ArrowUpRight />
+                </ExternalLink>
+              </li>
             </LinksList>
           </LinksSection>
         </FooterGrid>
       </FooterContent>
 
       <Copyright>
-        <p>All Rights Reserved @Colladome</p>
+        <p>
+          All Rights Reserved
+          <ExternalLink
+            href="https://colladome.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @Colladome <ArrowUpRight />
+          </ExternalLink>
+        </p>
       </Copyright>
     </FooterContainer>
   );
