@@ -17,7 +17,7 @@ const MainLayout = () => {
     <PageContainer>
       <Navbar />
       <MainContent>
-        <Outlet />
+    <Outlet />
       </MainContent>
       <Footer />
     </PageContainer>
