@@ -34,14 +34,14 @@ const AppRoutes = () => {
         <Route path="home" element={<Home />} />
         <Route path="bengal" element={<BengalTeam />}/>
         <Route path="bhojpuri" element={<BhojpuriTeam />}/>
-        <Route path="chennal" element={<ChennalTeam />}/>
-        <Route path="karnatka" element={<KarnatkaTeam />}/>
-        <Route path="kerla" element={<KerlaTeam />}/>
+        <Route path="chennai" element={<ChennalTeam />}/>
+        <Route path="karnataka" element={<KarnatkaTeam />}/>
+        <Route path="kerala" element={<KerlaTeam />}/>
         <Route path="mumbai" element={<MumbaiTeam />}/>
         <Route path="punjab" element={<PunjabTeam />}/>
         <Route path="telugu" element={<TeluguTeam />}/>
-        <Route path="photo" element={<PhotoGallary />}/>
-        <Route path="video" element={<VideoGallary />}/>
+        <Route path="photos" element={<PhotoGallary />}/>
+        <Route path="videos" element={<VideoGallary />}/>
         <Route path="cclschedule" element={<CclSchedule />}/>
         
       </Route>
