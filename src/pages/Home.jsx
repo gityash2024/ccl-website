@@ -269,10 +269,10 @@ const StyledSwiper = styled(Swiper)`
  width: 100%;
  height: 100%;
  .swiper-button-next {
-   right: 2rem;
+   right: 15rem;
  }
  .swiper-button-prev {
-   left: 2rem;
+   left:15rem;
  }
  .swiper-button-next, .swiper-button-prev {
    color: white;
