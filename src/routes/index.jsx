@@ -42,7 +42,7 @@ const AppRoutes = () => {
         <Route path="telugu" element={<TeluguTeam />}/>
         <Route path="photos" element={<PhotoGallary />}/>
         <Route path="videos" element={<VideoGallary />}/>
-        <Route path="cclschedule" element={<CclSchedule />}/>
+        <Route path="standings" element={<CclSchedule />}/>
         
       </Route>
     </Routes>
