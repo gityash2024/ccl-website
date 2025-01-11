@@ -25,29 +25,58 @@ import photo_18 from '../assets/photo_18.png';
 const GalleryContainer = styled.div`
   width: 100%;
   min-height: 100vh;
-  background: #ffffff;
+  background: white;
+  padding-bottom: 60px;
 `;
 
 const HeaderSection = styled.div`
+  width: 100%;
   background: url(${newupperbackground});
   background-size: cover;
   background-position: center;
-  height: 250px;
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 320px;
+  padding-top: 20px;
   margin-bottom: 40px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, 
+      rgba(79, 55, 139, 0.9) 0%, 
+      rgba(213, 87, 126, 0.9) 50%, 
+      rgba(255, 255, 255, 0) 100%
+    );
+    z-index: 1;
+  }
 `;
 
 const Wave = styled.div`
   position: absolute;
-  bottom: -1px;
+  bottom: -2px;
   left: 0;
   width: 100%;
-  height: 100px;
-  background: #ffffff;
-  clip-path: polygon(0 100%, 0 50%, 50% 80%, 100% 50%, 100% 100%);
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -5%;
+    width: 110%;
+    height: 150px;
+    background: white;
+    border-radius: 50% 50% 0 0;
+    transform: scaleX(1.1);
+  }
 `;
 
 const GalleryTitle = styled(motion.img)`
@@ -55,99 +84,49 @@ const GalleryTitle = styled(motion.img)`
   width: 90%;
   position: relative;
   z-index: 2;
+  margin-bottom: 40px;
 `;
 
-// const GalleryGrid = styled.div`
-//   max-width: 1200px;
-//   margin: 0 auto;
-//   padding: 0 20px;
-//   display: grid;
-//   grid-template-columns: repeat(3, 1fr);
-//   gap: 25px;
-
-//   @media (max-width: 1024px) {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-
-//   @media (max-width: 640px) {
-//     grid-template-columns: 1fr;
-//   }
-// `;
-
-// const PhotoCard = styled(motion.div)`
-//   border: 3px solid #214592;
-//   border-radius: 15px;
-//   overflow: hidden;
-//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-//   aspect-ratio: 16/9;
-
-//   img {
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//     transition: transform 0.3s ease;
-//   }
-
-//   &:hover img {
-//     transform: scale(1.05);
-//   }
-// `;
-
-
-const GalleryGrid = styled.div`
+const GallerySection = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+`;
+
+const PhotoGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-
-  &.first-row {
-    margin-bottom: 25px;
-  }
-
-  &.second-row {
-    margin-bottom: 25px;
-  }
-
-  &.third-row {
-    margin-bottom: 25px;
-  }
-
-  &.trophy-row {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
-
-    > div {
-      width: 400px;
-    }
-  }
+  gap: 30px;
+  margin-bottom: 30px;
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
-    
-    &.trophy-row > div {
-      width: 300px;
-    }
   }
 
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
-    
-    &.trophy-row > div {
-      width: 100%;
-    }
+  }
+`;
+
+const TrophySection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  > div {
+    max-width: 400px;
+    width: 100%;
   }
 `;
 
 const PhotoCard = styled(motion.div)`
   border: 4px solid #214592;
-  border-radius: 12px;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  aspect-ratio: 16/9;
   width: 100%;
+  aspect-ratio: ${props => props.isTrophy ? '3/4' : '16/9'};
+  position: relative;
 
   img {
     width: 100%;
@@ -162,26 +141,83 @@ const PhotoCard = styled(motion.div)`
 `;
 
 const Photo = () => {
-  const galleryPhotos = [
-    { id: 1, src: photo_1 },
-    { id: 2, src: photo_2 },
-    { id: 3, src: photo_3 },
-    { id: 4, src: photo_4 },
-    { id: 5, src: photo_5 },
-    { id: 6, src: photo_6 },
-    { id: 7, src: photo_7 },
-    { id: 8, src: photo_8 },
-    { id: 9, src: photo_9 },
-    { id: 10, src: photo_10 },
-    { id: 11, src: photo_11 },
-    { id: 12, src: photo_12 },
-    { id: 13, src: photo_13 },
-    { id: 14, src: photo_14 },
-    { id: 15, src: photo_15 },
-    { id: 16, src: photo_16 },
-    { id: 17, src: photo_17 },
-    { id: 18, src: photo_18 }
+  // Dynamic photo data with metadata
+  const photos = [
+    {
+      id: 1,
+      src: photo_1,
+      title: 'Match Celebration',
+      category: 'match'
+    },
+    {
+      id: 2,
+      src: photo_2,
+      title: 'Team Spirit',
+      category: 'match'
+    },
+    {
+      id: 3,
+      src: photo_3,
+      title: 'Player Interaction',
+      category: 'match'
+    },
+    {
+      id: 4,
+      src: photo_4,
+      title: 'Game Action',
+      category: 'match'
+    },
+    {
+      id: 5,
+      src: photo_5,
+      title: 'Team Huddle',
+      category: 'match'
+    },
+    {
+      id: 6,
+      src: photo_6,
+      title: 'Trophy Celebration',
+      category: 'match'
+    },
+    {
+      id: 7,
+      src: photo_7,
+      title: 'Team Photo',
+      category: 'match'
+    },
+    {
+      id: 8,
+      src: photo_8,
+      title: 'Match Moment',
+      category: 'match'
+    },
+    {
+      id: 9,
+      src: photo_9,
+      title: 'Victory Celebration',
+      category: 'match'
+    },
+    {
+      id: 18,
+      src: photo_18,
+      title: 'Championship Trophy',
+      category: 'trophy'
+    }
   ];
+
+  // Group photos by section (excluding trophy)
+  const matchPhotos = photos.filter(photo => photo.category === 'match');
+  const trophyPhoto = photos.find(photo => photo.category === 'trophy');
+  
+  // Split match photos into sections of 3
+  const photoSections = matchPhotos.reduce((acc, photo, index) => {
+    const sectionIndex = Math.floor(index / 3);
+    if (!acc[sectionIndex]) {
+      acc[sectionIndex] = [];
+    }
+    acc[sectionIndex].push(photo);
+    return acc;
+  }, []);
 
   return (
     <GalleryContainer>
@@ -196,59 +232,45 @@ const Photo = () => {
         <Wave />
       </HeaderSection>
 
-      <GalleryGrid className="first-row">
-      {[photo_1, photo_2, photo_3].map((photo, index) => (
-        <PhotoCard
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1 }}
-          whileHover={{ scale: 1.02 }}
-        >
-          <img src={photo} alt={`Gallery photo ${index + 1}`} />
-        </PhotoCard>
-      ))}
-    </GalleryGrid>
+      <GallerySection>
+        {photoSections.map((section, sectionIndex) => (
+          <PhotoGrid key={`section-${sectionIndex}`}>
+            {section.map((photo, photoIndex) => (
+              <PhotoCard
+                key={photo.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: photoIndex * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <img 
+                  src={photo.src} 
+                  alt={photo.title}
+                  loading="lazy"
+                />
+              </PhotoCard>
+            ))}
+          </PhotoGrid>
+        ))}
 
-    <GalleryGrid className="second-row">
-      {[photo_4, photo_5, photo_6].map((photo, index) => (
-        <PhotoCard
-          key={index + 3}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: (index + 3) * 0.1 }}
-          whileHover={{ scale: 1.02 }}
-        >
-          <img src={photo} alt={`Gallery photo ${index + 4}`} />
-        </PhotoCard>
-      ))}
-    </GalleryGrid>
-
-    <GalleryGrid className="third-row">
-      {[photo_7, photo_8, photo_9].map((photo, index) => (
-        <PhotoCard
-          key={index + 6}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: (index + 6) * 0.1 }}
-          whileHover={{ scale: 1.02 }}
-        >
-          <img src={photo} alt={`Gallery photo ${index + 7}`} />
-        </PhotoCard>
-      ))}
-    </GalleryGrid>
-
-    <GalleryGrid className="trophy-row">
-      <PhotoCard
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.9 }}
-        whileHover={{ scale: 1.02 }}
-      >
-        <img src={photo_18} alt="Trophy" />
-      </PhotoCard>
-    </GalleryGrid>
-
+        {trophyPhoto && (
+          <TrophySection>
+            <PhotoCard
+              isTrophy
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <img 
+                src={trophyPhoto.src} 
+                alt={trophyPhoto.title}
+                loading="lazy"
+              />
+            </PhotoCard>
+          </TrophySection>
+        )}
+      </GallerySection>
     </GalleryContainer>
   );
 };
