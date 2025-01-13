@@ -29,6 +29,7 @@ import bhojpuri_3 from '../assets/bhojpuri_3.png';
 import jisshu from '../assets/jisshu.png';
 import mumai_3 from '../assets/mumai_3.png';
  import bhojpuribackground_3 from '../assets/bhojpuribackground_3.png';
+ import PngItem from '../assets/PngItem.png';
 
 const PageContainer = styled.div`
  width: 100%;
@@ -91,10 +92,6 @@ const SectionTitle = styled.div`
   }
 `;
 
-
-
-
-
 const SectionContainer = styled.div`
  max-width: 1440px;
  margin: 0 auto;
@@ -112,8 +109,6 @@ const TeamsSection = styled.section`
    padding: 3rem 0;
  }
 `;
-
-
 
 const TeamsGrid = styled(motion.div)`
  display: grid;
@@ -171,17 +166,6 @@ const TeamCard = styled(motion.div)`
  }
 `;
 
-// const CaptainsSection = styled.section`
-//  background-image: url(${teamcaptains});
-//  background-size: cover;
-//  background-position: center;
-//  padding: 5rem 0;
-//  width: 100%;
-//  @media (max-width: 768px) {
-//    padding: 3rem 0;
-//  }
-// `;
-
 const CaptainsGrid = styled(motion.div)`
  display: grid;
  grid-template-columns: repeat(4, 1fr);
@@ -196,50 +180,6 @@ const CaptainsGrid = styled(motion.div)`
    grid-template-columns: 1fr;
  }
 `;
-
-// const CaptainCard = styled(motion.div)`
-//  background: rgba(0,0,0,0.5);
-//  padding: 2rem;
-//  border-radius: 10px;
-//  text-align: center;
-//  height: 100%;
-//  transition: all 0.3s ease;
-//  &:hover {
-//    transform: translateY(-5px);
-//    background: rgba(0,0,0,0.7);
-//  }
-//  .image-container {
-//    width: 200px;
-//    height: 200px;
-//    margin: 0 auto 1.5rem;
-//    border-radius: 10px;
-//    overflow: hidden;
-//    @media (max-width: 768px) {
-//      width: 160px;
-//      height: 160px;
-//    }
-//    img {
-//      width: 100%;
-//      height: 100%;
-//      object-fit: cover;
-//      object-position: top;
-//      transition: transform 0.3s ease;
-//      &:hover {
-//        transform: scale(1.1);
-//      }
-//    }
-//  }
-//  h3 {
-//    color: white;
-//    font-weight: bold;
-//    margin-bottom: 0.5rem;
-//  }
-//  p {
-//    color: white;
-//    font-size: 0.875rem;
-//  }
-// `;
-
 
 const CaptainsSection = styled.section`
   width: 100%;

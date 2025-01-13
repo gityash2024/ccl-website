@@ -294,7 +294,7 @@ const Footer = () => {
 
       <Copyright>
         <p>
-          All Rights Reserved
+          Powered by 
           <ExternalLink
             href="https://colladome.com"
             target="_blank"
