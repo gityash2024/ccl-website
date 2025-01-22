@@ -11,26 +11,19 @@ import teamowners_1 from '../assets/teamowners_1.png';
 import teamowners_2 from '../assets/teamowners_2.png';
 import brandambassadors from '../assets/brandambassadors.png';
 import THETEAM from '../assets/THETEAM.png';
-import uday from '../assets/uday.png';
-import indrasish from '../assets/indrasish.png';
-import jisshu from '../assets/jisshu.png';
-import mohan from '../assets/mohan.png';
-import suman from '../assets/suman.png';
-import joy from '../assets/joy.png';
-import joe from '../assets/joe.png';
-import yusuf from '../assets/yusuf.png';
-import JeetuKamal from '../assets/JeetuKamal.png';
-import Jammy from '../assets/Jammy.png';
-import RatnadipGhosh from '../assets/RatnadipGhosh.png';
-import AnandaChowdhury from '../assets/AnandaChowdhury.png';
-import SANDY from '../assets/SANDY.png';
-import AdityaRoyBanerjee from '../assets/AdityaRoyBanerjee.png';
-import ArmanAhamed from '../assets/ArmanAhamed.png';
-import Manty from '../assets/Manty.png';
-import RahulMazumder from '../assets/RahulMazumder.png';
-import GauravChakrabarty from '../assets/GauravChakrabarty.png';
-import Boney from '../assets/Boney.png';
-import SouravDas from '../assets/SouravDas.png';
+import Yusuf from '../assets/Yusuf.jpg';
+import Uday from '../assets/Uday.jpg';
+import SouravDas from '../assets/SouravDas.jpg';
+import Sanjoy from '../assets/Sanjoy.jpg';
+import Sandy from '../assets/Sandy.jpg';
+import Ratnadip from '../assets/Ratnadip.jpg';
+import Monty from '../assets/Monty.jpg';
+import Mohan from '../assets/Mohan.jpg';
+import Jisshu from '../assets/Jisshu.jpg';
+import Jammy from '../assets/Jammy.jpg';
+import Indrasish from '../assets/Indrasish.jpg';
+import Aditya from '../assets/Aditya.jpg';
+import Boney from '../assets/Boney.jpg';
 import commanboll from '../assets/commanboll.png';
 
 
@@ -203,6 +196,7 @@ const PlayerCard = styled(motion.div)`
 
   img {
     width: 100%;
+
     aspect-ratio: 1;
     border-radius: 8px;
     object-fit: cover;
@@ -212,41 +206,35 @@ const PlayerCard = styled(motion.div)`
     color: #214592;
     font-size: 14px;
     margin: 8px 0 4px;
-    font-weight: bold;
+    font-weight: bolder;
+    font-family: 'days-one';
   }
 
   p {
     color: #214592;
-    font-size: 12px;
+    font-size: 14px;
     opacity: 0.8;
+    font-family: 'days-one';
+
   }
 `;
 
 const Bengal = () => {
   const teamPlayers = [
-    { name: "Uday", role: "All Rounder", img: uday },
-    { name: "Indrasish", role: "All Rounder", img: indrasish },
-    { name: "JISSHU SENGUPTA", role: "CAPTAIN", img: jisshu },
-    { name: "MOHAN", role: "Bowler", img: mohan },
-    { name: "SUMAN", role: "All Rounder", img: suman },
-    { name: "JOY", role: "Batsman", img: joy },
-    { name: "JOE", role: "All Rounder", img: joe },
-    { name: "Yusuf", role: "Batsman/Wk", img: yusuf },
-    { name: "Jeetu Kamal", role: "All Rounder", img: JeetuKamal },
+    { name: "Uday", role: "All Rounder", img: Uday },
+    { name: "Indrasish", role: "All Rounder", img: Indrasish },
+    { name: "JISSHU SENGUPTA", role: "CAPTAIN", img: Jisshu },
+    { name: "MOHAN", role: "All Rounder", img: Mohan },
+    { name: "Sanjoy", role: "All Rounder", img: Sanjoy },
     { name: "Jammy", role: "All Rounder", img: Jammy },
-    { name: "Ratnadip Ghosh", role: "All Rounder", img: RatnadipGhosh },
-    { name: "Ananda Chowdhury", role: "All Rounder", img: AnandaChowdhury },
-    { name: "SANDY", role: "All Rounder", img: SANDY },
-    { name: "Aditya Roy Banerjee", role: "All Rounder", img: AdityaRoyBanerjee },
-    { name: "Arman Ahamed", role: "All Rounder", img: ArmanAhamed },
-    { name: "Manty", role: "Bowler", img: Manty },
-    { name: "Rahul Mazumder", role: "All Rounder", img: RahulMazumder },
-    { name: "Gaurav Chakrabarty", role: "All Rounder", img: GauravChakrabarty },
+    { name: "Yusuf", role: "All Rounder", img: Yusuf },
+    { name: "Monty", role: "All Rounder", img: Monty },
+    { name: "Ratnadip", role: "All Rounder", img: Ratnadip },
+    { name: "SANDY", role: "All Rounder", img: Sandy },
+    { name: "Aditya", role: "All Rounder", img: Aditya },
     { name: "Boney", role: "All Rounder", img: Boney },
     { name: "Sourav Das", role: "All Rounder", img: SouravDas }
   ];
-
-
 
   return (
     <TeamContainer>

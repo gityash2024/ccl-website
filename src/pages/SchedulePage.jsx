@@ -20,15 +20,8 @@ import Sonu from '../assets/Sonu.png';
 import cclbackground from '../assets/cclbackground.png';
 import ccl from '../assets/ccl.png';
 import CCLWhite from '../assets/CCLWhite.png';
-// import excitinglogo from '../assets/excitinglogo.png';
-// import exciting from '../assets/exciting.png';
-// import INNINGS from '../assets/2INNINGS.png';
-// import EXCITING  from '../assets/EXCITING NEW FORMAT.png';
-// import theteam from '../assets/theteam.png';
-// import excitingbackground from '../assets/excitingbackground.png';
-// import schedule from '../assets/schedule.png';
-// import schedulebackground from '../assets/schedulebackground.png';
-// import match from '../assets/match.png';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const HomeContainer = styled.div`
   width: 100%;

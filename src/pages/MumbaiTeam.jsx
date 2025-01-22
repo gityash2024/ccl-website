@@ -13,27 +13,23 @@ import dummyowner from '../assets/dummyowner.png';
 import THETEAM from '../assets/THETEAM.png';
 import commanboll from '../assets/commanboll.png';
 import mumbaiteam from '../assets/mumbaiteam.png';
-import mumai_1 from '../assets/mumai_1.png';
-import mumai_2 from '../assets/mumai_2.png';
-import mumai_3 from '../assets/mumai_3.png';
+import mumai_1 from '../assets/mumai_1.jpg';
+import mumai_2 from '../assets/mumai_2.jpg';
+import mumai_3 from '../assets/mumai_3.jpg';
 import bhojpuribackground_3 from '../assets/bhojpuribackground_3.png';
-import mumai_4 from '../assets/mumai_4.png';
-import mumai_5 from '../assets/mumai_5.png';
-import mumai_6 from '../assets/mumai_6.png';
-import mumai_7 from '../assets/mumai_7.png';
-import mumai_8 from '../assets/mumai_8.png';
-import mumai_9 from '../assets/mumai_9.png';
-import mumai_10 from '../assets/mumai_10.png';
-import mumai_11 from '../assets/mumai_11.png';
-import mumai_12 from '../assets/mumai_12.png';
-import mumai_13 from '../assets/mumai_13.png';
-import mumai_14 from '../assets/mumai_14.png';
-import mumai_15 from '../assets/mumai_15.png';
-// import mumai_16 from '../assets/mumai_16.png';
-import mumai_17 from '../assets/mumai_17.png';
-import mumai_18 from '../assets/mumai_18.png';
-import mumai_19 from '../assets/mumai_19.png';
-import mumai_20 from '../assets/mumai_20.png';
+import mumai_4 from '../assets/mumai_4.jpg';
+import mumai_5 from '../assets/mumai_5.jpg';
+import mumai_6 from '../assets/mumai_6.jpg';
+import mumai_7 from '../assets/mumai_7.jpg';
+import mumai_8 from '../assets/mumai_8.jpg';
+import mumai_9 from '../assets/mumai_9.jpg';
+import mumai_10 from '../assets/mumai_10.jpg';
+import mumai_11 from '../assets/mumai_11.jpg';
+import mumai_12 from '../assets/mumai_12.jpg';
+import mumai_13 from '../assets/mumai_13.jpg';
+import mumai_14 from '../assets/mumai_14.jpg';
+import mumai_15 from '../assets/mumai_15.jpg';
+
 
 const TitleSection = styled.div`
   text-align: center;
@@ -228,24 +224,20 @@ const ProfileCard = styled(motion.div)`
 
 const mumbai = () => {
   const teamMembers = [
-    { img: mumai_1, name: "AFTAB SHIVDASANI", role: "Batsman" },
-    { img: mumai_2, name: "Sohail Khan ", role: "Batsman" },
+    { img: mumai_1, name: "Abhilash Chaudhary", role: "All Rounder" },
+    { img: mumai_2, name: "Aftab Shivdasani ", role: "All Rounder" },
     { img: mumai_3, name: "RITEISH DESHMUKH", role: "CAPTAIN" },
-    { img: mumai_4, name: "SAQIB SALEEM ", role: "All Rounder" },
-    { img: mumai_6, name: "SHABIR AHLUWALIA ", role: "All Rounder" },
-    { img: mumai_7, name: "RAJA BHERWANI ", role: "All Rounder" },
-    { img: mumai_8, name: "SHARAD KELKAR ", role: "All Rounder" },
-    { img: mumai_9, name: "APOORVA LAKHIA ", role: "All Rounder" },
-    { img: mumai_10, name: "SAMEER KOCHAR ", role: "Batsman" },
-    { img: mumai_11, name: "Sidhant Muley", role: "All Rounder" },
-    { img: mumai_12, name: "Madhav Deochake ", role: "Batsman" },
-    { img: mumai_13, name: "Freddie Daruwala ", role: "Bowler" },
-    { img: mumai_14, name: "VATSAL SHETH ", role: "Batsman" },
-    { img: mumai_15, name: "Rajniesh Dugali",},
-    { img: mumai_17, name: "Navdeep Tomar", },
-    { img: mumai_18, name: "Sandeep Juwatkar", },
-    { img: mumai_19, name: "Abhilash Chudhary Mud",  },
-    { img: mumai_20, name: "Mudasir Zafar",  },
+    { img: mumai_4, name: "Apoorva Lakhia.", role: "All Rounder" },
+    { img: mumai_6, name: "Madhav Deochake", role: "All Rounder" },
+    { img: mumai_7, name: "Manoje ", role: "All Rounder" },
+    { img: mumai_8, name: "Navdeep Tomar ", role: "All Rounder" },
+    { img: mumai_9, name: "Raja Bherwani ", role: "All Rounder" },
+    { img: mumai_10, name: "Samir Khochar ", role: "All Rounder" },
+    { img: mumai_11, name: "Sandeep Juwatkar", role: "All Rounder" },
+    { img: mumai_12, name: "Saqib Saleem ", role: "All Rounder" },
+    { img: mumai_13, name: "Shabbir Aluwalia", role: "All Rounder" },
+    { img: mumai_14, name: "Sidhaant Muley ", role: "All Rounder" },
+    { img: mumai_15, name: "Sohil Khan", role: "All Rounder"},
    
   ];
 

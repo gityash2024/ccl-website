@@ -12,29 +12,43 @@ import punjabowner_2 from '../assets/punjabowner_2.png';
 import punjanbrand_1 from '../assets/punjanbrand_1.png';
 import punjanbrand_2 from '../assets/punjanbrand_2.png';
 import THETEAM from '../assets/THETEAM.png';
-import punjab_1 from '../assets/punjab_1.png';
+import punjab_1 from '../assets/punjab_1.jpg';
 import bhojpuribackground_2 from '../assets/bhojpuribackground_2.png';
-import punjab_2 from '../assets/punjab_2.png';
-import punjab_3 from '../assets/punjab_3.png';
-import punjab_4 from '../assets/punjab_4.png';
-import punjab_5 from '../assets/punjab_5.png';
-import punjab_6 from '../assets/punjab_6.png';
-import punjab_7 from '../assets/punjab_7.png';
-import punjab_8 from '../assets/punjab_8.png';
-import punjab_9 from '../assets/punjab_9.png';
-import punjab_10 from '../assets/punjab_10.png';
-import punjab_11 from '../assets/punjab_11.png';
-import punjab_12 from '../assets/punjab_12.png';
-import punjab_13 from '../assets/punjab_13.png';
-import punjab_14 from '../assets/punjab_14.png';
-import punjab_15 from '../assets/punjab_15.png';
-import punjab_16 from '../assets/punjab_16.png';
-import punjab_17 from '../assets/punjab_17.png';
+import punjab_2 from '../assets/punjab_2.jpg';
+import punjab_3 from '../assets/punjab_3.jpg';
+import punjab_4 from '../assets/punjab_4.jpg';
+import punjab_5 from '../assets/punjab_5.jpg';
+import punjab_6 from '../assets/punjab_6.jpg';
+import punjab_7 from '../assets/punjab_7.jpg';
+import punjab_8 from '../assets/punjab_8.jpg';
+import punjab_9 from '../assets/punjab_9.jpg';
+import punjab_10 from '../assets/punjab_10.jpg';
+import punjab_11 from '../assets/punjab_11.jpg';
+import punjab_12 from '../assets/punjab_12.jpg';
+import punjab_13 from '../assets/punjab_13.jpg';
+import punjab_14 from '../assets/punjab_14.jpg';
+import punjab_15 from '../assets/punjab_15.jpg';
 import MudasirZafar_18 from '../assets/MudasirZafar_18.png';
 import punjabteambackgroud from '../assets/punjabteambackgroud.png';
+import punjabheadingimage from '../assets/punjabheadingimage.png'
 
 
+const TitleSection = styled.div`
+  text-align: center;
+  padding: 40px 20px;
+  
+  .title-img {
+    max-width: 600px;
+    width: 90%;
+    margin: 0 auto 30px;
+  }
 
+  .description-img {
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto;
+  }
+`;
 const TeamContainer = styled.div`
   width: 100%;
   min-height: 100vh;
@@ -198,24 +212,23 @@ const PlayerCard = styled(motion.div)`
 
 const Punjab = () => {
   const teamMembers = [
-    { img: punjab_1, name: "GURPREET GHUGGI", role: "Batsman" },
-    { img: punjab_2, name: "BINNU DHILLON", role: "Batsman" },
+    { img: punjab_1, name: "Amit Bhalla", role: "All Rounder" },
+    { img: punjab_2, name: "Anuj", role: "All Rounder" },
     { img: punjab_3, name: "Sonu Sood", role: "CAPTAIN" },
-    { img: punjab_4, name: "RAHUL DEV", role: "Batsman" },
-    { img: punjab_5, name: "GAVIE CHAHAL", role: "Batsman" },
-    { img: punjab_6, name: "RAJA BHERWANI", role: "All Rounder" },
-    { img: punjab_7, name: "GULZAR CHAHAL", role: "Batsman" },
-    { img: punjab_8, name: "ARYAMAN SAPRU", role: "Batsman" },
-    { img: punjab_9, name: "NAVRAJ HANS", role: "Batsman" },
-    { img: punjab_10, name: "YUVRAJ HANS", role: "Batsman" },
-    { img: punjab_11, name: "JIMMY SHERGIL ", role: "Batsman" },
-    { img: punjab_12, name: "AYUSHMANN KHURRANA ", role: "Batsman" },
-    { img: punjab_13, name: "JASSI GILL ", role: "Batsman" },
-    { img: punjab_14, name: "BABBAL RAI", role: "Batsman" },
-    { img: punjab_15, name: "Mukul Dev", role: "Batsman" },
-    { img: punjab_16, name: "Arjan Bajwa ", role: "All Rounder" },
-    { img: punjab_17, name: "Harmeet Singh", role: "All Rounder" },
-    { img: MudasirZafar_18, name: "Mudasir Zafar",},
+    { img: punjab_4, name: "Apar Shakti Khurana", role: "All Rounder" },
+    { img: punjab_5, name: "Babbal Rai", role: "All Rounder" },
+    { img: punjab_6, name: "Binnu Dhillon", role: "All Rounder" },
+    { img: punjab_7, name: "Dakssh Ajit Singh", role: "All Rounder" },
+    { img: punjab_8, name: "Dev Kharod", role: "All Rounder" },
+    { img: punjab_9, name: "Gavie Chahal", role: "All Rounder" },
+    { img: punjab_10, name: "Hardy Sandu", role: "All Rounder" },
+    { img: punjab_11, name: "Harmeet Singh", role: "All Rounder" },
+    { img: punjab_12, name: "Manmeet Singh", role: "All Rounder" },
+    { img: punjab_13, name: "Manmeet Singh", role: "All Rounder" },
+    { img: punjab_14, name: "Mayur Mehta", role: "All Rounder" },
+    { img: punjab_15, name: "Mayur Mehta", role: "All Rounder" },
+  
+    // { img: MudasirZafar_18, name: "Mudasir Zafar",},
     // Add the rest of the players
   ];
 
@@ -223,17 +236,35 @@ const Punjab = () => {
     <TeamContainer>
       <ContentWrapper>
         <TopSection>
-          <motion.img 
+           <motion.img 
+                          className="title-img"
+                          src={PUNJABDESHER}
+                          alt="Bengal Tigers"
+                          style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ duration: 0.6 }}
+                        />
+                        <motion.img 
+                          className="description-img"
+                          src={punjabheadingimage}
+                          alt="Bengal Tigers Description"
+                          style={{ maxWidth: '800px', margin: '048px auto', display: 'block' }}
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ duration: 0.6, delay: 0.2 }}
+                        />
+          {/* <motion.img 
                    src={PUNJABDESHER}
                    alt="Telugu Warriors"
                    style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
                    initial={{ y: 20, opacity: 0 }}
                    animate={{ y: 0, opacity: 1 }}
                    transition={{ duration: 0.6 }}
-                 />
-          <Description>
+                 /> */}
+          {/* <Description>
             The Punjab De Sher is a Cricket Franchise of Celebrity Cricket League. The Franchise is owned by Mr. Navraj Hans and Mr. Puneet Singh with the best of Punjab Film Industry coming together in an exciting match of cricket.
-          </Description>
+          </Description> */}
           <TeamPhoto>
             <img src={punjabimage} alt="Punjab De Sher Team" />
           </TeamPhoto>

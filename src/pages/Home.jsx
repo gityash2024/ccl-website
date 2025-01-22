@@ -24,11 +24,12 @@ import Sonu from '../assets/Sonu.png';
 import Januaryonwards from '../assets/Januaryonwards.png';
 import cclteams from '../assets/cclteams.png';
 import teamCaptain from '../assets/teamCaptain.png';
-import chennai_3 from '../assets/chennai_3.png';
+import AryaCaptain from '../assets/AryaCaptain.jpg';
 import bhojpuri_3 from '../assets/bhojpuri_3.png';
 import jisshu from '../assets/jisshu.png';
-import mumai_3 from '../assets/mumai_3.png';
+import mumai_3 from '../assets/mumai_3.jpg';
  import bhojpuribackground_3 from '../assets/bhojpuribackground_3.png';
+ import punjab_3 from '../assets/punjab_3.jpg';
  import PngItem from '../assets/PngItem.png';
 
 const PageContainer = styled.div`
@@ -345,11 +346,11 @@ const HomePage = () => {
    { img: Akhil, name: 'AKHIL AKKINENI', team: 'TELUGU WARRIORS' },
    { img: Sudeep, name: 'SUDEEP KICHCHA', team: 'KARNATAKA BULLDOZERS' },
    { img: indrajith, name: 'INDRAJITH SUKUMARAN', team: 'C3 KERALA STRIKERS' },
-   { img: chennai_3, name: 'SONU SOOD', team: 'PUNJAB DE SHER' },
+   { img: AryaCaptain, name: 'AryaCaptain', team: 'Chennai Rhinos' },
    { img: bhojpuri_3, name: 'Manoj Twari', team: 'Bhojpuri Dabanggs' },
-   { img: jisshu, name: 'Jisshu Sengupta', team: 'Chennai Rhinos' },
+   { img: jisshu, name: 'Jisshu Sengupta', team: 'Bengal Tigers' },
    { img: mumai_3, name: 'Riteish Deshmukh', team: 'MUMBAI HEROES' },
-  //  { img: Sonu, name: 'SONU SOOD', team: 'PUNJAB DE SHER' },
+   { img: punjab_3, name: 'SONU SOOD', team: 'PUNJAB DE SHER' },
  ];
 
  const carouselImages = Array(4).fill(CCLWhite);

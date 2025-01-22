@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-
+import bhojpuriparagraphheading from '../assets/bhojpuriparagraphheading.png';
 import BHOJPURIDABANGGS from '../assets/BHOJPURIDABANGGS.png';
 import bhojpuribackground from '../assets/bhojpuribackground.png';
 import bhojpuribackground_2 from '../assets/bhojpuribackground_2.png';
@@ -13,34 +13,33 @@ import owners_3 from '../assets/owners_3.png';
 import owners_4 from '../assets/owners_4.png';
 import teamAB from '../assets/teamAB.png';
 import THETEAM from '../assets/THETEAM.png';
-import bhojpuri_1 from '../assets/bhojpuri_1.png';
-import bhojpuri_2 from '../assets/bhojpuri_2.png';
-import bhojpuri_3 from '../assets/bhojpuri_3.png';
+import bhojpuri_1 from '../assets/bhojpuri_1.jpg';
+import bhojpuri_2 from '../assets/bhojpuri_2.jpg';
+import bhojpuri_3 from '../assets/bhojpuri_3.jpg';
 import bhojpuribackground_3 from '../assets/bhojpuribackground_3.png';
 import bhopuribackground from '../assets/bhopuribackground.png';
 import commanboll from '../assets/commanboll.png';
-import bhojpuri_4 from '../assets/bhojpuri_4.png';
-import bhojpuri_5 from '../assets/bhojpuri_5.png';
-import bhojpuri_6 from '../assets/bhojpuri_6.png';
-import bhojpuri_7 from '../assets/bhojpuri_7.png';
-import bhojpuri_8 from '../assets/bhojpuri_8.png';
-import bhojpuri_9 from '../assets/bhojpuri_9.png';
-import bhojpuri_10 from '../assets/bhojpuri_10.png';
-import bhojpuri_11 from '../assets/bhojpuri_11.png';
-import bhojpuri_12 from '../assets/bhojpuri_12.png';
-import bhojpuri_13 from '../assets/bhojpuri_13.png';
-import bhojpuri_14 from '../assets/bhojpuri_14.png';
-import bhojpuri_15 from '../assets/bhojpuri_15.png';
-import bhojpuri_16 from '../assets/bhojpuri_16.png';
-import bhojpuri_17 from '../assets/bhojpuri_17.png';
-import bhojpuri_18 from '../assets/bhojpuri_18.png';  
+import bhojpuri_4 from '../assets/bhojpuri_4.jpg';
+import bhojpuri_5 from '../assets/bhojpuri_5.jpg';
+import bhojpuri_6 from '../assets/bhojpuri_6.jpg';
+import bhojpuri_7 from '../assets/bhojpuri_7.jpg';
+import bhojpuri_8 from '../assets/bhojpuri_8.jpg';
+import bhojpuri_9 from '../assets/bhojpuri_9.jpg';
+import bhojpuri_10 from '../assets/bhojpuri_10.jpg';
+import bhojpuri_11 from '../assets/bhojpuri_11.jpg'; 
 
 const TitleSection = styled.div`
   text-align: center;
   padding: 40px 20px;
-
-  img {
+  
+  .title-img {
     max-width: 600px;
+    width: 90%;
+    margin: 0 auto 30px;
+  }
+
+  .description-img {
+    max-width: 800px;
     width: 90%;
     margin: 0 auto;
   }
@@ -220,49 +219,51 @@ const ProfileCard = styled(motion.div)`
   }
 
   h3 {
-    color: white;
+    color: #214592;
     font-size: 16px;
     font-weight: bold;
+    font-family: 'days-one';
   }
 `;
 
 const Bhojpuri = () => {
   const teamMembers = [
-    { img: bhojpuri_1,  name: 'Ravi Kishan', role: "All Rounder" },
-    { img: bhojpuri_2, name: 'Vikrant Singh', role: "All Rounder" },
+    { img: bhojpuri_1,  name: 'Vikranh', role: "All Rounder" },
+    { img: bhojpuri_2, name: 'Vaibhav', role: "All Rounder" },
     { img: bhojpuri_3, name: 'Manoj Tiwari', role: "CAPTAIN" },
-    { img: bhojpuri_4, name: 'Aditya Ojha', role: "All Rounder" },
-    { img: bhojpuri_5, name: 'Asgar Khan', role: "All Rounder" },
-    { img: bhojpuri_6, name: 'Ayaz Khan', role: "Bowler" },
-    { img: bhojpuri_7, name: 'Jay Yadav', role: "All Rounder" },
-    { img: bhojpuri_8, name: 'Vikas Singh Virappan', role: "All Rounder" },
-    { img: bhojpuri_9,name: 'Ajhoy Sharma', role: "All Rounder" },
-    { img: bhojpuri_10,  name: 'Shailesh Sinha', role: "All Rounder" },
-    { img: bhojpuri_11, name: 'Dinesh Lal Yadav', role: "All Rounder" },
-    { img: bhojpuri_12,  name: 'Parvesh Lal Yadav', role: "All Rounder" },
-    { img: bhojpuri_13, name: 'Uday Tiwari', role: "All Rounder" },
-    { img: bhojpuri_14, name: 'Anshuman Singh Rajpoot', role: "All Rounder" },
-    { img: bhojpuri_15,name: 'Khesari Lal Yadav', role: "All Rounder" },
-    { img: bhojpuri_16, name: 'Vikas Jha', role: "All Rounder" },
-    { img: bhojpuri_17, name: 'Balvaw Raj', role: "All Rounder" },
-    { img: bhojpuri_18, name: 'Sudhir Singh', role: "All Rounder" },
+    { img: bhojpuri_4, name: 'Uday', role: "All Rounder" },
+    { img: bhojpuri_5, name: 'Ravi Kishan', role: "All Rounder" },
+    { img: bhojpuri_6, name: 'Raghav', role: "All Rounder" },
+    { img: bhojpuri_7, name: 'Pravesh', role: "All Rounder" },
+    { img: bhojpuri_8, name: 'Nirahua', role: "All Rounder" },
+    { img: bhojpuri_9,name: 'Jay', role: "All Rounder" },
+    { img: bhojpuri_10,  name: 'Anshuman', role: "All Rounder" },
+    { img: bhojpuri_11, name: 'Aditya', role: "All Rounder" },
+  
   ];
 
   return (
     <TeamContainer>
     <ContentWrapper>
+        <TitleSection>
+              <motion.img 
+                className="title-img"
+                src={BHOJPURIDABANGGS}
+                alt="Bengal Tigers"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+              />
+              <motion.img 
+                className="description-img"
+                src={bhojpuriparagraphheading}
+                alt="Bengal Tigers Description"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              />
+            </TitleSection>
       <TopSection>
-        <motion.img 
-          src={BHOJPURIDABANGGS}
-          alt="Telugu Warriors"
-          style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        />
-        <Description>
-          The Telugu Warriors is a Cricket Franchise of Celebrity Cricket League, based in the states of Telangana & Andhra Pradesh. The Franchise is owned by Mr. Sachiin J Joshi and Mr. Suresh Babu with the best of Tollywood coming together in an exciting match of cricket.
-        </Description>
         <TeamPhoto>
           <img src={bhojuripimage} alt="Telugu Warriors Team" />
         </TeamPhoto>
@@ -301,14 +302,6 @@ const Bhojpuri = () => {
                 <img src={teamAB} alt="REGINA CASSANDRA" />
                 <h3>REGINA CASSANDRA</h3>
               </ProfileCard>
-              {/* <ProfileCard>
-                <img src={telugubrand_2} alt="PRANITHA SUBHASH" />
-                <h3>PRANITHA SUBHASH</h3>
-              </ProfileCard>
-              <ProfileCard>
-                <img src={telugubrand_3} alt="ADAH SHARMA" />
-                <h3>ADAH SHARMA</h3>
-              </ProfileCard> */}
             </BrandAmbassadors>
           </CategoryBlock>
         </Categories>
@@ -330,7 +323,7 @@ const Bhojpuri = () => {
             >
               <img src={player.img} alt={player.name} />
               <h3>{player.name}</h3>
-              <p>{player.role}</p>
+              <p style={{ color: '#214592' }}>{player.role}</p>
             </ProfileCard>
           ))}
         </TeamGrid>

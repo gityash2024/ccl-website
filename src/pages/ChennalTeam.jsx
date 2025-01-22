@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import bhojpuribackground from '../assets/bhojpuribackground.png';
-
 import CHENNAIRHINOS from '../assets/CHENNAIRHINOS.png';
 import THETEAM from '../assets/THETEAM.png';
 import dummyowner from '../assets/dummyowner.png';
@@ -10,30 +9,42 @@ import dummyabmastment from '../assets/dummyabmastment.png';
 import chennaibackground from '../assets/chennaibackground.png';
 import commanboll from '../assets/commanboll.png';
 import channelimg from '../assets/channelimg.png';
-import chennai_1 from '../assets/chennai_1.png';
-import chennai_2 from '../assets/chennai_2.png';
 import bhojpuribackground_3 from '../assets/bhojpuribackground_3.png';
-import chennai_3 from '../assets/chennai_3.png';
-import chennai_4 from '../assets/chennai_4.png';
-import chennai_5 from '../assets/chennai_5.png';
-import chennai_6 from '../assets/chennai_6.png';
-import chennai_7 from '../assets/chennai_7.png';
-import chennai_8 from '../assets/chennai_8.png';
-import chennai_9 from '../assets/chennai_9.png';
-import chennai_10 from '../assets/chennai_10.png';
-import chennai_11 from '../assets/chennai_11.png';
-import chennai_12 from '../assets/chennai_12.png';
-import chennai_13 from '../assets/chennai_13.png';
-import chennai_14 from '../assets/chennai_14.png';
-import chennai_15 from '../assets/chennai_15.png';
-import chennai_16 from '../assets/chennai_16.png';
+import Adhav from '../assets/Adhav.jpg';
+import Balasaravanan from '../assets/Balasaravanan.jpg';
+import AryaCaptain from '../assets/AryaCaptain.jpg';
+import Dasarathi from '../assets/Dasarathi.jpg';
+import Jivva from '../assets/Jivva.jpg';
+import Prithvi from '../assets/Prithvi.jpg';
+import Ramana from '../assets/Ramana.jpg';
+import Shantanu from '../assets/Shantanu.jpg';
+import Sharan from '../assets/Sharan.jpg';
+import vikranth from '../assets/vikranth.jpg';
+import VishnuVishal from '../assets/VishnuVishal.jpg';
+import chennaiheadingimage from '../assets/chennaiheadingimage.svg'
 
+// const TitleSection = styled.div`
+//   text-align: center;
+//   padding: 40px 20px;
+
+//   img {
+//     max-width: 600px;
+//     width: 90%;
+//     margin: 0 auto;
+//   }
+// `;
 const TitleSection = styled.div`
   text-align: center;
   padding: 40px 20px;
-
-  img {
+  
+  .title-img {
     max-width: 600px;
+    width: 90%;
+    margin: 0 auto 30px;
+  }
+
+  .description-img {
+    max-width: 800px;
     width: 90%;
     margin: 0 auto;
   }
@@ -221,22 +232,17 @@ const ProfileCard = styled(motion.div)`
 
 const Chennai = () => {
   const teamMembers = [
-    {  image: chennai_1 , name: "Vishnu Vishal", role: "All Rounder",},
-    {  image: chennai_2 , name: "Jiva", role: "All Rounder", },
-    {  image: chennai_3 , name: "Arya", role: "Captain", },
-    {  image: chennai_4 , name: "Vikranth", role: "All Rounder", },
-    {  image: chennai_5 , name: "Shantanu", role: "All Rounder",  },
-    {  image: chennai_6 , name: "Prithivi", role: "Bowler", },
-    {  image: chennai_7 , name: "Ashok Selvan", role: "All Rounder",},
-    {  image: chennai_8 , name: "Kalai Arasan", role: "Bowler",  },
-    {  image: chennai_9 , name: "Mirchi Shiva", role: "All Rounder", },
-    {  image: chennai_10 , name: "Bharath Niwas", role: "Batsman",  },
-    { image: chennai_11, name: "Ramana", role: "All Rounder", },
-    {  image: chennai_12 , name: "Sharan", role: "Bowler", },
-    {  image: chennai_13, name: "Aadhav", role: "All Rounder",  },
-    {  image: chennai_14, name: "SATYA",  },
-    {  image: chennai_15, name: "DASARATHAN",  },
-    {  image: chennai_16, name: "BALASARAVANAN",  },
+      { img: Adhav,  name: 'Adhav', role: "All Rounder" },
+        { img: Balasaravanan, name: 'Balasaravanan', role: "All Rounder" },
+        { img: AryaCaptain, name: 'Arya', role: "CAPTAIN" },
+        { img: Dasarathi, name: 'Dasarathi', role: "All Rounder" },
+        { img: Jivva, name: 'Jivva', role: "All Rounder" },
+        { img: Prithvi, name: 'Prithvi', role: "All Rounder" },
+        { img: Ramana, name: 'Ramana', role: "All Rounder" },
+        { img: Shantanu, name: 'Shantanu', role: "All Rounder" },
+        { img: Sharan,name: 'Sharan', role: "All Rounder" },
+        { img: vikranth,  name: 'vikranth', role: "All Rounder" },
+        { img: VishnuVishal, name: 'VishnuVishal', role: "All Rounder" },
   ];
 
   return (
@@ -244,16 +250,36 @@ const Chennai = () => {
     <ContentWrapper>
       <TopSection>
         <motion.img 
+                        className="title-img"
+                        src={CHENNAIRHINOS}
+                        alt="Bengal Tigers"
+                        style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
+
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.6 }}
+                      />
+                      <motion.img 
+                        className="description-img"
+                        src={chennaiheadingimage}
+                        alt="Bengal Tigers Description"
+                       style={{ maxWidth: '800px', margin: '50px auto', display: 'block' }}
+
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                      />
+        {/* <motion.img 
           src={CHENNAIRHINOS}
           alt="Telugu Warriors"
           style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
-        />
-        <Description>
+        /> */}
+        {/* <Description>
         Chennai Rhinos established themselves as strong contenders of CCL and emerged as the Champions of the inaugural CCL season in 2011. Chennai Rhinos have proved themselves as one of the most popular teams and finished as Runners of the tournament in 2015.
-        </Description>
+        </Description> */}
         <TeamPhoto>
           <img src={channelimg} alt="Telugu Warriors Team" />
         </TeamPhoto>

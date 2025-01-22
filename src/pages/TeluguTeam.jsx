@@ -13,23 +13,19 @@ import telugubrand_2 from '../assets/telugubrand_2.png';
 import telugubrand_3 from '../assets/telugubrand_3.png';
 import telugubackground from '../assets/telugubackground.png';
 import THETEAM from '../assets/THETEAM.png';
-import teluguteam_1 from '../assets/teluguteam_1.png';
+import teluguteam_1 from '../assets/teluguteam_1.jpg';
 import teluguteam_2 from '../assets/teluguteam_2.png';
-import teluguteam_3 from '../assets/teluguteam_3.png';
+import teluguteam_3 from '../assets/teluguteam_3.jpg';
 import bhojpuribackground_3 from '../assets/bhojpuribackground_3.png';
-import teluguteam_4 from '../assets/teluguteam_4.png';
-import teluguteam_5 from '../assets/teluguteam_5.png';
+import teluguteam_4 from '../assets/teluguteam_4.jpg';
+import teluguteam_5 from '../assets/teluguteam_5.jpg';
 import teluguteam_6 from '../assets/teluguteam_6.png';
-import teluguteam_7 from '../assets/teluguteam_7.png';
-import teluguteam_8 from '../assets/teluguteam_8.png';
-import teluguteam_9 from '../assets/teluguteam_9.png';
-import teluguteam_10 from '../assets/teluguteam_10.png';
-import teluguteam_11 from '../assets/teluguteam_11.png';
-import teluguteam_12 from '../assets/teluguteam_12.png';
-import teluguteam_13 from '../assets/teluguteam_13.png';
-import teluguteam_14 from '../assets/teluguteam_14.png';
-import teluguteam_15 from '../assets/teluguteam_15.png';
-import teluguteam_16 from '../assets/teluguteam_16.png';
+import teluguteam_7 from '../assets/teluguteam_7.jpg';
+import teluguteam_8 from '../assets/teluguteam_8.jpg';
+import teluguteam_9 from '../assets/teluguteam_9.jpg';
+import teluguteam_10 from '../assets/teluguteam_10.jpg';
+import teluguteam_11 from '../assets/teluguteam_11.jpg';
+
 
 
 
@@ -226,22 +222,18 @@ const ProfileCard = styled(motion.div)`
 
 const Telugu = () => {
   const teamMembers = [
-    { img: teluguteam_1, name: "Sachin Joshi", role: "All Rounder" },
-    { img: teluguteam_2, name: "Ashwin Babu", role: "All Rounder" },
+    { img: teluguteam_1, name: "Ashwin Babu", role: "All Rounder" },
+    { img: teluguteam_2, name: "Nanda Kishore", role: "All Rounder" },
     { img: teluguteam_3, name: "Akhil Akkineni", role: "CAPTAIN" },
-    { img: teluguteam_4, name: "DHARAM", role: "All Rounder" },
-    { img: teluguteam_5, name: "Aadarsh", role: "All Rounder" },
-    { img: teluguteam_6, name: "Nanda Kishore", role: "Bowler" },
-    { img: teluguteam_7, name: "Nikhil", role: "All Rounder" },
-    { img: teluguteam_8, name: "Raghu", role: "All Rounder" },
-    { img: teluguteam_9, name: "Samrat", role: "All Rounder" },
-    { img: teluguteam_10, name: "Taraka Ratna", role: "All Rounder" },
-    { img: teluguteam_11, name: "Tarun", role: "All Rounder" },
-    { img: teluguteam_12, name: "Vishwa", role: "All Rounder" },
-    { img: teluguteam_13, name: "PRINCE", role: "All Rounder" },
-    { img: teluguteam_14, name: "SUSHANTH", role: "All Rounder" },
-    { img: teluguteam_15, name: "KHAYYUM", role: "All Rounder" },
-    { img: teluguteam_16, name: "Harish", role: "All Rounder" }
+    { img: teluguteam_4, name: "Nikhil", role: "All Rounder" },
+    { img: teluguteam_5, name: "Prince", role: "All Rounder" },
+    { img: teluguteam_6, name: "Raghu", role: "All Rounder" },
+    { img: teluguteam_7, name: "Roshan", role: "All Rounder" },
+    { img: teluguteam_8, name: "Sudheer", role: "All Rounder" },
+    { img: teluguteam_9, name: "Sushanth", role: "All Rounder" },
+    { img: teluguteam_10, name: "Thaman", role: "All Rounder" },
+    { img: teluguteam_11, name: "Vishwa", role: "All Rounder" },
+   
   ];
 
   return (

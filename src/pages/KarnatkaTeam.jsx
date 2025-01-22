@@ -12,21 +12,20 @@ import karnatakabackground from '../assets/karnatakabackground.png';
 import karnatkateowner from '../assets/karnatkateowner.png';
 import karnatkateabassadors from '../assets/karnatkateabassadors.png';
 import karnatkateabassadors_1 from '../assets/karnatkateabassadors_1.png';
-import karnatka_1 from '../assets/karnatka_1.png';
-import karnatka_2 from '../assets/karnatka_2.png';
-import karnatka_3 from '../assets/karnatka_3.png';
+import karnatka_1 from '../assets/karnatka_1.jpg';
+import karnatka_2 from '../assets/karnatka_2.jpg';
+import karnatka_3 from '../assets/karnatka_3.jpg';
 import bhojpuribackground_3 from '../assets/bhojpuribackground_3.png';
-import karnatka_4 from '../assets/karnatka_4.png';
-import karnatka_5 from '../assets/karnatka_5.png';
-import karnatka_6 from '../assets/karnatka_6.png';
-import karnatka_7 from '../assets/karnatka_7.png';
-import karnatka_8 from '../assets/karnatka_8.png';
-import karnatka_9 from '../assets/karnatka_9.png';
-import karnatka_10 from '../assets/karnatka_10.png';
-import karnatka_11 from '../assets/karnatka_11.png';
-import karnatka_12 from '../assets/karnatka_12.png';
-import karnatka_13 from '../assets/karnatka_13.png';
-import karnatka_14 from '../assets/karnatka_14.png';
+import karnatka_4 from '../assets/karnatka_4.jpg';
+import karnatka_5 from '../assets/karnatka_5.jpg';
+import karnatka_6 from '../assets/karnatka_6.jpg';
+import karnatka_7 from '../assets/karnatka_7.jpg';
+import karnatka_8 from '../assets/karnatka_8.jpg';
+import karnatka_9 from '../assets/karnatka_9.jpg';
+import karnatka_10 from '../assets/karnatka_10.jpg';
+import karnatka_11 from '../assets/karnatka_11.jpg';
+import karnatka_12 from '../assets/karnatka_12.jpg';
+
  
 const TitleSection = styled.div`
   text-align: center;
@@ -221,20 +220,19 @@ const ProfileCard = styled(motion.div)`
 
 const karnataka = () => {
   const teamMembers = [
-    { img: karnatka_1, name: "SUNEEL RAO", role: "All Rounder" },
-    { img: karnatka_2, name: "JAYRAM KARTHIK", role: "All Rounder" },
+    { img: karnatka_1, name: "Arjun Yogi", role: "All Rounder" },
+    { img: karnatka_2, name: "Chandan", role: "All Rounder" },
     { img: karnatka_3, name: "Sudeep Kichcha", role: "CAPTAIN" },
-    { img: karnatka_4, name: "Prathap", role: "All Rounder" },
-    { img: karnatka_5, name: "Prasanna", role: "All Rounder" },
-    { img: karnatka_6, name: "RAJEEV H", role: "All Rounder" },
-    { img: karnatka_7, name: "Ganesh", role: "Bowler" },
-    { img: karnatka_8, name: "Krishna", role: "All Rounder" },
-    { img: karnatka_9, name: "Saurav Lokesh ", role: "Batsman/WK" },
-    { img: karnatka_10, name: "ChandanArjun Yogi", role: "All Rounder" },
-    { img: karnatka_11, name: "Arjun Yogi", role: "All Rounder" },
-    { img: karnatka_12, name: "VishNirup Bhandari Bowler", role: "All Rounder" },
-    { img: karnatka_13, name: "Nanda Kishore", role: "Batsman/WK" },
-    { img: karnatka_14, name: "Sagar Gowda", role: "All Rounder" },
+    { img: karnatka_4, name: "Ganesh", role: "All Rounder" },
+    { img: karnatka_5, name: " Jayram", role: "All Rounder" },
+    { img: karnatka_6, name: "Karan", role: "All Rounder" },
+    { img: karnatka_7, name: "Krishna Ganesh", role: "All Rounder" },
+    { img: karnatka_8, name: "Nirup", role: "All Rounder" },
+    { img: karnatka_9, name: "Padeep", role: "All Rounder" },
+    { img: karnatka_10, name: "Prathap", role: "All Rounder" },
+    { img: karnatka_11, name: "Rajeev Hanu ", role: "All Rounder" },
+    { img: karnatka_12, name: "Suneel", role: "All Rounder" },
+   
    
   ];
 
