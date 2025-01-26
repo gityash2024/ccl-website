@@ -278,7 +278,7 @@ const Footer = () => {
                   <FooterLink to={link.path}>{link.name}</FooterLink>
                 </li>
               ))}
-              <li>
+              {/* <li>
                 <ExternalLink
                   href="https://colladome.com"
                   target="_blank"
@@ -286,7 +286,7 @@ const Footer = () => {
                 >
                   COLLADOME <ArrowUpRight />
                 </ExternalLink>
-              </li>
+              </li> */}
             </LinksList>
           </LinksSection>
         </FooterGrid>
