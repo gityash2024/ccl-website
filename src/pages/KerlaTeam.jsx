@@ -36,6 +36,7 @@ import kerala_24 from '../assets/kerala_24.png';
 import kerala_25 from '../assets/kerala_25.png';
 import kerala_26 from '../assets/kerala_26.png';
 import kerala_27 from '../assets/kerala_27.png';
+import keralaheadingimage from '../assets/keralaheadingimage.png'
 
 
 const TitleSection = styled.div`

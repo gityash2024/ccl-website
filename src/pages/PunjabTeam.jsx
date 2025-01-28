@@ -228,8 +228,7 @@ const Punjab = () => {
     { img: punjab_14, name: "Mayur Mehta", role: "All Rounder" },
     { img: punjab_15, name: "Mayur Mehta", role: "All Rounder" },
   
-    // { img: MudasirZafar_18, name: "Mudasir Zafar",},
-    // Add the rest of the players
+ 
   ];
 
   return (
@@ -254,17 +253,7 @@ const Punjab = () => {
                           animate={{ y: 0, opacity: 1 }}
                           transition={{ duration: 0.6, delay: 0.2 }}
                         />
-          {/* <motion.img 
-                   src={PUNJABDESHER}
-                   alt="Telugu Warriors"
-                   style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
-                   initial={{ y: 20, opacity: 0 }}
-                   animate={{ y: 0, opacity: 1 }}
-                   transition={{ duration: 0.6 }}
-                 /> */}
-          {/* <Description>
-            The Punjab De Sher is a Cricket Franchise of Celebrity Cricket League. The Franchise is owned by Mr. Navraj Hans and Mr. Puneet Singh with the best of Punjab Film Industry coming together in an exciting match of cricket.
-          </Description> */}
+         
           <TeamPhoto>
             <img src={punjabimage} alt="Punjab De Sher Team" />
           </TeamPhoto>

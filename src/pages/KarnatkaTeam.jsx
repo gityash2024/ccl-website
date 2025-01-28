@@ -25,7 +25,7 @@ import karnatka_9 from '../assets/karnatka_9.jpg';
 import karnatka_10 from '../assets/karnatka_10.jpg';
 import karnatka_11 from '../assets/karnatka_11.jpg';
 import karnatka_12 from '../assets/karnatka_12.jpg';
-
+import karnatakaheadingimage from '../assets/karnatakaheadingimage.png'
  
 const TitleSection = styled.div`
   text-align: center;
