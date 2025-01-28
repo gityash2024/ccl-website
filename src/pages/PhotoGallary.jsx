@@ -1,26 +1,70 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import newupperbackground from '../assets/newupperbackground.png';
 import PHOTOGALLERY from '../assets/PHOTOGALLERY.png';
-import photo_1 from '../assets/photo_1.png';
-import photo_2 from '../assets/photo_2.png';
-import photo_3 from '../assets/photo_3.png';
-import photo_4 from '../assets/photo_4.png';
-import photo_5 from '../assets/photo_5.png';
-import photo_6 from '../assets/photo_6.png';
-import photo_7 from '../assets/photo_7.png';
-import photo_8 from '../assets/photo_8.png';
-import photo_9 from '../assets/photo_9.png';
-import photo_10 from '../assets/photo_10.png';
-import photo_11 from '../assets/photo_11.png';
-import photo_12 from '../assets/photo_12.png';
-import photo_13 from '../assets/photo_13.png';
-import photo_14 from '../assets/photo_14.png';
-import photo_15 from '../assets/photo_15.png';
-import photo_16 from '../assets/photo_16.png';
-import photo_17 from '../assets/photo_17.png';
-import photo_18 from '../assets/photo_18.png';
+import photo_1 from '../assets/photo_1.jpg';
+import photo_2 from '../assets/photo_2.jpg';
+import photo_3 from '../assets/photo_3.jpg';
+import photo_4 from '../assets/photo_4.jpg';
+import photo_5 from '../assets/photo_5.jpg';
+import photo_6 from '../assets/photo_6.jpg';
+import photo_7 from '../assets/photo_7.jpg';
+import photo_8 from '../assets/photo_8.jpg';
+import photo_9 from '../assets/photo_9.jpg';
+import photo_10 from '../assets/photo_10.jpg';
+import photo_11 from '../assets/photo_11.jpg';
+import photo_12 from '../assets/photo_12.jpg';
+import photo_13 from '../assets/photo_13.jpg';
+import photo_14 from '../assets/photo_14.jpg';
+import photo_15 from '../assets/photo_15.jpg';
+import photo_16 from '../assets/photo_16.jpg';
+import photo_17 from '../assets/photo_17.jpg';
+import photo_18 from '../assets/photo_18.jpg';
+import photo_19 from '../assets/photo_19.jpg';
+import photo_20 from '../assets/photo_20.jpg';
+import photo_21 from '../assets/photo_21.jpg';
+import photo_22 from '../assets/photo_22.jpg';
+import photo_23 from '../assets/photo_23.jpg';
+import photo_24 from '../assets/photo_24.jpg';
+import photo_25 from '../assets/photo_25.jpg';
+import photo_26 from '../assets/photo_26.jpg';
+import photo_27 from '../assets/photo_27.jpg';
+import photo_28 from '../assets/photo_28.jpg';
+import photo_29 from '../assets/photo_29.jpg';
+import photo_30 from '../assets/photo_30.jpg';
+import photo_31 from '../assets/photo_31.jpg';
+import photo_32 from '../assets/photo_32.jpg';
+import photo_33 from '../assets/photo_33.jpg';
+import photo_34 from '../assets/photo_34.jpg';
+import photo_35 from '../assets/photo_35.jpg';
+import photo_36 from '../assets/photo_36.jpg';
+import photo_37 from '../assets/photo_37.jpg';
+import photo_38 from '../assets/photo_38.jpg';
+import photo_39 from '../assets/photo_39.jpg';
+import photo_40 from '../assets/photo_40.jpg';
+import photo_41 from '../assets/photo_41.jpg';
+import photo_42 from '../assets/photo_42.jpg';
+import photo_43 from '../assets/photo_43.jpg';
+import photo_44 from '../assets/photo_44.jpg';
+import photo_45 from '../assets/photo_45.jpg';
+import photo_46 from '../assets/photo_46.jpg';
+import photo_47 from '../assets/photo_47.jpg';
+import photo_48 from '../assets/photo_48.jpg';
+import photo_49 from '../assets/photo_49.jpg';
+import photo_50 from '../assets/photo_50.jpg';
+import photo_51 from '../assets/photo_51.jpg';
+import photo_52 from '../assets/photo_52.jpg';
+import photo_53 from '../assets/photo_53.jpg';
+import photo_54 from '../assets/photo_54.jpg';
+import photo_55 from '../assets/photo_55.jpg';
+import photo_56 from '../assets/photo_56.jpg';
+import photo_57 from '../assets/photo_57.jpg';
+import photo_58 from '../assets/photo_58.jpg';
+import photo_59 from '../assets/photo_59.jpg';
+import photo_60 from '../assets/photo_60.png';
+
+const PHOTOS_PER_PAGE = 9;
 
 const GalleryContainer = styled.div`
   width: 100%;
@@ -108,11 +152,12 @@ const PhotoGrid = styled.div`
   }
 `;
 
-const TrophySection = styled.div`
+const TrophySection = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  margin-top: 40px;
 
   > div {
     max-width: 400px;
@@ -127,6 +172,7 @@ const PhotoCard = styled(motion.div)`
   width: 100%;
   aspect-ratio: ${props => props.isTrophy ? '3/4' : '16/9'};
   position: relative;
+  cursor: pointer;
 
   img {
     width: 100%;
@@ -138,86 +184,147 @@ const PhotoCard = styled(motion.div)`
   &:hover img {
     transform: scale(1.05);
   }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+`;
+
+const LoadMoreButton = styled(motion.button)`
+  display: block;
+  margin: 40px auto;
+  padding: 12px 32px;
+  background: #214592;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #4F378B;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+  }
+`;
+
+const PhotoOverlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+`;
+
+const OverlayImage = styled(motion.img)`
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+`;
+
+const CloseButton = styled(motion.button)`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
 `;
 
 const Photo = () => {
-  // Dynamic photo data with metadata
-  const photos = [
-    {
-      id: 1,
-      src: photo_1,
-      title: 'Match Celebration',
-      category: 'match'
-    },
-    {
-      id: 2,
-      src: photo_2,
-      title: 'Team Spirit',
-      category: 'match'
-    },
-    {
-      id: 3,
-      src: photo_3,
-      title: 'Player Interaction',
-      category: 'match'
-    },
-    {
-      id: 4,
-      src: photo_4,
-      title: 'Game Action',
-      category: 'match'
-    },
-    {
-      id: 5,
-      src: photo_5,
-      title: 'Team Huddle',
-      category: 'match'
-    },
-    {
-      id: 6,
-      src: photo_6,
-      title: 'Trophy Celebration',
-      category: 'match'
-    },
-    {
-      id: 7,
-      src: photo_7,
-      title: 'Team Photo',
-      category: 'match'
-    },
-    {
-      id: 8,
-      src: photo_8,
-      title: 'Match Moment',
-      category: 'match'
-    },
-    {
-      id: 9,
-      src: photo_9,
-      title: 'Victory Celebration',
-      category: 'match'
-    },
-    {
-      id: 18,
-      src: photo_18,
-      title: 'Championship Trophy',
-      category: 'trophy'
-    }
-  ];
+  const [visiblePhotos, setVisiblePhotos] = useState([]);
+  const [page, setPage] = useState(1);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  // Group photos by section (excluding trophy)
-  const matchPhotos = photos.filter(photo => photo.category === 'match');
-  const trophyPhoto = photos.find(photo => photo.category === 'trophy');
-  
-  // Split match photos into sections of 3
-  const photoSections = matchPhotos.reduce((acc, photo, index) => {
-    const sectionIndex = Math.floor(index / 3);
-    if (!acc[sectionIndex]) {
-      acc[sectionIndex] = [];
-    }
-    acc[sectionIndex].push(photo);
-    return acc;
+  const photoImports = {
+    photo_1, photo_2, photo_3, photo_4, photo_5, photo_6, photo_7, photo_8, photo_9, photo_10,
+    photo_11, photo_12, photo_13, photo_14, photo_15, photo_16, photo_17, photo_18, photo_19, photo_20,
+    photo_21, photo_22, photo_23, photo_24, photo_25, photo_26, photo_27, photo_28, photo_29, photo_30,
+    photo_31, photo_32, photo_33, photo_34, photo_35, photo_36, photo_37, photo_38, photo_39, photo_40,
+    photo_41, photo_42, photo_43, photo_44, photo_45, photo_46, photo_47, photo_48, photo_49, photo_50,
+    photo_51, photo_52, photo_53, photo_54, photo_55, photo_56, photo_57, photo_58, photo_59, photo_60
+  };
+
+  const allPhotos = Array.from({ length: 59 }, (_, i) => ({
+    id: i + 1,
+    src: photoImports[`photo_${i + 1}`],
+    title: `Photo ${i + 1}`,
+    category: i === 17 ? 'trophy' : 'match'
+  }));
+
+  useEffect(() => {
+    loadMorePhotos();
   }, []);
+
+  const loadMorePhotos = () => {
+    setLoading(true);
+    setTimeout(() => {
+      const startIndex = (page - 1) * PHOTOS_PER_PAGE;
+      const newPhotos = allPhotos.slice(0, startIndex + PHOTOS_PER_PAGE);
+      setVisiblePhotos(newPhotos);
+      setPage(page + 1);
+      setLoading(false);
+    }, 800);
+  };
+
+  const hasMorePhotos = visiblePhotos.length < allPhotos.length;
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 30
+      }
+    }
+  };
+
+  const matchPhotos = visiblePhotos.filter(photo => photo.category === 'match');
+  const trophyPhoto = visiblePhotos.find(photo => photo.category === 'trophy');
 
   return (
     <GalleryContainer>
@@ -225,42 +332,51 @@ const Photo = () => {
         <GalleryTitle
           src={PHOTOGALLERY}
           alt="Photo Gallery"
-          initial={{ y: 20, opacity: 0 }}
+          initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
+          transition={{ 
+            type: "spring",
+            stiffness: 200,
+            damping: 20
+          }}
         />
         <Wave />
       </HeaderSection>
 
       <GallerySection>
-        {photoSections.map((section, sectionIndex) => (
-          <PhotoGrid key={`section-${sectionIndex}`}>
-            {section.map((photo, photoIndex) => (
-              <PhotoCard
-                key={photo.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: photoIndex * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-              >
-                <img 
-                  src={photo.src} 
-                  alt={photo.title}
-                  loading="lazy"
-                />
-              </PhotoCard>
-            ))}
-          </PhotoGrid>
-        ))}
+        <PhotoGrid
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
+          {matchPhotos.map((photo) => (
+            <PhotoCard
+              key={photo.id}
+              variants={itemVariants}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setSelectedPhoto(photo)}
+            >
+              <img 
+                src={photo.src} 
+                alt={photo.title}
+                loading="lazy"
+              />
+            </PhotoCard>
+          ))}
+        </PhotoGrid>
 
         {trophyPhoto && (
-          <TrophySection>
+          <TrophySection
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3 }}
+          >
             <PhotoCard
               isTrophy
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9 }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setSelectedPhoto(trophyPhoto)}
             >
               <img 
                 src={trophyPhoto.src} 
@@ -270,9 +386,52 @@ const Photo = () => {
             </PhotoCard>
           </TrophySection>
         )}
-      </GallerySection>
-    </GalleryContainer>
-  );
-};
 
-export default Photo;
+        {hasMorePhotos && (
+          <LoadMoreButton
+            onClick={loadMorePhotos}
+            disabled={loading}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {loading ? 'Loading...' : 'Load More'}
+          </LoadMoreButton>
+        )}
+      </GallerySection>
+
+      <AnimatePresence>
+        {selectedPhoto && (
+          <PhotoOverlay
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPhoto(null)}
+          >
+            <OverlayImage
+              src={selectedPhoto.src}
+              alt={selectedPhoto.title}
+              initial={{ scale: 0.5 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.5 }}
+              transition={{ type: "spring", stiffness: 300,damping: 25 }}
+              />
+              <CloseButton
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedPhoto(null);
+                }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                ×
+              </CloseButton>
+            </PhotoOverlay>
+          )}
+        </AnimatePresence>
+      </GalleryContainer>
+    );
+  };
+  
+  export default Photo;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo.png';
 
@@ -433,7 +433,7 @@ const Navbar = () => {
           target="_blank" 
           rel="noopener noreferrer"
         >
-          Powered by <span>COLLADOME</span>
+          Powered by <span>COLLADOME </span>
         </PoweredBy>
 
         <MobileMenuButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>

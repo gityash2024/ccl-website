@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import newupperbackground from '../assets/newupperbackground.png';
@@ -16,13 +15,7 @@ import video_9 from '../assets/video_9.png';
 import video_10 from '../assets/video_10.png';
 import video_11 from '../assets/video_11.png';
 import video_12 from '../assets/video_12.png';
-import video_13 from '../assets/video_13.png';
-import video_14 from '../assets/video_14.png';
-import video_15 from '../assets/video_15.png';
-import video_16 from '../assets/video_16.png';
-import video_17 from '../assets/video_17.png';
-import video_18 from '../assets/video_18.png';
-import videobackground from '../assets/videobackground.png'
+import videobackground from '../assets/videobackground.png';
 
 const VideoContainer = styled.div`
   width: 100%;
@@ -142,13 +135,14 @@ const VideoCard = styled(motion.div)`
     content: '▶';
     position: absolute;
     top: 50%;
-    left: 52%;
+    left: 51%;
     transform: translate(-50%, -50%);
     font-size: 24px;
     color: #214592;
     z-index: 3;
     opacity: 0;
     transition: opacity 0.3s ease;
+    text-align: center;
   }
 
   &:hover::before,
@@ -222,6 +216,7 @@ const CloseButton = styled.button`
   color: white;
   font-size: 24px;
   cursor: pointer;
+  z-index: 1001;
 `;
 
 const VideoGallery = () => {
@@ -229,20 +224,141 @@ const VideoGallery = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const itemsPerPage = 9;
 
-  // Sample dynamic video data
+  // Function to extract YouTube video ID from URL
+  const getYoutubeId = (url) => {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return match && match[2].length === 11 ? match[2] : null;
+  };
+
+  // Function to extract Instagram post ID from URL
+  const getInstagramId = (url) => {
+    const regExp = /^.*instagram.com\/p\/([^/]+)\/.*/;
+    const match = url.match(regExp);
+    return match ? match[1] : null;
+  };
+
+  // Combined video and Instagram post data
   const videos = [
-    { id: 1, thumbnail: video_1, title: "CCL Match Highlights", videoId: "video_url_1" },
-    { id: 2, thumbnail: video_2, title: "Team Celebration", videoId: "video_url_2" },
-    { id: 3, thumbnail: video_3, title: "Match Moments", videoId: "video_url_3" },
-    // ... add more videos
-  ].map(video => ({
-    ...video,
-    youtubeUrl: `https://www.youtube.com/embed/${video.videoId}`
-  }));
+    {
+      id: 1,
+      thumbnail: video_1,
+      title: "CCL Match Highlights 1",
+      url: "https://www.youtube.com/watch?v=AkqotA16MgQ",
+      type: "youtube"
+    },
+    {
+      id: 2,
+      thumbnail: video_2,
+      title: "CCL Match Highlights 2",
+      url: "https://www.youtube.com/watch?v=fUPJukNBlzM",
+      type: "youtube"
+    },
+    {
+      id: 3,
+      thumbnail: video_3,
+      title: "CCL Match Highlights 3",
+      url: "https://www.youtube.com/watch?v=Cu7OtJfE7WY",
+      type: "youtube"
+    },
+    {
+      id: 4,
+      thumbnail: video_4,
+      title: "CCL Match Highlights 4",
+      url: "https://www.youtube.com/watch?v=u1apSCXFE1A",
+      type: "youtube"
+    },
+    {
+      id: 5,
+      thumbnail: video_5,
+      title: "CCL Match Highlights 5",
+      url: "https://www.youtube.com/watch?v=mgdodVzznbA",
+      type: "youtube"
+    },
+    {
+      id: 6,
+      thumbnail: video_6,
+      title: "Instagram Post 1",
+      url: "https://www.instagram.com/p/DFIQA0ES1po/",
+      type: "instagram"
+    },
+    {
+      id: 7,
+      thumbnail: video_7,
+      title: "Instagram Post 2",
+      url: "https://www.instagram.com/p/DFNRyGHSF5u/",
+      type: "instagram"
+    },
+    {
+      id: 8,
+      thumbnail: video_8,
+      title: "Instagram Post 3",
+      url: "https://www.instagram.com/p/DFNixRhSfxy/",
+      type: "instagram"
+    },
+    {
+      id: 9,
+      thumbnail: video_9,
+      title: "Instagram Post 4",
+      url: "https://www.instagram.com/p/DFNuE2lSw9P/",
+      type: "instagram"
+    },
+    {
+      id: 10,
+      thumbnail: video_10,
+      title: "Instagram Post 4",
+      url: "https://www.instagram.com/p/DFNuE2lSw9P/",
+      type: "instagram"
+    },
+    {
+      id: 11,
+      thumbnail: video_11,
+      title: "Instagram Post 4",
+      url: "https://www.instagram.com/p/DFNuE2lSw9P/",
+      type: "instagram"
+    },
+    {
+      id: 12,
+      thumbnail: video_12,
+      title: "Instagram Post 4",
+      url: "https://www.instagram.com/p/DFNuE2lSw9P/",
+      type: "instagram"
+    }
+  ].map(video => {
+    if (video.type === "youtube") {
+      const videoId = getYoutubeId(video.url);
+      return {
+        ...video,
+        embedUrl: `https://www.youtube.com/embed/${videoId}?autoplay=1`
+      };
+    } else {
+      const postId = getInstagramId(video.url);
+      return {
+        ...video,
+        embedUrl: `https://www.instagram.com/p/${postId}/embed`
+      };
+    }
+  });
 
   const totalPages = Math.ceil(videos.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentVideos = videos.slice(startIndex, startIndex + itemsPerPage);
+
+  const handleCloseModal = () => {
+    setSelectedVideo(null);
+  };
+
+  useEffect(() => {
+    if (selectedVideo) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedVideo]);
 
   return (
     <VideoContainer>
@@ -290,11 +406,12 @@ const VideoGallery = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          onClick={handleCloseModal}
         >
-          <VideoPlayer>
-            <CloseButton onClick={() => setSelectedVideo(null)}>×</CloseButton>
+          <VideoPlayer onClick={e => e.stopPropagation()}>
+            <CloseButton onClick={handleCloseModal}>×</CloseButton>
             <iframe
-              src={selectedVideo.youtubeUrl}
+              src={selectedVideo.embedUrl}
               title={selectedVideo.title}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
