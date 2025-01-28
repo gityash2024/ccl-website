@@ -201,14 +201,14 @@ const Footer = () => {
   ];
 
   const teamLinks = [
-    { name: 'BENGAL TIGERS', path: '/teams/bengal-tigers' },
-    { name: 'BHOJPURI DABANGGS', path: '/teams/bhojpuri-dabanggs' },
-    { name: 'CHENNAI RHINOS', path: '/teams/chennai-rhinos' },
-    { name: 'KARNATAKA BULLDOZERS', path: '/teams/karnataka-bulldozers' },
-    { name: 'C3 KERALA STRIKERS', path: '/teams/kerala-strikers' },
-    { name: 'MUMBAI HEROES', path: '/teams/mumbai-heroes' },
-    { name: 'PUNJAB DE SHER', path: '/teams/punjab-de-sher' },
-    { name: 'TELUGU WARRIORS', path: '/teams/telugu-warriors' }
+    { name: 'BENGAL TIGERS', path: '/bengal' },
+    { name: 'BHOJPURI DABANGGS', path: '/bhojpuri' },
+    { name: 'CHENNAI RHINOS', path: '/chennai' },
+    { name: 'KARNATAKA BULLDOZERS', path: '/karnataka' },
+    { name: 'C3 KERALA STRIKERS', path: '/kerala' },
+    { name: 'MUMBAI HEROES', path: '/mumbai' },
+    { name: 'PUNJAB DE SHER', path: '/punjab' },
+    { name: 'TELUGU WARRIORS', path: '/telugu' }
   ];
 
   const quickLinks = [
@@ -218,7 +218,7 @@ const Footer = () => {
     { name: 'Videos', path: '/videos' },
     { name: 'About Us', path: '/aboutus' },
     { name: 'Contact Us', path: '/contact' },
-    { name: 'CCL SUPER FAN T&C', path: '/ccl-super-fan' }
+    { name: 'CCL SUPER FAN T&C', path: '/termsandcondtion' }
   ];
 
   return (

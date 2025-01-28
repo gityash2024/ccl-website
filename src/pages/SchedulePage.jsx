@@ -20,6 +20,9 @@ import Sonu from '../assets/Sonu.png';
 import cclbackground from '../assets/cclbackground.png';
 import ccl from '../assets/ccl.png';
 import CCLWhite from '../assets/CCLWhite.png';
+import Januaryonwards from '../assets/Januaryonwards.png';
+import cclteams from '../assets/cclteams.png';
+import teamCaptain from '../assets/teamCaptain.png';
 import 'swiper/css';
 import 'swiper/css/navigation';
 

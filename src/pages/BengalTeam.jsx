@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import BENGALTIGERS from '../assets/BENGALTIGERS.png';
@@ -24,8 +23,6 @@ import Jammy from '../assets/Jammy.jpg';
 import Indrasish from '../assets/Indrasish.jpg';
 import Aditya from '../assets/Aditya.jpg';
 import Boney from '../assets/Boney.jpg';
-import commanboll from '../assets/commanboll.png';
-
 
 const TeamContainer = styled.div`
   width: 100%;
@@ -37,17 +34,39 @@ const TeamContainer = styled.div`
 const TitleSection = styled.div`
   text-align: center;
   padding: 40px 20px;
+  background: url(${bengalbackground}) no-repeat center top;
+  background-size: cover;
+  position: relative;
   
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.8) 100%
+    );
+    z-index: 1;
+  }
+
   .title-img {
     max-width: 600px;
     width: 90%;
     margin: 0 auto 30px;
+    position: relative;
+    z-index: 2;
   }
 
   .description-img {
     max-width: 800px;
     width: 90%;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
   }
 `;
 
@@ -150,7 +169,6 @@ const TeamSection = styled.div`
   width: 100%;
   padding: 60px 0;
   margin: 0 auto;
-  text-align: center;
   background: white;
 
   &::before {
@@ -168,12 +186,26 @@ const TeamSection = styled.div`
   }
 `;
 
+const TeamHeader = styled.div`
+  text-align: left;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+
+  img {
+    max-width: 300px;
+    width: 90%;
+  }
+`;
+
 const TeamGrid = styled.div`
   position: relative;
   z-index: 2;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -190,32 +222,55 @@ const TeamGrid = styled.div`
 const PlayerCard = styled(motion.div)`
   position: relative;
   background: white;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  img {
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .image-container {
     width: 100%;
-
     aspect-ratio: 1;
-    border-radius: 8px;
-    object-fit: cover;
+    overflow: hidden;
+    border-radius: 15px 15px 0 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &:hover .image-container img {
+    transform: scale(1.05);
+  }
+
+  .info-container {
+    padding: 15px;
+    text-align: center;
+    background: linear-gradient(to right, #214592, #4F378B);
+    border-radius: 0 0 15px 15px;
   }
 
   h3 {
-    color: #214592;
-    font-size: 14px;
-    margin: 8px 0 4px;
-    font-weight: bolder;
+    color: white;
+    font-size: 16px;
+    margin: 0 0 5px;
+    font-weight: bold;
     font-family: 'days-one';
+    text-transform: uppercase;
   }
 
   p {
-    color: #214592;
+    color: rgba(255, 255, 255, 0.9);
     font-size: 14px;
-    opacity: 0.8;
+    margin: 0;
     font-family: 'days-one';
-
   }
 `;
 
@@ -305,13 +360,14 @@ const Bengal = () => {
       </OwnersSection>
 
       <TeamSection>
-        <motion.img 
-          src={THETEAM}
-          alt="The Team"
-          style={{ maxWidth: "400px", width: "90%", marginBottom: "40px" }}
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-        />
+        <TeamHeader>
+          <motion.img 
+            src={THETEAM}
+            alt="The Team"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+          />
+        </TeamHeader>
 
         <TeamGrid>
           {teamPlayers.map((player, index) => (
@@ -321,12 +377,16 @@ const Bengal = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <img 
-                src={player.img || '/placeholder.png'} 
-                alt={player.name} 
-              />
-              <h3>{player.name}</h3>
-              <p>{player.role}</p>
+              <div className="image-container">
+                <img 
+                  src={player.img || '/placeholder.png'} 
+                  alt={player.name} 
+                />
+              </div>
+              <div className="info-container">
+                <h3>{player.name}</h3>
+                <p>{player.role}</p>
+              </div>
             </PlayerCard>
           ))}
         </TeamGrid>

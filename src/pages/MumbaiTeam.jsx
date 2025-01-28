@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import mumbaiheadingimage from '../assets/mumbaiheadingimage.svg';
 import MUMBAIHEROES from '../assets/MUMBAIHEROES.png';
 import bhojpuribackground from '../assets/bhojpuribackground.png';
 import munbaibackground from '../assets/munbaibackground.png';
@@ -30,18 +31,6 @@ import mumai_13 from '../assets/mumai_13.jpg';
 import mumai_14 from '../assets/mumai_14.jpg';
 import mumai_15 from '../assets/mumai_15.jpg';
 
-
-const TitleSection = styled.div`
-  text-align: center;
-  padding: 40px 20px;
-
-  img {
-    max-width: 600px;
-    width: 90%;
-    margin: 0 auto;
-  }
-`;
-
 const Description = styled.p`
   max-width: 1000px;
   margin: 30px auto;
@@ -63,28 +52,6 @@ const TeamPhoto = styled.div`
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 `;
-
-
-
-const CategoryRow = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const SectionTitle = styled.h2`
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-`;
-
-
-
 const TeamSection = styled.div`
   max-width: 1200px;
   margin: 40px auto;
@@ -289,7 +256,6 @@ const mumbai = () => {
             <BrandAmbassadors>
               <ProfileCard>
                 <img src={dummyowner} alt="REGINA CASSANDRA" />
-                {/* <h3>REGINA CASSANDRA</h3> */}
               </ProfileCard>
             </BrandAmbassadors>
           </CategoryBlock>

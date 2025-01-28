@@ -19,6 +19,8 @@ import TeluguTeam from '../pages/TeluguTeam';
 import PhotoGallary from '../pages/PhotoGallary';
 import VideoGallary from '../pages/VideoGallery';
 import CclSchedule from '../pages/CclSchedule';
+import ContactUs from '../pages/ContactUs';
+import Termsandcondtion from '../pages/Termsandcondtion';
 
 const AppRoutes = () => {
   return (
@@ -43,6 +45,8 @@ const AppRoutes = () => {
         <Route path="photos" element={<PhotoGallary />}/>
         <Route path="videos" element={<VideoGallary />}/>
         <Route path="standings" element={<CclSchedule />}/>
+        <Route path="contact" element={<ContactUs />}/>
+        <Route path="termsandcondtion" element={<Termsandcondtion />}/>
         
       </Route>
     </Routes>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import theteluguhheadingimage from '../assets/theteluguhheadingimage.svg';
 import bhojpuribackground from '../assets/bhojpuribackground.png';
 import commanboll from '../assets/commanboll.png';
 import TELUGUWARRIORS from '../assets/TELUGUWARRIORS.png';

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import bhojpuriparagraphheading from '../assets/bhojpuriparagraphheading.png';
@@ -26,118 +25,40 @@ import bhojpuri_7 from '../assets/bhojpuri_7.jpg';
 import bhojpuri_8 from '../assets/bhojpuri_8.jpg';
 import bhojpuri_9 from '../assets/bhojpuri_9.jpg';
 import bhojpuri_10 from '../assets/bhojpuri_10.jpg';
-import bhojpuri_11 from '../assets/bhojpuri_11.jpg'; 
-
-const TitleSection = styled.div`
-  text-align: center;
-  padding: 40px 20px;
-  
-  .title-img {
-    max-width: 600px;
-    width: 90%;
-    margin: 0 auto 30px;
-  }
-
-  .description-img {
-    max-width: 800px;
-    width: 90%;
-    margin: 0 auto;
-  }
-`;
-
-const Description = styled.p`
-  max-width: 1000px;
-  margin: 30px auto;
-  text-align: center;
-  color: #214592;
-  font-size: 18px;
-  line-height: 1.6;
-  padding: 0 20px;
-`;
-
-const TeamPhoto = styled.div`
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 0 20px;
-
-  img {
-    width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-`;
-
-
-
-const CategoryRow = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const SectionTitle = styled.h2`
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-`;
-
-
-
-const TeamSection = styled.div`
-  max-width: 1200px;
-  margin: 40px auto;
-  text-align: center;
-  padding: 0 20px;
-`;
-
-const TeamTitle = styled.div`
-  margin-bottom: 40px;
-  img {
-    max-width: 300px;
-    margin: 0 auto;
-  }
-`;
-
-const TeamGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    background: url(${bhopuribackground}) no-repeat center;
-    background-size: contain;
-    transform: translate(-50%, -50%);
-    opacity: 0.1;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-`;
-
+import bhojpuri_11 from '../assets/bhojpuri_11.jpg';
 
 const TeamContainer = styled.div`
   width: 100%;
   min-height: 100vh;
-  background: url(${bhojpuribackground}) no-repeat center center;
+  background: url(${bhojpuribackground}) no-repeat center top fixed;
+  background-size: cover;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, 
+      rgba(255, 255, 255, 0.95) 0%, 
+      rgba(255, 255, 255, 0.9) 50%, 
+      rgba(255, 255, 255, 0.95) 100%
+    );
+    z-index: 1;
+  }
+`;
+
+const ContentWrapper = styled.div`
+  position: relative;
+  z-index: 2;
+`;
+
+const TitleSection = styled.div`
+  text-align: center;
+  padding: 40px 20px;
+  background: url(${bhojpuribackground_2}) no-repeat center;
   background-size: cover;
   position: relative;
 
@@ -151,16 +72,147 @@ const TeamContainer = styled.div`
     background: rgba(255, 255, 255, 0.9);
     z-index: 1;
   }
+  
+  .title-img {
+    max-width: 600px;
+    width: 90%;
+    margin: 0 auto 30px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .description-img {
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
 `;
 
-const ContentWrapper = styled.div`
+const TeamPhoto = styled.div`
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+
+  img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const ManagementSection = styled.div`
+  background: linear-gradient(90deg, #4F378B 0%, #D51256 100%);
+  padding: 60px 20px;
   position: relative;
-  z-index: 2;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(${bhojpuribackground_3}) no-repeat center;
+    background-size: cover;
+    opacity: 0.1;
+  }
 `;
 
-const TopSection = styled.div`
-  background: #F5F5F5;
-  padding: 40px 20px;
+// const ManagementGrid = styled.div`
+//   max-width: 1400px;
+//   margin: 0 auto;
+//   display: grid;
+//   grid-template-columns: repeat(5, 1fr);
+//   gap: 30px;
+//   position: relative;
+//   z-index: 2;
+
+//   @media (max-width: 1200px) {
+//     grid-template-columns: repeat(3, 1fr);
+//   }
+
+//   @media (max-width: 768px) {
+//     grid-template-columns: repeat(2, 1fr);
+//   }
+
+//   @media (max-width: 480px) {
+//     grid-template-columns: 1fr;
+//   }
+// `;
+
+// const ProfileCard = styled(motion.div)`
+//   background: white;
+//   border-radius: 15px;
+//   overflow: hidden;
+//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+//   transition: transform 0.3s ease;
+
+//   &:hover {
+//     transform: translateY(-5px);
+//   }
+
+//   .image-container {
+//     width: 100%;
+//     padding-top: 125%;
+//     position: relative;
+//     overflow: hidden;
+
+//     img {
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       width: 100%;
+//       height: 100%;
+//       object-fit: cover;
+//       transition: transform 0.3s ease;
+//     }
+//   }
+
+//   &:hover .image-container img {
+//     transform: scale(1.05);
+//   }
+
+//   .info-container {
+//     padding: 15px;
+//     text-align: center;
+//     background: linear-gradient(to right, #4F378B, #D51256);
+//   }
+
+//   h3 {
+//     color: white;
+//     font-size: 18px;
+//     margin: 0 0 5px;
+//     font-weight: bold;
+//     font-family: 'days-one';
+//   }
+
+//   p {
+//     color: rgba(255, 255, 255, 0.9);
+//     font-size: 14px;
+//     margin: 0;
+//     font-family: 'days-one';
+//   }
+// `;
+
+// const ManagementCard = styled(ProfileCard)`
+//   .image-container {
+//     padding-top: 100%;
+//   }
+
+//   h3 {
+//     color: #4F378B;
+//     padding: 15px;
+//     background: white;
+//   }
+// `;
+
+const TeamSection = styled.div`
+  padding: 60px 20px;
+  background: url(${bhopuribackground}) no-repeat center;
+  background-size: cover;
   position: relative;
 
   &::before {
@@ -168,67 +220,209 @@ const TopSection = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 200px;
-    height: 200px;
-    background: url(${commanboll}) no-repeat;
-    background-size: contain;
-    opacity: 0.1;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 1;
   }
 `;
 
-const ManagementSection = styled.div`
-  background: linear-gradient(90deg, #4F378B 0%, #D51256 100%);
-  padding: 40px 20px;
+// const TeamHeader = styled.div`
+//   text-align: center;
+//   margin-bottom: 60px;
+//   position: relative;
+//   z-index: 2;
+
+//   img {
+//     max-width: 400px;
+//     width: 90%;
+//   }
+// `;
+
+// const TeamGrid = styled.div`
+//   max-width: 1400px;
+//   margin: 0 auto;
+//   display: grid;
+//   grid-template-columns: repeat(4, 1fr);
+//   gap: 40px;
+//   position: relative;
+//   z-index: 2;
+
+//   @media (max-width: 1200px) {
+//     grid-template-columns: repeat(3, 1fr);
+//     gap: 30px;
+//   }
+
+//   @media (max-width: 768px) {
+//     grid-template-columns: repeat(2, 1fr);
+//     gap: 25px;
+//   }
+
+//   @media (max-width: 480px) {
+//     grid-template-columns: 1fr;
+//     gap: 20px;
+//   }
+// `;
+
+const CategoryTitle = styled.h2`
+  color: white;
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
 `;
-
-const Categories = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
-  gap: 40px;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const CategoryBlock = styled.div`
-  h2 {
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-  }
-`;
-
-const BrandAmbassadors = styled.div`
+const TeamHeader = styled.div`
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 2;
   display: flex;
-  gap: 20px;
   justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 300px;
+    width: 90%;
+  }
 `;
 
 const ProfileCard = styled(motion.div)`
-  img {
-    width: 180px;
-    height: 180px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  max-width: 280px;
+  margin: 0 auto;
+  width: 100%;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .image-container {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &:hover .image-container img {
+    transform: scale(1.05);
+  }
+
+  .info-container {
+    padding: 15px;
+    text-align: center;
+    background: linear-gradient(to right, #4F378B, #D51256);
   }
 
   h3 {
-    color: #214592;
+    color: white;
     font-size: 16px;
+    margin: 0 0 5px;
     font-weight: bold;
+    font-family: 'days-one';
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    margin: 0;
     font-family: 'days-one';
   }
 `;
 
+const ManagementCard = styled(ProfileCard)`
+  max-width: 220px;
+  
+  .image-container {
+    padding-top: 100%;
+  }
+
+  h3 {
+    color: #4F378B;
+    padding: 15px;
+    background: white;
+    font-size: 14px;
+  }
+`;
+
+const TeamGrid = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+`;
+
+const ManagementGrid = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
 const Bhojpuri = () => {
+  const management = [
+    { img: owners_1, name: "Mr. Sachin J Joshi", role: "OWNER" },
+    { img: owners_2, name: "Venkatesh", role: "MENTOR" },
+    { img: owners_3, name: "Venkatesh", role: "MENTOR" },
+    { img: owners_4, name: "Venkatesh", role: "MENTOR" },
+    { img: teamAB, name: "REGINA CASSANDRA", role: "BRAND AMBASSADOR" }
+  ];
+
   const teamMembers = [
-    { img: bhojpuri_1,  name: 'Vikranh', role: "All Rounder" },
+    { img: bhojpuri_1, name: 'Vikranh', role: "All Rounder" },
     { img: bhojpuri_2, name: 'Vaibhav', role: "All Rounder" },
     { img: bhojpuri_3, name: 'Manoj Tiwari', role: "CAPTAIN" },
     { img: bhojpuri_4, name: 'Uday', role: "All Rounder" },
@@ -236,102 +430,94 @@ const Bhojpuri = () => {
     { img: bhojpuri_6, name: 'Raghav', role: "All Rounder" },
     { img: bhojpuri_7, name: 'Pravesh', role: "All Rounder" },
     { img: bhojpuri_8, name: 'Nirahua', role: "All Rounder" },
-    { img: bhojpuri_9,name: 'Jay', role: "All Rounder" },
-    { img: bhojpuri_10,  name: 'Anshuman', role: "All Rounder" },
-    { img: bhojpuri_11, name: 'Aditya', role: "All Rounder" },
-  
+    { img: bhojpuri_9, name: 'Jay', role: "All Rounder" },
+    { img: bhojpuri_10, name: 'Anshuman', role: "All Rounder" },
+    { img: bhojpuri_11, name: 'Aditya', role: "All Rounder" }
   ];
 
   return (
     <TeamContainer>
-    <ContentWrapper>
+      <ContentWrapper>
         <TitleSection>
-              <motion.img 
-                className="title-img"
-                src={BHOJPURIDABANGGS}
-                alt="Bengal Tigers"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6 }}
-              />
-              <motion.img 
-                className="description-img"
-                src={bhojpuriparagraphheading}
-                alt="Bengal Tigers Description"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              />
-            </TitleSection>
-      <TopSection>
+          <motion.img 
+            className="title-img"
+            src={BHOJPURIDABANGGS}
+            alt="Bhojpuri Dabanggs"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          />
+          <motion.img 
+            className="description-img"
+            src={bhojpuriparagraphheading}
+            alt="Team Description"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          />
+        </TitleSection>
+
         <TeamPhoto>
-          <img src={bhojuripimage} alt="Telugu Warriors Team" />
+          <motion.img 
+            src={bhojuripimage}
+            alt="Team Photo"
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          />
         </TeamPhoto>
-      </TopSection>
 
-      <ManagementSection>
-        <Categories>
-          <CategoryBlock>
-            <h2>TEAM OWNERS</h2>
-            <ProfileCard>
-              <img src={owners_1} alt="Mr. Sachin J Joshi" />
-              <h3>Mr. Sachin J Joshi</h3>
-            </ProfileCard>
-          </CategoryBlock>
+        <ManagementSection>
+          <CategoryTitle>TEAM MANAGEMENT</CategoryTitle>
+          <ManagementGrid>
+            {management.map((person, index) => (
+              <ManagementCard
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <div className="image-container">
+                  <img src={person.img} alt={person.name} />
+                </div>
+                <h3>{person.name}</h3>
+                <p className="info-container">{person.role}</p>
+              </ManagementCard>
+            ))}
+          </ManagementGrid>
+        </ManagementSection>
 
-          <CategoryBlock>
-            <h2>MENTOR</h2>
-            <ProfileCard>
-              <img src={owners_2} alt="Venkatesh" />
-              <h3>Venkatesh</h3>
-            </ProfileCard>
-            <ProfileCard>
-              <img src={owners_3} alt="Venkatesh" />
-              <h3>Venkatesh</h3>
-            </ProfileCard>
-            <ProfileCard>
-              <img src={owners_4} alt="Venkatesh" />
-              <h3>Venkatesh</h3>
-            </ProfileCard>
-          </CategoryBlock>
+        <TeamSection>
+          <TeamHeader>
+            <motion.img 
+              src={THETEAM}
+              alt="The Team"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+            />
+          </TeamHeader>
 
-          <CategoryBlock>
-            <h2>BRAND AMBASSADORS</h2>
-            <BrandAmbassadors>
-              <ProfileCard>
-                <img src={teamAB} alt="REGINA CASSANDRA" />
-                <h3>REGINA CASSANDRA</h3>
+          <TeamGrid>
+            {teamMembers.map((player, index) => (
+              <ProfileCard
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <div className="image-container">
+                  <img src={player.img} alt={player.name} />
+                </div>
+                <div className="info-container">
+                  <h3>{player.name}</h3>
+                  <p>{player.role}</p>
+                </div>
               </ProfileCard>
-            </BrandAmbassadors>
-          </CategoryBlock>
-        </Categories>
-      </ManagementSection>
-
-
-      <TeamSection>
-        <TeamTitle>
-          <img src={THETEAM} alt="The Team" />
-        </TeamTitle>
-
-        <TeamGrid>
-          {teamMembers.map((player, index) => (
-            <ProfileCard
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <img src={player.img} alt={player.name} />
-              <h3>{player.name}</h3>
-              <p style={{ color: '#214592' }}>{player.role}</p>
-            </ProfileCard>
-          ))}
-        </TeamGrid>
-      </TeamSection>
-
-   </ContentWrapper>
-  </TeamContainer>
-
+            ))}
+          </TeamGrid>
+        </TeamSection>
+      </ContentWrapper>
+    </TeamContainer>
   );
 };
 

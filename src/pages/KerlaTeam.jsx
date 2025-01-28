@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import keralaheadingimage from '../assets/keralaheadingimage.png';
 import KERALASTRIKERS from '../assets/KERALA STRIKERS.png';
 import keralabackground from '../assets/keralabackground.png';
 import bhojpuribackground from '../assets/bhojpuribackground.png';
@@ -319,26 +320,27 @@ const Kerala = () => {
   ];
 
   const teamMembers = [
-    { img: kerala_7, name: "Nanda Kishore", role: "Bowler" },
-    { img: kerala_8, name: "Nikhil", role: "All Rounder" },
-    { img: kerala_9, name: "Raghu", role: "All Rounder" },
-    { img: kerala_10, name: "Samrat", role: "All Rounder" },
-    { img: kerala_11, name: "Taraka Ratna", role: "All Rounder" },
-    { img: kerala_12, name: "Tarun", role: "All Rounder" },
-    { img: kerala_13, name: "Vishwa", role: "All Rounder" },
-    { img: kerala_14, name: "PRINCE", role: "All Rounder" },
-    { img: kerala_14, name: "PRINCE", role: "All Rounder" },
-    { img: kerala_14, name: "PRINCE", role: "All Rounder" },
-    { img: kerala_14, name: "PRINCE", role: "All Rounder" },
-    { img: kerala_14, name: "PRINCE", role: "All Rounder" },
-    { img: kerala_14, name: "PRINCE", role: "All Rounder" },
-    { img: kerala_14, name: "PRINCE", role: "All Rounder" },
-    { img: kerala_14, name: "PRINCE", role: "All Rounder" },
-    { img: kerala_14, name: "PRINCE", role: "All Rounder" },
-    { img: kerala_14, name: "PRINCE", role: "All Rounder" },
-    { img: kerala_14, name: "PRINCE", role: "All Rounder" },
-  ];
-
+    { img: kerala_7, name: "Asif Ali", role: "All Rounder" },
+    { img: kerala_8, name: "Rajeev Pillai", role: "All Rounder/WK" },
+    { img: kerala_9, name: "Indrajit Sukumaran", role: "Captain" },
+    { img: kerala_10, name: "Unni Mukundan", role: "All Rounder" },
+    { img: kerala_11, name: "Arjun Nandakumar", role: "All Rounder" },
+    { img: kerala_12, name: "Manikuttan", role: "Bowler" },
+    { img: kerala_13, name: "Vijay Yesudas", role: "Batsman" },
+    { img: kerala_14, name: "Shafeeq Rahman", role: "All Rounder" },
+    { img: kerala_15, name: "Vivek Gopan", role: "All Rounder/WK" },
+    { img: kerala_16, name: "Saiju Kurup", role: "All Rounder" },
+    { img: kerala_17, name: "Vinu Mohan", role: "Bowler" },
+    { img: kerala_18, name: "Nikhil K Menon", role: "All Rounder/WK" },
+    { img: kerala_19, name: "Prajod Kalabhavan", role: "Batsman" },
+    { img: kerala_20, name: "Antony Pepe", role: "All Rounder" },
+    { img: kerala_21, name: "Sanju Sivaram", role: "All Rounder" },
+    { img: kerala_22, name: "Siju Wilson", role: "All Rounder" },
+    { img: kerala_23, name: "Prashanth Alexander", role: "All Rounder" },
+    { img: kerala_24, name: "Kunchacko Boban", role: "All Rounder" },
+    { img: kerala_25, name: "Siddharth Menon", role: "All Rounder" },
+    { img: kerala_26, name: "Jean Paul Lal", role: "All Rounder" },
+  ];  
   return (
     <TeamContainer>
       <ContentWrapper>
