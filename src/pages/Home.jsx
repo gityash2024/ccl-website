@@ -42,17 +42,17 @@ const PageContainer = styled.div`
 
 const HeroSection = styled.section`
   position: relative;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  background-image: url(${background});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  padding-top: 180px;
+    height: 92vh;
+    width: 100%;
+    display: flex
+;
+    align-items: flex-start;
+    justify-content: center;
+    background-image: url(/src/assets/background.png?t=1738139972605);
+    background-size: cover;
+    /* background-position: center; */
+    overflow: hidden;
+    /* padding-top: 284px;
   
   img {
     max-width: 700px;
@@ -60,13 +60,7 @@ const HeroSection = styled.section`
     height: auto;
   }
   
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
-    z-index: 1;
-  }
+
 `;
 
 const CaptainsSwiper = styled(Swiper)`
@@ -269,7 +263,7 @@ const InfoContent = styled.div`
 
 const BannerImage = styled.img`
   width: 100%;
-  height: 100%;
+  height: 125%;
   object-fit: cover;
 `;
 
@@ -331,13 +325,13 @@ const HomePage = () => {
   return (
     <PageContainer>
       <HeroSection>
-        <motion.img
+        {/* <motion.img
           src={Januaryonwards}
           alt="January 31st 2025 Onwards"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-        />
+        /> */}
       </HeroSection>
 
       <TeamsSection>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import bhojpuriparagraphheading from '../assets/bhojpuriparagraphheading.png';
@@ -41,11 +41,7 @@ const TeamContainer = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(180deg, 
-      rgba(255, 255, 255, 0.95) 0%, 
-      rgba(255, 255, 255, 0.9) 50%, 
-      rgba(255, 255, 255, 0.95) 100%
-    );
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.95) 100%);
     z-index: 1;
   }
 `;
@@ -94,9 +90,12 @@ const TeamPhoto = styled.div`
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   img {
-    width: 100%;
+    width: 75%;
     border-radius: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   }
@@ -121,94 +120,6 @@ const ManagementSection = styled.div`
   }
 `;
 
-// const ManagementGrid = styled.div`
-//   max-width: 1400px;
-//   margin: 0 auto;
-//   display: grid;
-//   grid-template-columns: repeat(5, 1fr);
-//   gap: 30px;
-//   position: relative;
-//   z-index: 2;
-
-//   @media (max-width: 1200px) {
-//     grid-template-columns: repeat(3, 1fr);
-//   }
-
-//   @media (max-width: 768px) {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-
-//   @media (max-width: 480px) {
-//     grid-template-columns: 1fr;
-//   }
-// `;
-
-// const ProfileCard = styled(motion.div)`
-//   background: white;
-//   border-radius: 15px;
-//   overflow: hidden;
-//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-//   transition: transform 0.3s ease;
-
-//   &:hover {
-//     transform: translateY(-5px);
-//   }
-
-//   .image-container {
-//     width: 100%;
-//     padding-top: 125%;
-//     position: relative;
-//     overflow: hidden;
-
-//     img {
-//       position: absolute;
-//       top: 0;
-//       left: 0;
-//       width: 100%;
-//       height: 100%;
-//       object-fit: cover;
-//       transition: transform 0.3s ease;
-//     }
-//   }
-
-//   &:hover .image-container img {
-//     transform: scale(1.05);
-//   }
-
-//   .info-container {
-//     padding: 15px;
-//     text-align: center;
-//     background: linear-gradient(to right, #4F378B, #D51256);
-//   }
-
-//   h3 {
-//     color: white;
-//     font-size: 18px;
-//     margin: 0 0 5px;
-//     font-weight: bold;
-//     font-family: 'days-one';
-//   }
-
-//   p {
-//     color: rgba(255, 255, 255, 0.9);
-//     font-size: 14px;
-//     margin: 0;
-//     font-family: 'days-one';
-//   }
-// `;
-
-// const ManagementCard = styled(ProfileCard)`
-//   .image-container {
-//     padding-top: 100%;
-//   }
-
-//   h3 {
-//     color: #4F378B;
-//     padding: 15px;
-//     background: white;
-//   }
-// `;
-
 const TeamSection = styled.div`
   padding: 60px 20px;
   background: url(${bhopuribackground}) no-repeat center;
@@ -225,44 +136,13 @@ const TeamSection = styled.div`
     background: rgba(255, 255, 255, 0.95);
     z-index: 1;
   }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
 `;
 
-// const TeamHeader = styled.div`
-//   text-align: center;
-//   margin-bottom: 60px;
-//   position: relative;
-//   z-index: 2;
-
-//   img {
-//     max-width: 400px;
-//     width: 90%;
-//   }
-// `;
-
-// const TeamGrid = styled.div`
-//   max-width: 1400px;
-//   margin: 0 auto;
-//   display: grid;
-//   grid-template-columns: repeat(4, 1fr);
-//   gap: 40px;
-//   position: relative;
-//   z-index: 2;
-
-//   @media (max-width: 1200px) {
-//     grid-template-columns: repeat(3, 1fr);
-//     gap: 30px;
-//   }
-
-//   @media (max-width: 768px) {
-//     grid-template-columns: repeat(2, 1fr);
-//     gap: 25px;
-//   }
-
-//   @media (max-width: 480px) {
-//     grid-template-columns: 1fr;
-//     gap: 20px;
-//   }
-// `;
 
 const CategoryTitle = styled.h2`
   color: white;
@@ -275,6 +155,7 @@ const CategoryTitle = styled.h2`
   position: relative;
   z-index: 2;
 `;
+
 const TeamHeader = styled.div`
   text-align: center;
   margin-bottom: 60px;
@@ -315,7 +196,7 @@ const ProfileCard = styled(motion.div)`
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: 140%;
       object-fit: cover;
       transition: transform 0.3s ease;
     }
@@ -412,7 +293,34 @@ const ManagementGrid = styled.div`
   }
 `;
 
+const LoadMoreButton = styled.button`
+  background: linear-gradient(to right, #4F378B, #D51256);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 40px auto 0;
+  display: block;
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(to right, #5F479B, #E51266);
+    box-shadow: 0 4px 15px rgba(79, 55, 139, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+`;
 const Bhojpuri = () => {
+  const [visiblePlayers, setVisiblePlayers] = useState(10);
+
   const management = [
     { img: owners_1, name: "Mr. Sachin J Joshi", role: "OWNER" },
     { img: owners_2, name: "Venkatesh", role: "MENTOR" },
@@ -434,6 +342,10 @@ const Bhojpuri = () => {
     { img: bhojpuri_10, name: 'Anshuman', role: "All Rounder" },
     { img: bhojpuri_11, name: 'Aditya', role: "All Rounder" }
   ];
+
+  const loadMore = () => {
+    setVisiblePlayers(prev => Math.min(prev + 5, teamMembers.length));
+  };
 
   return (
     <TeamContainer>
@@ -488,37 +400,44 @@ const Bhojpuri = () => {
         </ManagementSection>
 
         <TeamSection>
-          <TeamHeader>
-            <motion.img 
-              src={THETEAM}
-              alt="The Team"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-            />
-          </TeamHeader>
+  <TeamHeader>
+    <motion.img 
+      src={THETEAM}
+      alt="The Team"
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+    />
+  </TeamHeader>
 
-          <TeamGrid>
-            {teamMembers.map((player, index) => (
-              <ProfileCard
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <div className="image-container">
-                  <img src={player.img} alt={player.name} />
-                </div>
-                <div className="info-container">
-                  <h3>{player.name}</h3>
-                  <p>{player.role}</p>
-                </div>
-              </ProfileCard>
-            ))}
-          </TeamGrid>
-        </TeamSection>
-      </ContentWrapper>
-    </TeamContainer>
-  );
+  <TeamGrid>
+    {teamMembers.slice(0, visiblePlayers).map((player, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.1 }}
+      >
+        <ProfileCard>
+          <div className="image-container">
+            <img src={player.img} alt={player.name} />
+          </div>
+          <div className="info-container">
+            <h3>{player.name}</h3>
+            <p>{player.role}</p>
+          </div>
+        </ProfileCard>
+      </motion.div>
+    ))}
+  </TeamGrid>
+  {visiblePlayers < teamMembers.length && (
+    <LoadMoreButton onClick={loadMore}>
+      Load More Players
+    </LoadMoreButton>
+  )}
+</TeamSection>
+    </ContentWrapper>
+  </TeamContainer>
+);
 };
 
 export default Bhojpuri;

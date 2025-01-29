@@ -44,15 +44,12 @@ const NewsContent = styled.div`
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
-  gap: 40px;
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-  }
+  flex-direction: column;
+  gap: 60px;
 `;
 
 const NewsSection = styled.div`
-  flex: 1;
+  width: 100%;
 `;
 
 const SectionTitleWrapper = styled.div`
@@ -69,14 +66,10 @@ const NewsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  grid-auto-rows: 1fr;
-
-  @media (max-width: 1400px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  margin-bottom: 20px;
 
   @media (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: 768px) {
@@ -99,6 +92,7 @@ const NewsCard = styled(motion.a)`
   height: 100%;
   text-decoration: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  aspect-ratio: 1/1.2;
 
   &:hover {
     transform: translateY(-5px);
@@ -107,7 +101,7 @@ const NewsCard = styled(motion.a)`
 
   img {
     width: 100%;
-    height: 180px;
+    height: 75%;
     object-fit: cover;
     transition: transform 0.3s ease;
     flex-shrink: 0;

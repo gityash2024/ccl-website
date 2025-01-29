@@ -138,7 +138,7 @@ const CaptainCard = styled(motion.div)`
     aspect-ratio: 1;
     img {
       width: 100%;
-      height: 100%;
+      height: 125%;
       object-fit: cover;
       transition: transform 0.3s ease;
     }

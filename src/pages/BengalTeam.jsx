@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import BENGALTIGERS from '../assets/BENGALTIGERS.png';
@@ -45,11 +45,7 @@ const TitleSection = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.9) 0%,
-      rgba(255, 255, 255, 0.8) 100%
-    );
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%);
     z-index: 1;
   }
 
@@ -97,11 +93,7 @@ const OwnersSection = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(213, 18, 86, 0.95) 100%
-    );
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(213, 18, 86, 0.95) 100%);
   }
 `;
 
@@ -120,6 +112,7 @@ const OwnersSectionHeader = styled.div`
     font-size: 32px;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-right: 125px;
   }
 `;
 
@@ -187,12 +180,14 @@ const TeamSection = styled.div`
 `;
 
 const TeamHeader = styled.div`
-  text-align: left;
+  text-align: center;
   max-width: 1200px;
   margin: 0 auto 40px;
   padding: 0 20px;
   position: relative;
   z-index: 2;
+  display: flex;
+  justify-content: center;
 
   img {
     max-width: 300px;
@@ -240,7 +235,7 @@ const PlayerCard = styled(motion.div)`
 
     img {
       width: 100%;
-      height: 100%;
+      height: 125%;
       object-fit: cover;
       transition: transform 0.3s ease;
     }
@@ -274,6 +269,24 @@ const PlayerCard = styled(motion.div)`
   }
 `;
 
+const LoadMoreButton = styled.button`
+  background: linear-gradient(to right, #214592, #4F378B);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 40px auto 0;
+  display: block;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+`;
+
 const Bengal = () => {
   const teamPlayers = [
     { name: "Uday", role: "All Rounder", img: Uday },
@@ -290,6 +303,12 @@ const Bengal = () => {
     { name: "Boney", role: "All Rounder", img: Boney },
     { name: "Sourav Das", role: "All Rounder", img: SouravDas }
   ];
+
+  const [visiblePlayers, setVisiblePlayers] = useState(10);
+
+  const loadMore = () => {
+    setVisiblePlayers(prevVisible => Math.min(prevVisible + 5, teamPlayers.length));
+  };
 
   return (
     <TeamContainer>
@@ -370,7 +389,7 @@ const Bengal = () => {
         </TeamHeader>
 
         <TeamGrid>
-          {teamPlayers.map((player, index) => (
+          {teamPlayers.slice(0, visiblePlayers).map((player, index) => (
             <PlayerCard
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -378,10 +397,7 @@ const Bengal = () => {
               transition={{ delay: index * 0.1 }}
             >
               <div className="image-container">
-                <img 
-                  src={player.img || '/placeholder.png'} 
-                  alt={player.name} 
-                />
+                <img src={player.img || '/placeholder.png'} alt={player.name} />
               </div>
               <div className="info-container">
                 <h3>{player.name}</h3>
@@ -390,6 +406,11 @@ const Bengal = () => {
             </PlayerCard>
           ))}
         </TeamGrid>
+        {visiblePlayers < teamPlayers.length && (
+          <LoadMoreButton onClick={loadMore}>
+            Load More Players
+          </LoadMoreButton>
+        )}
       </TeamSection>
     </TeamContainer>
   );

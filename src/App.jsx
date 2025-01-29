@@ -10,6 +10,7 @@ import 'swiper/css/pagination';
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Toaster 
         position="top-right"
         toastOptions={{
@@ -21,7 +22,6 @@ function App() {
         }}
       />
       <AppRoutes />
-      <ScrollToTop />
     </Router>
   );
 }

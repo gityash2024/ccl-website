@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import bhojpuribackground from '../assets/bhojpuribackground.png';
@@ -21,123 +21,7 @@ import Shantanu from '../assets/Shantanu.jpg';
 import Sharan from '../assets/Sharan.jpg';
 import vikranth from '../assets/vikranth.jpg';
 import VishnuVishal from '../assets/VishnuVishal.jpg';
-import chennaiheadingimage from '../assets/chennaiheadingimage.svg'
-
-// const TitleSection = styled.div`
-//   text-align: center;
-//   padding: 40px 20px;
-
-//   img {
-//     max-width: 600px;
-//     width: 90%;
-//     margin: 0 auto;
-//   }
-// `;
-const TitleSection = styled.div`
-  text-align: center;
-  padding: 40px 20px;
-  
-  .title-img {
-    max-width: 600px;
-    width: 90%;
-    margin: 0 auto 30px;
-  }
-
-  .description-img {
-    max-width: 800px;
-    width: 90%;
-    margin: 0 auto;
-  }
-`;
-
-const Description = styled.p`
-  max-width: 1000px;
-  margin: 30px auto;
-  text-align: center;
-  color: #214592;
-  font-size: 18px;
-  line-height: 1.6;
-  padding: 0 20px;
-`;
-
-const TeamPhoto = styled.div`
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 0 20px;
-
-  img {
-    width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-`;
-
-
-
-const CategoryRow = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const SectionTitle = styled.h2`
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-`;
-
-
-
-const TeamSection = styled.div`
-  max-width: 1200px;
-  margin: 40px auto;
-  text-align: center;
-  padding: 0 20px;
-`;
-
-const TeamTitle = styled.div`
-  margin-bottom: 40px;
-  img {
-    max-width: 300px;
-    margin: 0 auto;
-  }
-`;
-
-const TeamGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    background: url(${chennaibackground}) no-repeat center;
-    background-size: contain;
-    transform: translate(-50%, -50%);
-    opacity: 0.1;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-`;
-
+import chennaiheadingimage from '../assets/chennaiheadingimage.svg';
 
 const TeamContainer = styled.div`
   width: 100%;
@@ -181,17 +65,48 @@ const TopSection = styled.div`
   }
 `;
 
+const TeamPhoto = styled.div`
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 75%;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+`;
+
 const ManagementSection = styled.div`
   background: linear-gradient(90deg, #4F378B 0%, #D51256 100%);
-  padding: 40px 20px;
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(${bhojpuribackground_3}) no-repeat center;
+    background-size: cover;
+    opacity: 0.1;
+  }
 `;
 
 const Categories = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 40px;
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -205,149 +120,319 @@ const CategoryBlock = styled.div`
     font-weight: bold;
     margin-bottom: 20px;
     text-transform: uppercase;
+    text-align: center;
   }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const BrandAmbassadors = styled.div`
   display: flex;
-  gap: 20px;
   justify-content: center;
+  gap: 20px;
+  flex-wrap: nowrap;
 `;
 
-const ProfileCard = styled(motion.div)`
+const ManagementCard = styled(motion.div)`
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  max-width: 220px;
+  
   img {
-    width: 180px;
-    height: 180px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  h3 {
+    color: #4F378B;
+    padding: 5px;
+    background: white;
+    font-size: 14px;
+    margin: 0;
+  }
+
+  p {
+    padding: 5px;
+    margin: 0;
+    background: linear-gradient(to right, #4F378B, #D51256);
+    color: white;
+  }
+`;
+
+const TeamSection = styled.div`
+  padding: 60px 20px;
+  background: white;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    transform: translate(-50%, -50%);
+    background: url(${chennaibackground}) no-repeat center;
+    background-size: contain;
+    opacity: 0.1;
+    z-index: 1;
+  }
+`;
+
+const TeamTitle = styled.div`
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 300px;
+    width: 90%;
+  }
+`;
+
+const TeamGrid = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+`;
+
+const PlayerCard = styled(motion.div)`
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  max-width: 280px;
+  margin: 0 auto;
+  width: 100%;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .image-container {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 125%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &:hover .image-container img {
+    transform: scale(1.05);
+  }
+
+  .info-container {
+    padding: 15px;
+    text-align: center;
+    background: linear-gradient(to right, #4F378B, #D51256);
   }
 
   h3 {
     color: white;
     font-size: 16px;
+    margin: 0 0 5px;
     font-weight: bold;
+    font-family: 'days-one';
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    margin: 0;
+    font-family: 'days-one';
+  }
+`;
+
+const LoadMoreButton = styled.button`
+  background: linear-gradient(to right, #4F378B, #D51256);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 40px auto 0;
+  display: block;
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(to right, #5F479B, #E51266);
+    box-shadow: 0 4px 15px rgba(79, 55, 139, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 `;
 
 const Chennai = () => {
+  const [visiblePlayers, setVisiblePlayers] = useState(10);
+
   const teamMembers = [
-      { img: Adhav,  name: 'Adhav', role: "All Rounder" },
-        { img: Balasaravanan, name: 'Balasaravanan', role: "All Rounder" },
-        { img: AryaCaptain, name: 'Arya', role: "CAPTAIN" },
-        { img: Dasarathi, name: 'Dasarathi', role: "All Rounder" },
-        { img: Jivva, name: 'Jivva', role: "All Rounder" },
-        { img: Prithvi, name: 'Prithvi', role: "All Rounder" },
-        { img: Ramana, name: 'Ramana', role: "All Rounder" },
-        { img: Shantanu, name: 'Shantanu', role: "All Rounder" },
-        { img: Sharan,name: 'Sharan', role: "All Rounder" },
-        { img: vikranth,  name: 'vikranth', role: "All Rounder" },
-        { img: VishnuVishal, name: 'VishnuVishal', role: "All Rounder" },
+    { img: Adhav, name: 'Adhav', role: "All Rounder" },
+    { img: Balasaravanan, name: 'Balasaravanan', role: "All Rounder" },
+    { img: AryaCaptain, name: 'Arya', role: "CAPTAIN" },
+    { img: Dasarathi, name: 'Dasarathi', role: "All Rounder" },
+    { img: Jivva, name: 'Jivva', role: "All Rounder" },
+    { img: Prithvi, name: 'Prithvi', role: "All Rounder" },
+    { img: Ramana, name: 'Ramana', role: "All Rounder" },
+    { img: Shantanu, name: 'Shantanu', role: "All Rounder" },
+    { img: Sharan, name: 'Sharan', role: "All Rounder" },
+    { img: vikranth, name: 'vikranth', role: "All Rounder" },
+    { img: VishnuVishal, name: 'VishnuVishal', role: "All Rounder" },
   ];
+
+  const loadMore = () => {
+    setVisiblePlayers(prev => Math.min(prev + 5, teamMembers.length));
+  };
 
   return (
     <TeamContainer>
-    <ContentWrapper>
-      <TopSection>
-        <motion.img 
-                        className="title-img"
-                        src={CHENNAIRHINOS}
-                        alt="Bengal Tigers"
-                        style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
+      <ContentWrapper>
+        <TopSection>
+          <motion.img 
+            className="title-img"
+            src={CHENNAIRHINOS}
+            alt="Chennai Rhinos"
+            style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          />
+          <motion.img 
+            className="description-img"
+            src={chennaiheadingimage}
+            alt="Chennai Rhinos Description"
+            style={{ maxWidth: '800px', margin: '50px auto', display: 'block' }}
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          />
+      
+          <TeamPhoto>
+            <motion.img 
+              src={channelimg} 
+              alt="Chennai Rhinos Team"
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            />
+          </TeamPhoto>
+        </TopSection>
 
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.6 }}
-                      />
-                      <motion.img 
-                        className="description-img"
-                        src={chennaiheadingimage}
-                        alt="Bengal Tigers Description"
-                       style={{ maxWidth: '800px', margin: '50px auto', display: 'block' }}
+        <ManagementSection>
+          <Categories>
+            <CategoryBlock>
+              <h2>TEAM OWNERS</h2>
+              <ManagementCard
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+              >
+                <img src={dummyowner} alt="Mr. Sachin J Joshi" />
+                <h3>Mr. Sachin J Joshi</h3>
+                <p>OWNER</p>
+              </ManagementCard>
+            </CategoryBlock>
 
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                      />
-        {/* <motion.img 
-          src={CHENNAIRHINOS}
-          alt="Telugu Warriors"
-          style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        /> */}
-        {/* <Description>
-        Chennai Rhinos established themselves as strong contenders of CCL and emerged as the Champions of the inaugural CCL season in 2011. Chennai Rhinos have proved themselves as one of the most popular teams and finished as Runners of the tournament in 2015.
-        </Description> */}
-        <TeamPhoto>
-          <img src={channelimg} alt="Telugu Warriors Team" />
-        </TeamPhoto>
-      </TopSection>
-
-      <ManagementSection>
-        <Categories>
-          <CategoryBlock>
-            <h2>TEAM OWNERS</h2>
-            <ProfileCard>
-              <img src={dummyowner} alt="Mr. Sachin J Joshi" />
-              <h3>Mr. Sachin J Joshi</h3>
-            </ProfileCard>
-          </CategoryBlock>
-
-          {/* <CategoryBlock>
-            <h2>MENTOR</h2>
-            <ProfileCard>
-              <img src={teluguowner_2} alt="Venkatesh" />
-              <h3>Venkatesh</h3>
-            </ProfileCard>
-          </CategoryBlock> */}
-
-          <CategoryBlock>
-            <h2>BRAND AMBASSADORS</h2>
-            <BrandAmbassadors>
-              <ProfileCard>
+            <CategoryBlock>
+              <h2>BRAND AMBASSADORS</h2>
+              <ManagementCard
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
                 <img src={dummyabmastment} alt="REGINA CASSANDRA" />
                 <h3>REGINA CASSANDRA</h3>
-              </ProfileCard>
-              {/* <ProfileCard>
-                <img src={telugubrand_2} alt="PRANITHA SUBHASH" />
-                <h3>PRANITHA SUBHASH</h3>
-              </ProfileCard>
-              <ProfileCard>
-                <img src={telugubrand_3} alt="ADAH SHARMA" />
-                <h3>ADAH SHARMA</h3>
-              </ProfileCard> */}
-            </BrandAmbassadors>
-          </CategoryBlock>
-        </Categories>
-      </ManagementSection>
+                <p>BRAND AMBASSADOR</p>
+              </ManagementCard>
+            </CategoryBlock>
+          </Categories>
+        </ManagementSection>
 
+        <TeamSection>
+          <TeamTitle>
+            <motion.img 
+              src={THETEAM}
+              alt="The Team"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+            />
+          </TeamTitle>
 
-      <TeamSection>
-        <TeamTitle>
-          <img src={THETEAM} alt="The Team" />
-        </TeamTitle>
-
-        <TeamGrid>
-          {teamMembers.map((player, index) => (
-            <ProfileCard
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <img src={player.img} alt={player.name} />
-              <h3>{player.name}</h3>
-              <p>{player.role}</p>
-            </ProfileCard>
-          ))}
-        </TeamGrid>
-      </TeamSection>
-
-   </ContentWrapper>
-  </TeamContainer>
-
+          <TeamGrid>
+            {teamMembers.slice(0, visiblePlayers).map((player, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <PlayerCard>
+                  <div className="image-container">
+                    <img src={player.img} alt={player.name} />
+                  </div>
+                  <div className="info-container">
+                    <h3>{player.name}</h3>
+                    <p>{player.role}</p>
+                  </div>
+                </PlayerCard>
+              </motion.div>
+            ))}
+          </TeamGrid>
+          {visiblePlayers < teamMembers.length && (
+            <LoadMoreButton onClick={loadMore}>
+              Load More Players
+            </LoadMoreButton>
+          )}
+        </TeamSection>
+      </ContentWrapper>
+    </TeamContainer>
   );
 };
 

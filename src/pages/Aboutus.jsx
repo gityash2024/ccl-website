@@ -14,7 +14,7 @@ const HomeContainer = styled.div`
 const HeroSection = styled.div`
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 500px;
   background: url(${background});
   background-size: cover;
   background-position: center;

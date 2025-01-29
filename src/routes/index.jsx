@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import HomePage from '../pages/HomePage';
 import TeamsPage from '../pages/TeamsPage';
-import SchedulePage from '../pages/SchedulePage';
 import TeamDetailPage from '../pages/TeamDetailPage';
 import GalleryPage from '../pages/GalleryPage';
 import Home from '../pages/Home';
@@ -29,7 +28,6 @@ const AppRoutes = () => {
         <Route index element={<Home />} />
         <Route path="teams" element={<TeamsPage />} />
         <Route path="teams/:teamId" element={<TeamDetailPage />} />
-        <Route path="schedule" element={<SchedulePage />} />
         <Route path="gallery" element={<GalleryPage />} />
         <Route path="news" element={<News />} />
         <Route path="aboutus" element={<Aboutus />} />
@@ -44,7 +42,7 @@ const AppRoutes = () => {
         <Route path="telugu" element={<TeluguTeam />}/>
         <Route path="photos" element={<PhotoGallary />}/>
         <Route path="videos" element={<VideoGallary />}/>
-        <Route path="standings" element={<CclSchedule />}/>
+        <Route path="schedule" element={<CclSchedule />}/>
         <Route path="contact" element={<ContactUs />}/>
         <Route path="termsandcondtion" element={<Termsandcondtion />}/>
         
