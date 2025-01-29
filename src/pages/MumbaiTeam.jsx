@@ -323,12 +323,6 @@ const Mumbai = () => {
                   <img src={mumaiowner_1} alt="Sohail Khan" />
                   <h3>Sohail Khan</h3>
                 </ProfileCard>
-              </BrandAmbassadors>
-            </CategoryBlock>
-
-            <CategoryBlock>
-              <h2>MENTOR</h2>
-              <BrandAmbassadors>
                 <ProfileCard>
                   <img src={mumaiowner_2} alt="Adil Jagmagia" />
                   <h3>Adil Jagmagia</h3>
@@ -340,8 +334,23 @@ const Mumbai = () => {
               </BrandAmbassadors>
             </CategoryBlock>
 
+            {/* <CategoryBlock>
+              <h2>MENTOR</h2>
+              <BrandAmbassadors>
+                <ProfileCard>
+                  <img src={mumaiowner_2} alt="Adil Jagmagia" />
+                  <h3>Adil Jagmagia</h3>
+                </ProfileCard>
+                <ProfileCard>
+                  <img src={mumaiowner_3} alt="Jordy Patel" />
+                  <h3>Jordy Patel</h3>
+                </ProfileCard>
+              </BrandAmbassadors>
+            </CategoryBlock> */}
+
             <CategoryBlock>
-              <h2>BRAND AMBASSADORS</h2>
+            <h2 style={{ whiteSpace: 'nowrap' }}>BRAND AMBASSADORS</h2>
+
               <BrandAmbassadors>
                 <ProfileCard>
                   <img src={dummyowner} alt="REGINA CASSANDRA" />

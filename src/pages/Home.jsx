@@ -42,7 +42,7 @@ const PageContainer = styled.div`
 
 const HeroSection = styled.section`
  position: relative;
-  height: 92vh;
+  height: 98vh;
   width: 100%;
   display: flex;
   align-items: flex-start;
