@@ -41,19 +41,15 @@ const PageContainer = styled.div`
 `;
 
 const HeroSection = styled.section`
-  position: relative;
-    height: 92vh;
-    width: 100%;
-    display: flex
-;
-    align-items: flex-start;
-    justify-content: center;
-    background-image: url(/src/assets/background.png?t=1738139972605);
-    background-size: cover;
-    /* background-position: center; */
-    overflow: hidden;
-    /* padding-top: 284px;
-  
+ position: relative;
+  height: 92vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-image: url(${background});  // Use template literal with imported image
+  background-size: cover;
+  overflow: hidden;
   img {
     max-width: 700px;
     width: 90%;
