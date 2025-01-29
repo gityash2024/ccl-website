@@ -43,6 +43,12 @@ const TitleSection = styled.div`
     width: 90%;
     margin: 0 auto;
   }
+
+  @media (max-width: 768px) {
+    .title-img {
+      max-width: 350px !important;
+    }
+  }
 `;
 
 const TeamContainer = styled.div`
@@ -282,7 +288,7 @@ const Punjab = () => {
                           className="title-img"
                           src={PUNJABDESHER}
                           alt="Punjab De Sher"
-                          style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
+                          style={{ maxWidth: '600px', width: '100%', margin: '0 auto', display: 'block' }}
                           initial={{ y: 20, opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
                           transition={{ duration: 0.6 }}
@@ -291,7 +297,7 @@ const Punjab = () => {
                           className="description-img"
                           src={punjabheadingimage}
                           alt="Punjab De Sher Description"
-                          style={{ maxWidth: '800px', margin: '048px auto', display: 'block' }}
+                          style={{margin: '048px auto', display: 'block' }}
                           initial={{ y: 20, opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
                           transition={{ duration: 0.6, delay: 0.2 }}

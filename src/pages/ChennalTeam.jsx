@@ -40,11 +40,17 @@ const TeamContainer = styled.div`
     background: rgba(255, 255, 255, 0.9);
     z-index: 1;
   }
+
+  @media (max-width: 768px) {
+    background-attachment: scroll;
+  }
 `;
 
 const ContentWrapper = styled.div`
   position: relative;
   z-index: 2;
+  width: 100%;
+  overflow: hidden;
 `;
 
 const TopSection = styled.div`
@@ -63,6 +69,19 @@ const TopSection = styled.div`
     background-size: contain;
     opacity: 0.1;
   }
+
+  @media (max-width: 768px) {
+    padding: 20px 10px;
+
+    img.title-img {
+      max-width: 90% !important;
+    }
+
+    img.description-img {
+      max-width: 95% !important;
+      margin: 30px auto !important;
+    }
+  }
 `;
 
 const TeamPhoto = styled.div`
@@ -77,6 +96,15 @@ const TeamPhoto = styled.div`
     width: 75%;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 10px;
+    margin: 20px auto;
+
+    img {
+      width: 100%;
+    }
   }
 `;
 
@@ -97,6 +125,10 @@ const ManagementSection = styled.div`
     background-size: cover;
     opacity: 0.1;
   }
+
+  @media (max-width: 768px) {
+    padding: 40px 15px;
+  }
 `;
 
 const Categories = styled.div`
@@ -110,6 +142,7 @@ const Categories = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 `;
 
@@ -125,13 +158,13 @@ const CategoryBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
 
-const BrandAmbassadors = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: nowrap;
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+  }
 `;
 
 const ManagementCard = styled(motion.div)`
@@ -141,6 +174,7 @@ const ManagementCard = styled(motion.div)`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   max-width: 220px;
+  width: 100%;
   
   img {
     width: 100%;
@@ -150,17 +184,31 @@ const ManagementCard = styled(motion.div)`
 
   h3 {
     color: #4F378B;
-    padding: 5px;
+    padding: 10px;
     background: white;
     font-size: 14px;
     margin: 0;
+    text-align: center;
   }
 
   p {
-    padding: 5px;
+    padding: 10px;
     margin: 0;
     background: linear-gradient(to right, #4F378B, #D51256);
     color: white;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 180px;
+
+    img {
+      height: 180px;
+    }
+
+    h3 {
+      font-size: 13px;
+    }
   }
 `;
 
@@ -182,6 +230,10 @@ const TeamSection = styled.div`
     opacity: 0.1;
     z-index: 1;
   }
+
+  @media (max-width: 768px) {
+    padding: 40px 15px;
+  }
 `;
 
 const TeamTitle = styled.div`
@@ -197,6 +249,14 @@ const TeamTitle = styled.div`
     max-width: 300px;
     width: 90%;
   }
+
+  @media (max-width: 768px) {
+    margin-bottom: 40px;
+
+    img {
+      max-width: 250px;
+    }
+  }
 `;
 
 const TeamGrid = styled.div`
@@ -210,7 +270,7 @@ const TeamGrid = styled.div`
 
   @media (max-width: 1200px) {
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 15px;
   }
 
   @media (max-width: 992px) {
@@ -219,11 +279,14 @@ const TeamGrid = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0 10px;
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 280px;
+    margin: 0 auto;
   }
 `;
 
@@ -233,9 +296,8 @@ const PlayerCard = styled(motion.div)`
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  max-width: 280px;
-  margin: 0 auto;
   width: 100%;
+  margin: 0 auto;
 
   &:hover {
     transform: translateY(-5px);
@@ -282,6 +344,21 @@ const PlayerCard = styled(motion.div)`
     margin: 0;
     font-family: 'days-one';
   }
+
+  @media (max-width: 768px) {
+    .info-container {
+      padding: 12px;
+    }
+
+    h3 {
+      font-size: 14px;
+      margin: 0 0 3px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+  }
 `;
 
 const LoadMoreButton = styled.button`
@@ -307,6 +384,12 @@ const LoadMoreButton = styled.button`
 
   &:active {
     transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px 20px;
+    font-size: 14px;
+    margin: 30px auto 0;
   }
 `;
 
@@ -339,7 +422,7 @@ const Chennai = () => {
             className="title-img"
             src={CHENNAIRHINOS}
             alt="Chennai Rhinos"
-            style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
+            style={{ maxWidth: '600px',width: '100%', margin: '0 auto', display: 'block' }}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
@@ -384,7 +467,7 @@ const Chennai = () => {
               <h2>BRAND AMBASSADORS</h2>
               <ManagementCard
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
                 <img src={dummyabmastment} alt="REGINA CASSANDRA" />

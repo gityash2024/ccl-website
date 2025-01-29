@@ -106,13 +106,23 @@ const OwnersSectionHeader = styled.div`
   max-width: 1200px;
   margin: 0 auto 40px;
   padding: 0 20px;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 
   h2 {
     color: white;
     font-size: 32px;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    margin-right: 125px;
+    margin-bottom: 20px;
+
+    @media (min-width: 768px) {
+      margin-right: 125px;
+      margin-bottom: 0;
+    }
   }
 `;
 
@@ -120,19 +130,20 @@ const ProfilesGrid = styled.div`
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 40px;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
 
-  @media (max-width: 768px) {
+  @media (min-width: 640px) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 30px;
   }
 
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
   }
 `;
 
@@ -140,6 +151,9 @@ const ProfileCard = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 300px;
   
   img {
     width: 200px;
@@ -147,6 +161,7 @@ const ProfileCard = styled(motion.div)`
     border-radius: 15px;
     margin-bottom: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
   }
 
   h3 {

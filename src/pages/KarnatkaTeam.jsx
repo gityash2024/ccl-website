@@ -339,7 +339,7 @@ const Karnataka = () => {
           <motion.img 
             src={KARNATAKABULLDOZERS}
             alt="Karnataka Bulldozers"
-            style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
+            style={{ maxWidth: '600px', width: '100%', margin: '0 auto', display: 'block' }}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}

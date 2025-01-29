@@ -301,7 +301,7 @@ const Mumbai = () => {
           <motion.img 
             src={MUMBAIHEROES}
             alt="Mumbai Heroes"
-            style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
+            style={{ maxWidth: '600px', width: '100%', margin: '0 auto', display: 'block' }}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
@@ -334,19 +334,7 @@ const Mumbai = () => {
               </BrandAmbassadors>
             </CategoryBlock>
 
-            {/* <CategoryBlock>
-              <h2>MENTOR</h2>
-              <BrandAmbassadors>
-                <ProfileCard>
-                  <img src={mumaiowner_2} alt="Adil Jagmagia" />
-                  <h3>Adil Jagmagia</h3>
-                </ProfileCard>
-                <ProfileCard>
-                  <img src={mumaiowner_3} alt="Jordy Patel" />
-                  <h3>Jordy Patel</h3>
-                </ProfileCard>
-              </BrandAmbassadors>
-            </CategoryBlock> */}
+
 
             <CategoryBlock>
             <h2 style={{ whiteSpace: 'nowrap' }}>BRAND AMBASSADORS</h2>
