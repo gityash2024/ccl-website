@@ -227,7 +227,7 @@ const Footer = () => {
       <FooterContent>
         <FooterGrid>
           <DescriptionSection>
-            <img style={{ width: '150px', height: 'auto' }} src={logo} alt="CCL Logo" />
+            <img style={{ width: '100px', height: 'auto' }} src={logo} alt="CCL Logo" />
             <p>
               Celebrity Cricket League, brings together India's biggest entertainment industries-
               Cricket and Films, where India's top actors showcase their cricketing skills giving
