@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, EffectFade, Pagination } from 'swiper/modules';
@@ -35,260 +34,6 @@ import bhojpuribackground_3 from '../assets/bhojpuribackground_3.png';
 import corousel1 from '../assets/corousel1.png';
 import corousel2 from '../assets/corousel2.png';
 
-const PageContainer = styled.div`
-  width: 100%;
-  overflow: hidden;
-`;
-
-const HeroSection = styled.section`
- position: relative;
-  height: 98vh;
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  background-image: url(${background});  // Use template literal with imported image
-  background-size: cover;
-  overflow: hidden;
-  img {
-    max-width: 700px;
-    width: 90%;
-    height: auto;
-  }
-  
-
-`;
-
-const CaptainsSwiper = styled(Swiper)`
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem;
-  position: relative;
-
-  .swiper-wrapper {
-    align-items: center;
-  }
-
-  .swiper-slide {
-    transition: all 0.6s ease;
-    transform: scale(0.7);
-    opacity: 0.5;
-    filter: blur(1px);
-  }
-
-  .swiper-slide-active {
-    transform: scale(1);
-    opacity: 1;
-    z-index: 2;
-    filter: blur(0);
-  }
-
-  .swiper-slide-prev,
-  .swiper-slide-next {
-    transform: scale(0.85);
-    opacity: 0.8;
-    filter: blur(0.5px);
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    color: #214592;
-    
-    &::after {
-      font-size: 24px;
-    }
-
-    &:hover {
-      background: white;
-    }
-  }
-`;
-
-const TeamsSection = styled.section`
-  padding: 4rem 0;
-  background: white;
-  position: relative;
-`;
-
-const SectionTitle = styled.div`
-  text-align: center;
-  position: relative;
-  margin-bottom: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-
-  img {
-    max-width: 400px;
-    width: 100%;
-    height: auto;
-    position: relative;
-    z-index: 2;
-  }
-
-  &::before, &::after {
-    content: '';
-    flex: 1;
-    height: 2px;
-    background: #214592;
-    max-width: 300px;
-  }
-`;
-
-const TeamsGrid = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const TeamCard = styled(motion.div)`
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  min-height: 250px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-  }
-
-  p {
-    color: #214592;
-    font-weight: 600;
-    font-size: 1rem;
-    text-align: center;
-    margin: 0;
-  }
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-  }
-`;
-
-const CaptainsSection = styled.section`
-  padding: 4rem 0;
-  background: url(${bhojpuribackground_3});
-  background-size: cover;
-  background-position: center;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 246, 214, 0.9) 20%,
-      rgba(255, 182, 193, 0.9) 60%,
-      rgba(147, 112, 219, 0.95) 100%
-    );
-  }
-`;
-
-
-const CaptainCard = styled(motion.div)`
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  gap: 1rem;
-
-  img {
-    width: 250px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  }
-
-  h3 {
-    color: #214592;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0;
-    text-transform: uppercase;
-  }
-
-  p {
-    color: #666;
-    font-size: 1.1rem;
-    margin: 0;
-  }
-`;
-
-const InfoSection = styled.section`
-  height: 55vh;
-  position: relative;
-  overflow: hidden;
-
-  .swiper-slide {
-    height: 55vh;
-    width: 100%;
-  }
-`;
-const InfoContent = styled.div`
-  position: relative;
-  height: 100%;
-`;
-
-const BannerImage = styled.img`
-  width: 100%;
-  height: 125%;
-  object-fit: cover;
-`;
-
-const InfoOverlay = styled.div`
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  z-index: 2;
-
-  img {
-    width: 200px;
-    height: auto;
-    margin-bottom: 2rem;
-  }
-
-  h2 {
-    color: white;
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-align: center;
-    margin: 0;
-  }
-`;
-
 const HomePage = () => {
   const teams = [
     { img: bengal, name: 'BENGAL TIGERS' },
@@ -319,121 +64,124 @@ const HomePage = () => {
   ];
 
   return (
-    <PageContainer>
-      <HeroSection>
-        {/* <motion.img
-          src={Januaryonwards}
-          alt="January 31st 2025 Onwards"
+    <div className="min-h-screen bg-white overflow-hidden">
+      <div className="relative h-screen w-full bg-cover bg-center" style={{ backgroundImage: `url(${background})` }}>
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        /> */}
-      </HeroSection>
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 flex items-center justify-center px-4 md:px-6 lg:px-8"
+        >
+        </motion.div>
+      </div>
 
-      <TeamsSection>
-        <SectionTitle>
+      <div className="py-16 md:py-24 bg-white">
+        <div className="relative flex items-center justify-center gap-8 mb-16">
+          <div className="hidden md:block h-0.5 bg-[#214592] flex-1 max-w-sm"></div>
           <motion.img
             src={cclteams}
             alt="CCL 2025 Teams"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="max-w-sm w-full"
           />
-        </SectionTitle>
+          <div className="hidden md:block h-0.5 bg-[#214592] flex-1 max-w-sm"></div>
+        </div>
 
-        <TeamsGrid>
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto px-4 md:px-6">
           {teams.map((team, index) => (
-            <TeamCard
+            <motion.div
               key={team.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
+              className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center gap-6 hover:transform hover:-translate-y-2 transition-transform duration-300"
             >
-              <img src={team.img} alt={team.name} />
-              <p>{team.name}</p>
-            </TeamCard>
+              <img src={team.img} alt={team.name} className="w-32 h-32 object-contain" />
+              <p className="text-[#214592] font-semibold text-center">{team.name}</p>
+            </motion.div>
           ))}
-        </TeamsGrid>
-      </TeamsSection>
+        </motion.div>
+      </div>
 
-      <CaptainsSection>
-        <SectionTitle>
-          <motion.img
-            src={teamCaptain}
-            alt="Team Captains"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          />
-        </SectionTitle>
+      <div className="py-16 md:py-24 relative bg-cover bg-center" style={{ backgroundImage: `url(${bhojpuribackground_3})` }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-[rgba(255,246,214,0.9)] to-[rgba(147,112,219,0.95)]"></div>
+        
+        <div className="relative">
+          <div className="flex items-center justify-center gap-8 mb-16">
+            <div className="hidden md:block h-0.5 bg-[#214592] flex-1 max-w-sm"></div>
+            <motion.img
+              src={teamCaptain}
+              alt="Team Captains"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-sm w-full"
+            />
+            <div className="hidden md:block h-0.5 bg-[#214592] flex-1 max-w-sm"></div>
+          </div>
 
-        <CaptainsSwiper
-  modules={[Navigation, Autoplay, Pagination]}
-  navigation
-  pagination={{ clickable: true }}
-  autoplay={{ 
-    delay: 3000,
-    disableOnInteraction: false,
-  }}
-  loop={true}
-  effect="coverflow"
-  grabCursor={true}
-  centeredSlides={true}
-  slidesPerView={3}
-  coverflowEffect={{
-    rotate: 0,
-    stretch: 0,
-    depth: 100,
-    modifier: 1,
-    slideShadows: false,
-  }}
-  speed={800}
-  breakpoints={{
-    320: { slidesPerView: 1 },
-    768: { slidesPerView: 3 },
-  }}
->
-          {captains.map((captain, index) => (
-            <SwiperSlide key={captain.name}>
-              <CaptainCard>
-                <motion.img
-                  src={captain.img}
-                  alt={captain.name}
-                  whileHover={{ scale: 1.05 }}
-                />
-                <h3>{captain.name}</h3>
-                <p>{captain.team}</p>
-              </CaptainCard>
-            </SwiperSlide>
-          ))}
-        </CaptainsSwiper>
-      </CaptainsSection>
+          <Swiper
+            modules={[Navigation, Autoplay, Pagination]}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop={true}
+            effect="coverflow"
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={1}
+            breakpoints={{
+              768: { slidesPerView: 3 }
+            }}
+            speed={800}
+            className="max-w-6xl mx-auto px-4 md:px-8"
+          >
+            {captains.map((captain) => (
+              <SwiperSlide key={captain.name}>
+                <motion.div className="flex flex-col items-center p-8 text-center">
+                  <motion.img
+                    src={captain.img}
+                    alt={captain.name}
+                    whileHover={{ scale: 1.05 }}
+                    className="w-64 h-80 object-cover rounded-lg shadow-xl"
+                  />
+                  <h3 className="text-[#214592] text-xl font-bold mt-4">{captain.name}</h3>
+                  <p className="text-gray-600 text-lg mt-2">{captain.team}</p>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
 
-      <InfoSection>
+      <div className="h-[55vh] relative">
         <Swiper
           modules={[Autoplay, EffectFade]}
           effect="fade"
           loop
           autoplay={{ delay: 3000 }}
           speed={1000}
+          className="h-full"
         >
           {banners.map((banner, index) => (
-            <SwiperSlide key={index}>
-              <InfoContent>
-                <BannerImage src={banner.img} alt={banner.title} />
-                <InfoOverlay>
-                  <img src={CCLWhite} alt="CCL Logo" />
-                  <h2>{banner.title}</h2>
-                </InfoOverlay>
-              </InfoContent>
+            <SwiperSlide key={index} className="h-full">
+              <div className="relative h-full">
+                <img src={banner.img} alt={banner.title} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center p-8">
+                  <img src={CCLWhite} alt="CCL Logo" className="w-48 mb-8" />
+                  <h2 className="text-white text-2xl md:text-4xl font-bold text-center">{banner.title}</h2>
+                </div>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
-      </InfoSection>
+      </div>
 
       <ScrollToTop />
-    </PageContainer>
+    </div>
   );
 };
 
