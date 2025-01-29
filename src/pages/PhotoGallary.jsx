@@ -176,7 +176,7 @@ const PhotoCard = styled(motion.div)`
 
   img {
     width: 100%;
-    height: 100%;
+    height: 125%;
     object-fit: cover;
     transition: transform 0.3s ease;
   }
@@ -199,28 +199,33 @@ const PhotoCard = styled(motion.div)`
   }
 `;
 
-const LoadMoreButton = styled(motion.button)`
-  display: block;
-  margin: 40px auto;
-  padding: 12px 32px;
+const PaginationWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+`;
+
+const Pagination = styled.div`
   background: #214592;
+  border-radius: 30px;
+  padding: 8px;
+  display: flex;
+  gap: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+`;
+
+const PageButton = styled.button`
+  background: ${props => props.active ? '#E04837' : 'transparent'};
   color: white;
   border: none;
-  border-radius: 30px;
-  font-size: 16px;
-  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-weight: ${props => props.active ? 'bold' : 'normal'};
 
   &:hover {
-    background: #4F378B;
-    transform: translateY(-2px);
-  }
-
-  &:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-    transform: none;
+    background: ${props => props.active ? '#E04837' : 'rgba(255, 255, 255, 0.1)'};
   }
 `;
 
@@ -262,10 +267,8 @@ const CloseButton = styled(motion.button)`
 `;
 
 const Photo = () => {
-  const [visiblePhotos, setVisiblePhotos] = useState([]);
-  const [page, setPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const photoImports = {
     photo_1, photo_2, photo_3, photo_4, photo_5, photo_6, photo_7, photo_8, photo_9, photo_10,
@@ -276,55 +279,47 @@ const Photo = () => {
     photo_51, photo_52, photo_53, photo_54, photo_55, photo_56, photo_57, photo_58, photo_59, photo_60
   };
 
-  const allPhotos = Array.from({ length: 59 }, (_, i) => ({
+  const allPhotos = [...Array(59).keys()].map(i => ({
     id: i + 1,
     src: photoImports[`photo_${i + 1}`],
     title: `Photo ${i + 1}`,
-    category: i === 17 ? 'trophy' : 'match'
+    category: i === 58 ? 'trophy' : 'match'
   }));
 
-  useEffect(() => {
-    loadMorePhotos();
-  }, []);
+  const totalPages = Math.ceil(allPhotos.length / PHOTOS_PER_PAGE);
+  const startIndex = (currentPage - 1) * PHOTOS_PER_PAGE;
+  const visiblePhotos = allPhotos.slice(startIndex, startIndex + PHOTOS_PER_PAGE);
 
-  const loadMorePhotos = () => {
-    setLoading(true);
-    setTimeout(() => {
-      const startIndex = (page - 1) * PHOTOS_PER_PAGE;
-      const newPhotos = allPhotos.slice(0, startIndex + PHOTOS_PER_PAGE);
-      setVisiblePhotos(newPhotos);
-      setPage(page + 1);
-      setLoading(false);
-    }, 800);
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const hasMorePhotos = visiblePhotos.length < allPhotos.length;
-
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 1 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.05
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 10 },
     show: { 
       opacity: 1, 
       y: 0,
       transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 30
+        type: "tween",
+        duration: 0.2
       }
     }
   };
 
   const matchPhotos = visiblePhotos.filter(photo => photo.category === 'match');
-  const trophyPhoto = visiblePhotos.find(photo => photo.category === 'trophy');
+  const trophyPhoto = allPhotos.find(photo => photo.category === 'trophy');
+  const showTrophy = currentPage === totalPages;
 
   return (
     <GalleryContainer>
@@ -332,19 +327,15 @@ const Photo = () => {
         <GalleryTitle
           src={PHOTOGALLERY}
           alt="Photo Gallery"
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ y: 0, opacity: 1 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ 
-            type: "spring",
-            stiffness: 200,
-            damping: 20
-          }}
         />
         <Wave />
       </HeaderSection>
 
       <GallerySection>
         <PhotoGrid
+          as={motion.div}
           variants={containerVariants}
           initial="hidden"
           animate="show"
@@ -366,11 +357,10 @@ const Photo = () => {
           ))}
         </PhotoGrid>
 
-        {trophyPhoto && (
+        {showTrophy && trophyPhoto && (
           <TrophySection
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3 }}
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
           >
             <PhotoCard
               isTrophy
@@ -387,18 +377,19 @@ const Photo = () => {
           </TrophySection>
         )}
 
-        {hasMorePhotos && (
-          <LoadMoreButton
-            onClick={loadMorePhotos}
-            disabled={loading}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {loading ? 'Loading...' : 'Load More'}
-          </LoadMoreButton>
-        )}
+        <PaginationWrapper>
+          <Pagination>
+            {[...Array(totalPages)].map((_, index) => (
+              <PageButton
+                key={index + 1}
+                active={currentPage === index + 1}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </PageButton>
+            ))}
+          </Pagination>
+        </PaginationWrapper>
       </GallerySection>
 
       <AnimatePresence>
@@ -412,26 +403,26 @@ const Photo = () => {
             <OverlayImage
               src={selectedPhoto.src}
               alt={selectedPhoto.title}
-              initial={{ scale: 0.5 }}
+              initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
-              exit={{ scale: 0.5 }}
-              transition={{ type: "spring", stiffness: 300,damping: 25 }}
-              />
-              <CloseButton
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedPhoto(null);
-                }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                ×
-              </CloseButton>
-            </PhotoOverlay>
-          )}
-        </AnimatePresence>
-      </GalleryContainer>
-    );
-  };
-  
-  export default Photo;
+              exit={{ scale: 0.8 }}
+              transition={{ type: "tween", duration: 0.2 }}
+            />
+            <CloseButton
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedPhoto(null);
+              }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              ×
+            </CloseButton>
+          </PhotoOverlay>
+        )}
+      </AnimatePresence>
+    </GalleryContainer>
+  );
+};
+
+export default Photo;

@@ -107,7 +107,7 @@ const VideoCard = styled(motion.div)`
 
   img {
     width: 100%;
-    height: 100%;
+    height: 125%;
     object-fit: cover;
     transition: opacity 0.3s ease;
   }
@@ -224,21 +224,18 @@ const VideoGallery = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const itemsPerPage = 9;
 
-  // Function to extract YouTube video ID from URL
   const getYoutubeId = (url) => {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
     return match && match[2].length === 11 ? match[2] : null;
   };
 
-  // Function to extract Instagram post ID from URL
   const getInstagramId = (url) => {
     const regExp = /^.*instagram.com\/p\/([^/]+)\/.*/;
     const match = url.match(regExp);
     return match ? match[1] : null;
   };
 
-  // Combined video and Instagram post data
   const videos = [
     {
       id: 1,
@@ -344,8 +341,25 @@ const VideoGallery = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentVideos = videos.slice(startIndex, startIndex + itemsPerPage);
 
+  const handleVideoClick = (video) => {
+    if (video.type === "instagram") {
+      window.open(video.url, '_blank');
+    } else {
+      setSelectedVideo(video);
+    }
+  };
+
   const handleCloseModal = () => {
     setSelectedVideo(null);
+    const iframe = document.querySelector('iframe');
+    if (iframe) {
+      iframe.src = iframe.src;
+    }
+  };
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -380,7 +394,7 @@ const VideoGallery = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            onClick={() => setSelectedVideo(video)}
+            onClick={() => handleVideoClick(video)}
           >
             <img src={video.thumbnail} alt={video.title} loading="lazy" />
           </VideoCard>
@@ -393,7 +407,7 @@ const VideoGallery = () => {
             <PageButton
               key={index + 1}
               active={currentPage === index + 1}
-              onClick={() => setCurrentPage(index + 1)}
+              onClick={() => handlePageChange(index + 1)}
             >
               {index + 1}
             </PageButton>

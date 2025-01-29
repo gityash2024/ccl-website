@@ -301,7 +301,6 @@ const Navbar = () => {
       path: '/ccl2025',
       dropdown: [
         { label: 'SCHEDULE', path: '/schedule' },
-        { label: 'STANDINGS', path: '/standings' }
       ]
     },
     {
@@ -429,6 +428,7 @@ const Navbar = () => {
         </DesktopNav>
 
         <PoweredBy 
+        
           href="https://colladome.com" 
           target="_blank" 
           rel="noopener noreferrer"

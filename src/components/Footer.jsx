@@ -194,10 +194,10 @@ const CTAButton = styled.a`
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Youtube, href: '#', label: 'YouTube' }
+    { icon: Facebook, href: 'https://www.facebook.com/CCL/', label: 'Facebook' },
+    { icon: Twitter, href: 'https://x.com/ccl', label: 'Twitter' },
+    { icon: Instagram, href: 'https://www.instagram.com/cclt20/', label: 'Instagram' },
+    { icon: Youtube, href: 'https://www.youtube.com/ccl', label: 'YouTube' }
   ];
 
   const teamLinks = [
@@ -214,7 +214,7 @@ const Footer = () => {
   const quickLinks = [
     { name: 'News', path: '/news' },
     { name: 'Schedule', path: '/schedule' },
-    { name: 'Photos', path: '/photo' },
+    { name: 'Photos', path: '/photos' },
     { name: 'Videos', path: '/videos' },
     { name: 'About Us', path: '/aboutus' },
     { name: 'Contact Us', path: '/contact' },
@@ -227,7 +227,7 @@ const Footer = () => {
       <FooterContent>
         <FooterGrid>
           <DescriptionSection>
-            <img src={logo} alt="CCL Logo" />
+            <img style={{ width: '150px', height: 'auto' }} src={logo} alt="CCL Logo" />
             <p>
               Celebrity Cricket League, brings together India's biggest entertainment industries-
               Cricket and Films, where India's top actors showcase their cricketing skills giving
@@ -278,15 +278,7 @@ const Footer = () => {
                   <FooterLink to={link.path}>{link.name}</FooterLink>
                 </li>
               ))}
-              {/* <li>
-                <ExternalLink
-                  href="https://colladome.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  COLLADOME <ArrowUpRight />
-                </ExternalLink>
-              </li> */}
+             
             </LinksList>
           </LinksSection>
         </FooterGrid>

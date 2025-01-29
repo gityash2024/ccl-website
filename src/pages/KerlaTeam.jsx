@@ -1,18 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import keralaheadingimage from '../assets/keralaheadingimage.png';
 import KERALASTRIKERS from '../assets/KERALA STRIKERS.png';
 import keralabackground from '../assets/keralabackground.png';
 import bhojpuribackground from '../assets/bhojpuribackground.png';
-import kerala from '../assets/kerala.png';
 import THETEAM from '../assets/THETEAM.png';
+import commanboll from '../assets/commanboll.png';
 import keralateamowners_1 from '../assets/keralateamowners_1.png';
 import keralateamowners_2 from '../assets/keralateamowners_2.png';
 import keralateamowners_3 from '../assets/keralateamowners_3.png';
 import keralateamowners_4 from '../assets/keralateamowners_4.png';
 import keralateamowners_5 from '../assets/keralateamowners_5.png';
-import commanboll from '../assets/commanboll.png';
 import kerala_7 from '../assets/kerala_7.png';
 import kerala_8 from '../assets/kerala_8.png';
 import kerala_9 from '../assets/kerala_9.png';
@@ -45,7 +43,10 @@ const TeamContainer = styled.div`
   &::before {
     content: '';
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(255, 255, 255, 0.9);
     z-index: 1;
   }
@@ -57,39 +58,30 @@ const ContentWrapper = styled.div`
 `;
 
 const TopSection = styled.div`
-  background: linear-gradient(135deg, #F5F5F5 0%, #E8E8FF 100%);
-  padding: 60px 20px;
+  background: #F5F5F5;
+  padding: 40px 20px;
   position: relative;
-  overflow: hidden;
 
   &::before {
     content: '';
     position: absolute;
-    top: -50px;
-    left: -50px;
-    width: 300px;
-    height: 300px;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
     background: url(${commanboll}) no-repeat;
     background-size: contain;
     opacity: 0.1;
-    transform: rotate(-15deg);
   }
 `;
 
-const TeamLogo = styled(motion.img)`
-  max-width: 600px;
-  width: 90%;
-  margin: 0 auto;
-  display: block;
-`;
-
 const Description = styled.p`
-  max-width: 900px;
+  max-width: 1000px;
   margin: 30px auto;
   text-align: center;
   color: #214592;
-  font-size: 1.125rem;
-  line-height: 1.8;
+  font-size: 18px;
+  line-height: 1.6;
   padding: 0 20px;
 `;
 
@@ -97,163 +89,154 @@ const TeamPhoto = styled.div`
   max-width: 1000px;
   margin: 40px auto;
   padding: 0 20px;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   img {
-    width: 100%;
+    width: 75%;
     border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    transition: transform 0.3s ease;
-    
-    &:hover {
-      transform: scale(1.02);
-    }
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 `;
 
 const ManagementSection = styled.div`
-  background: linear-gradient(135deg, #214592 0%, #4F378B 100%);
-  padding: 80px 20px;
-`;
-
-const SectionTitle = styled.h2`
-  color: white;
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 50px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  background: linear-gradient(90deg, #4F378B 0%, #D51256 100%);
+  padding: 60px 20px;
   position: relative;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(${bhojpuribackground}) no-repeat center;
+    background-size: cover;
+    opacity: 0.1;
+  }
 `;
 
-const OwnersGrid = styled.div`
+const Categories = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  // grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const CategoryBlock = styled.div`
+  h2 {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const BrandAmbassadors = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+`;
+
+const ProfileCard = styled(motion.div)`
+  img {
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  h3 {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+`;
+
+const TeamSection = styled.div`
+  padding: 60px 20px;
+  background: white;
+  position: relative;
+`;
+
+const TeamTitle = styled.div`
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 300px;
+    width: 90%;
+  }
+`;
+
+const TeamGrid = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 30px;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 20px;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 992px) {
     grid-template-columns: repeat(3, 1fr);
   }
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
-`;
 
-const OwnerCard = styled(motion.div)`
-  text-align: center;
-  padding: 20px;
-  transition: transform 0.3s ease;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  backdrop-filter: blur(8px);
-
-  .image-container {
-    width: 240px;
-    height: 240px;
-    margin: 0 auto 20px;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  h3 {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0 0 8px;
-  }
-
-  p {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1rem;
-  }
-
-  &:hover {
-    transform: translateY(-5px);
-    
-    img {
-      transform: scale(1.05);
-    }
-  }
-
-  h3 {
-    color: #214592;
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin: 0;
-  }
-
-  p {
-    color: #666;
-    font-size: 0.875rem;
-    margin-top: 4px;
-  }
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-`;
-
-const TeamSection = styled.div`
-  background: linear-gradient(135deg, #F5F5F5 0%, #E8E8FF 100%);
-  padding: 80px 20px;
-  margin: 0;
-`;
-
-const TeamTitle = styled.div`
-  text-align: center;
-  margin-bottom: 60px;
-  
-  img {
-    max-width: 300px;
-    margin: 0 auto;
-  }
-`;
-
-const TeamGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 40px;
-  max-width: 1400px;
-  margin: 0 auto;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url(${kerala}) no-repeat center;
-    background-size: contain;
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: 1;
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
 `;
 
 const PlayerCard = styled(motion.div)`
   background: white;
-  border-radius: 16px;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  position: relative;
-  z-index: 2;
+  max-width: 280px;
+  margin: 0 auto;
+  width: 100%;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 
   .image-container {
     width: 100%;
-    height: 320px;
+    padding-top: 100%;
     position: relative;
     overflow: hidden;
 
@@ -262,55 +245,67 @@ const PlayerCard = styled(motion.div)`
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: 125%;
       object-fit: cover;
       transition: transform 0.3s ease;
     }
   }
 
-  .player-info {
-    padding: 24px;
+  &:hover .image-container img {
+    transform: scale(1.05);
+  }
+
+  .info-container {
+    padding: 15px;
     text-align: center;
-    background: white;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    background: linear-gradient(to right, #4F378B, #D51256);
   }
 
   h3 {
-    color: #214592;
-    font-size: 1.25rem;
+    color: white;
+    font-size: 16px;
+    margin: 0 0 5px;
     font-weight: bold;
-    margin: 0 0 8px;
+    font-family: 'days-one';
   }
 
   p {
-    color: #666;
-    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
     margin: 0;
+    font-family: 'days-one';
   }
+`;
+
+const LoadMoreButton = styled.button`
+  background: linear-gradient(to right, #4F378B, #D51256);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 40px auto 0;
+  display: block;
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease;
 
   &:hover {
-    transform: translateY(-8px);
-
-    .image-container img {
-      transform: scale(1.08);
-    }
+    transform: translateY(-2px);
+    background: linear-gradient(to right, #5F479B, #E51266);
+    box-shadow: 0 4px 15px rgba(79, 55, 139, 0.4);
   }
 
-  h3 {
-    color: #214592;
-    font-size: 1.125rem;
-    font-weight: bold;
-    margin: 0 0 4px;
-  }
-
-  p {
-    color: #666;
-    font-size: 0.875rem;
-    margin: 0;
+  &:active {
+    transform: translateY(0);
   }
 `;
 
 const Kerala = () => {
+  const [visiblePlayers, setVisiblePlayers] = useState(10);
+
   const owners = [
     { img: keralateamowners_1, name: "Mohanlal", role: "Owner" },
     { img: keralateamowners_2, name: "Sripriya", role: "Owner" },
@@ -341,13 +336,19 @@ const Kerala = () => {
     { img: kerala_25, name: "Siddharth Menon", role: "All Rounder" },
     { img: kerala_26, name: "Jean Paul Lal", role: "All Rounder" },
   ];  
+
+  const loadMore = () => {
+    setVisiblePlayers(prev => Math.min(prev + 5, teamMembers.length));
+  };
+
   return (
     <TeamContainer>
       <ContentWrapper>
         <TopSection>
-          <TeamLogo 
+          <motion.img 
             src={KERALASTRIKERS}
             alt="Kerala Strikers"
+            style={{ maxWidth: '600px', margin: '0 auto', display: 'block' }}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
@@ -358,52 +359,71 @@ const Kerala = () => {
             will be known as C3 Kerala Strikers.
           </Description>
           <TeamPhoto>
-            <img src={keralabackground} alt="Kerala Team" />
+            <motion.img 
+              src={keralabackground} 
+              alt="Kerala Team"
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            />
           </TeamPhoto>
         </TopSection>
 
         <ManagementSection>
-          <SectionTitle>Team Owners</SectionTitle>
-          <OwnersGrid>
-            {owners.map((owner, index) => (
-              <OwnerCard
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <div className="image-container">
-                  <img src={owner.img} alt={owner.name} />
-                </div>
-                <h3>{owner.name}</h3>
-                <p>{owner.role}</p>
-              </OwnerCard>
-            ))}
-          </OwnersGrid>
-        </ManagementSection>
-
+  <Categories>
+    <CategoryBlock>
+      <h2>TEAM OWNERS</h2>
+      <BrandAmbassadors>
+        {owners.map((owner, index) => (
+          <ProfileCard
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+          >
+            <img src={owner.img} alt={owner.name} />
+            <h3>{owner.name}</h3>
+          </ProfileCard>
+        ))}
+      </BrandAmbassadors>
+    </CategoryBlock>
+  </Categories>
+</ManagementSection>
         <TeamSection>
           <TeamTitle>
-            <img src={THETEAM} alt="The Team" />
+            <motion.img 
+              src={THETEAM}
+              alt="The Team"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+            />
           </TeamTitle>
+
           <TeamGrid>
-            {teamMembers.map((player, index) => (
-              <PlayerCard
+            {teamMembers.slice(0, visiblePlayers).map((player, index) => (
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="image-container">
-                  <img src={player.img} alt={player.name} />
-                </div>
-                <div className="player-info">
-                  <h3>{player.name}</h3>
-                  <p>{player.role}</p>
-                </div>
-              </PlayerCard>
+                <PlayerCard>
+                  <div className="image-container">
+                    <img src={player.img} alt={player.name} />
+                  </div>
+                  <div className="info-container">
+                    <h3>{player.name}</h3>
+                    <p>{player.role}</p>
+                  </div>
+                </PlayerCard>
+              </motion.div>
             ))}
           </TeamGrid>
+          {visiblePlayers < teamMembers.length && (
+            <LoadMoreButton onClick={loadMore}>
+              Load More Players
+            </LoadMoreButton>
+          )}
         </TeamSection>
       </ContentWrapper>
     </TeamContainer>
@@ -411,4 +431,3 @@ const Kerala = () => {
 };
 
 export default Kerala;
-
