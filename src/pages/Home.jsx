@@ -42,21 +42,47 @@ const PageContainer = styled.div`
 
 const HeroSection = styled.section`
  position: relative;
-  height: 92vh;
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  background-image: url(${background});  // Use template literal with imported image
-  background-size: cover;
-  overflow: hidden;
-  img {
-    max-width: 700px;
-    width: 90%;
-    height: auto;
-  }
-  
+ height: 92vh;
+ width: 100%;
+ display: flex;
+ align-items: flex-start;
+ justify-content: center;
+ background-image: url(${background});
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ margin-bottom: -1px;
 
+ @media (max-width: 1024px) {
+   height: 80vh;
+   background-position: center;
+ }
+
+ @media (max-width: 768px) {
+   height: 70vh;
+   margin-bottom: 0;
+ }
+
+ @media (max-width: 480px) {
+   height: 60vh;
+   background-size: 100% 100%;
+   background-position: top center;
+ }
+
+ img {
+   max-width: 700px;
+   width: 90%;
+   height: auto;
+   object-fit: contain;
+   
+   @media (max-width: 768px) {
+     max-width: 500px;
+   }
+
+   @media (max-width: 480px) {
+     max-width: 350px;
+   }
+ }
 `;
 
 const CaptainsSwiper = styled(Swiper)`
