@@ -176,7 +176,7 @@ const GalleryPage = () => {
   const teams = [
     { img: bengal, name: 'BENGAL TIGERS' },
     { img: chennai, name: 'CHENNAI RHINOS' },
-    { img: kerala, name: 'C3 KERALA STRIKERS' },
+    { img: kerala, name: 'KERALA STRIKERS' },
     { img: mumbai, name: 'MUMBAI HEROES' },
     { img: bhojpuri, name: 'BHOJPURI DABANGGS' },
     { img: karnataka, name: 'KARNATAKA BULLDOZERS' },
@@ -187,7 +187,7 @@ const GalleryPage = () => {
   const captains = [
     { img: Akhil, name: 'AKHIL AKKINENI', team: 'TELUGU WARRIORS' },
     { img: Sudeep, name: 'SUDEEP KICHCHA', team: 'KARNATAKA BULLDOZERS' },
-    { img: indrajith, name: 'INDRAJITH SUKUMARAN', team: 'C3 KERALA STRIKERS' },
+    { img: indrajith, name: 'INDRAJITH SUKUMARAN', team: 'KERALA STRIKERS' },
     { img: Sonu, name: 'SONU SOOD', team: 'PUNJAB DE SHER' }
   ];
 

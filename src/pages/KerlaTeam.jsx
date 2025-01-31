@@ -122,15 +122,8 @@ const ManagementSection = styled.div`
 const Categories = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  // grid-template-columns: 1fr 2fr;
-  gap: 40px;
   position: relative;
   z-index: 2;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
 `;
 
 const CategoryBlock = styled.div`
@@ -142,25 +135,35 @@ const CategoryBlock = styled.div`
     text-transform: uppercase;
     text-align: center;
   }
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 const BrandAmbassadors = styled.div`
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
 `;
-
 const ProfileCard = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 180px;
+  margin-bottom: 20px;
+
   img {
     width: 180px;
     height: 180px;
+    object-fit: contain; // Changed from cover to contain
+    background: white; // White background
     border-radius: 10px;
     margin-bottom: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px; // Add padding to prevent cutting
+    box-sizing: border-box; // Ensure padding is included in dimensions
   }
 
   h3 {
@@ -168,6 +171,17 @@ const ProfileCard = styled(motion.div)`
     font-size: 16px;
     font-weight: bold;
     text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    width: calc(50% - 15px);
+    
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1/1;
+      object-fit: contain;
+    }
   }
 `;
 
@@ -356,7 +370,7 @@ const Kerala = () => {
           <Description>
             The team Kerala Strikers is owned by Padma Shri Mohanlal, Mr. Rajkumar Sethupathy, 
             Mrs. Sripriya Rajkumar, Mr. PM Shaji and Mr. Jaison. Season 2023, Kerala Strikers 
-            will be known as C3 Kerala Strikers.
+            will be known as Kerala Strikers.
           </Description>
           <TeamPhoto>
             <motion.img 
