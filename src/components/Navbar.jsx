@@ -280,6 +280,17 @@ const Navbar = () => {
     setMobileDropdowns({});
   }, [location]);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   const navItems = [
     { label: 'HOME', path: '/home' },
     {
@@ -315,189 +326,138 @@ const Navbar = () => {
     { label: 'ABOUT US', path: '/aboutus' }
   ];
 
-  const dropdownVariants = {
-    hidden: { 
-      opacity: 0,
-      y: -10,
-      scale: 0.95,
-    },
-    visible: { 
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 30
-      }
-    },
-    exit: {
-      opacity: 0,
-      y: -10,
-      scale: 0.95,
-      transition: {
-        duration: 0.2
-      }
-    }
-  };
-
-  const mobileNavVariants = {
-    hidden: { x: "100%" },
-    visible: { 
-      x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 30
-      }
-    },
-    exit: {
-      x: "100%",
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
-
-  const mobileDropdownVariants = {
-    hidden: { height: 0 },
-    visible: { 
-      height: "auto",
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
-    }
-  };
-
   return (
-    <NavContainer $isScrolled={isScrolled}>
-      <NavWrapper>
-        <LogoContainer to="/">
-          <img src={logo} alt="CCL Logo" />
-        </LogoContainer>
+    <nav className={`fixed top-0 left-0 right-0 h-20 z-[9999] transition-all duration-300 ${isScrolled ? 'bg-[#214592]/95 backdrop-blur-md' : 'bg-[#214592]'}`}>
+      <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between relative">
+        <Link to="/" className="flex items-center z-[9999]">
+          <img src={logo} alt="CCL Logo" className="h-12 w-auto transition-transform duration-300 hover:scale-105" />
+        </Link>
 
-        <DesktopNav>
+        <div className="hidden md:flex items-center gap-2 ml-8">
           {navItems.map((item) => (
-            <NavItem 
-              key={item.label}
+            <div key={item.label} className="relative"
               onMouseEnter={() => setActiveDropdown(item.label)}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
+              onMouseLeave={() => setActiveDropdown(null)}>
               {item.dropdown ? (
                 <>
-                  <DropdownButton 
-                    className={item.dropdown.some(dropItem => 
-                      location.pathname === dropItem.path
-                    ) ? 'active' : ''}
-                  >
+                  <button className={`flex items-center gap-1 px-4 py-2 text-white font-semibold hover:text-[#E04837] transition-colors ${item.dropdown.some(dropItem => location.pathname === dropItem.path) ? 'text-[#E04837]' : ''}`}>
                     {item.label}
-                    <ChevronDown size={16} />
-                  </DropdownButton>
+                    <ChevronDown size={16} className="transition-transform duration-300" />
+                  </button>
                   <AnimatePresence>
                     {activeDropdown === item.label && (
-                      <DropdownContent
-                        variants={dropdownVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
+                      <motion.div
+                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        className="absolute top-full left-0 min-w-[260px] bg-white rounded-lg p-2 shadow-lg origin-top z-50"
                       >
                         {item.dropdown.map((dropItem) => (
-                          <DropdownLink
+                          <Link
                             key={dropItem.path}
                             to={dropItem.path}
-                            className={location.pathname === dropItem.path ? 'active' : ''}
+                            className={`block px-4 py-3 text-[#214592] font-medium rounded-md transition-all hover:bg-gray-50 hover:text-[#E04837] hover:translate-x-1 ${location.pathname === dropItem.path ? 'bg-[#E04837] text-white' : ''}`}
                           >
                             {dropItem.label}
-                          </DropdownLink>
+                          </Link>
                         ))}
-                      </DropdownContent>
+                      </motion.div>
                     )}
                   </AnimatePresence>
                 </>
               ) : (
-                <NavLink 
+                <Link
                   to={item.path}
-                  className={location.pathname === item.path ? 'active' : ''}
+                  className={`relative px-4 py-2 text-white font-semibold hover:text-[#E04837] transition-colors ${location.pathname === item.path ? 'text-[#E04837] after:content-[""] after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-[#E04837] after:rounded after:animate-slideIn' : ''}`}
                 >
                   {item.label}
-                </NavLink>
+                </Link>
               )}
-            </NavItem>
+            </div>
           ))}
-        </DesktopNav>
+        </div>
 
-        <PoweredBy 
-        
-          href="https://colladome.com" 
-          target="_blank" 
+        <a href="https://colladome.com"
+          target="_blank"
           rel="noopener noreferrer"
+          className="hidden lg:flex items-center px-4 py-2 text-white text-sm bg-white/10 rounded-lg transition-all hover:bg-[#E04837] hover:-translate-y-0.5 ml-auto"
         >
-          Powered by <span>COLLADOME </span>
-        </PoweredBy>
+          Powered by <span className="font-bold ml-1">COLLADOME</span>
+        </a>
 
-        <MobileMenuButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden flex p-2 text-white z-[9999]"
+        >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </MobileMenuButton>
+        </button>
 
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <MobileNav
-              variants={mobileNavVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed md:hidden top-20 left-0 right-0 bottom-0 bg-[#214592] overflow-y-auto z-[9998] h-[calc(100vh-5rem)]"
             >
-              {navItems.map((item) => (
-                <MobileNavItem key={item.label}>
-                  {item.dropdown ? (
-                    <>
-                      <MobileDropdownButton
-                        $isOpen={mobileDropdowns[item.label]}
-                        onClick={() => setMobileDropdowns(prev => ({
-                          ...prev,
-                          [item.label]: !prev[item.label]
-                        }))}
+              <div className="p-4 space-y-2">
+                {navItems.map((item) => (
+                  <div key={item.label} className="border-b border-white/10">
+                    {item.dropdown ? (
+                      <>
+                        <button
+                          onClick={() => setMobileDropdowns(prev => ({
+                            ...prev,
+                            [item.label]: !prev[item.label]
+                          }))}
+                          className="flex items-center justify-between w-full p-4 text-white font-semibold"
+                        >
+                          {item.label}
+                          <ChevronDown
+                            size={20}
+                            className={`transition-transform duration-300 ${mobileDropdowns[item.label] ? 'rotate-180' : ''}`}
+                          />
+                        </button>
+                        <AnimatePresence>
+                          {mobileDropdowns[item.label] && (
+                            <motion.div
+                              initial={{ height: 0 }}
+                              animate={{ height: "auto" }}
+                              exit={{ height: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="bg-black/10 overflow-hidden p-2"
+                            >
+                              {item.dropdown.map((dropItem) => (
+                                <Link
+                                  key={dropItem.path}
+                                  to={dropItem.path}
+                                  className={`block p-4 text-white font-semibold transition-colors ${location.pathname === dropItem.path ? 'text-[#E04837] bg-[#E04837]/10 rounded-lg' : ''}`}
+                                >
+                                  {dropItem.label}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      <Link
+                        to={item.path}
+                        className={`block p-4 text-white font-semibold transition-colors ${location.pathname === item.path ? 'text-[#E04837] bg-[#E04837]/10 rounded-lg' : ''}`}
                       >
                         {item.label}
-                        <ChevronDown size={20} />
-                      </MobileDropdownButton>
-                      <AnimatePresence>
-                        {mobileDropdowns[item.label] && (
-                          <MobileDropdown
-                            variants={mobileDropdownVariants}
-                            initial="hidden"
-                            animate="visible"
-                            exit="hidden"
-                          >
-                            {item.dropdown.map((dropItem) => (
-                              <MobileNavLink
-                                key={dropItem.path}
-                                to={dropItem.path}
-                                className={location.pathname === dropItem.path ? 'active' : ''}
-                              >
-                                {dropItem.label}
-                              </MobileNavLink>
-                            ))}
-                          </MobileDropdown>
-                        )}
-                      </AnimatePresence>
-                    </>
-                  ) : (
-                    <MobileNavLink
-                      to={item.path}
-                      className={location.pathname === item.path ? 'active' : ''}
-                    >
-                      {item.label}
-                    </MobileNavLink>
-                  )}
-                </MobileNavItem>
-              ))}
-            </MobileNav>
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           )}
         </AnimatePresence>
-      </NavWrapper>
-    </NavContainer>
+      </div>
+    </nav>
   );
 };
 

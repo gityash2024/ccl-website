@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, EffectFade, Pagination } from 'swiper/modules';
@@ -345,121 +344,124 @@ const HomePage = () => {
   ];
 
   return (
-    <PageContainer>
-      <HeroSection>
-        {/* <motion.img
-          src={Januaryonwards}
-          alt="January 31st 2025 Onwards"
+    <div className="min-h-screen bg-white overflow-hidden">
+      <div className="relative h-screen w-full bg-cover bg-center" style={{ backgroundImage: `url(${background})` }}>
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        /> */}
-      </HeroSection>
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 flex items-center justify-center px-4 md:px-6 lg:px-8"
+        >
+        </motion.div>
+      </div>
 
-      <TeamsSection>
-        <SectionTitle>
+      <div className="py-16 md:py-24 bg-white">
+        <div className="relative flex items-center justify-center gap-8 mb-16">
+          <div className="hidden md:block h-0.5 bg-[#214592] flex-1 max-w-sm"></div>
           <motion.img
             src={cclteams}
             alt="CCL 2025 Teams"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="max-w-sm w-full"
           />
-        </SectionTitle>
+          <div className="hidden md:block h-0.5 bg-[#214592] flex-1 max-w-sm"></div>
+        </div>
 
-        <TeamsGrid>
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto px-4 md:px-6">
           {teams.map((team, index) => (
-            <TeamCard
+            <motion.div
               key={team.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
+              className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center gap-6 hover:transform hover:-translate-y-2 transition-transform duration-300"
             >
-              <img src={team.img} alt={team.name} />
-              <p>{team.name}</p>
-            </TeamCard>
+              <img src={team.img} alt={team.name} className="w-32 h-32 object-contain" />
+              <p className="text-[#214592] font-semibold text-center">{team.name}</p>
+            </motion.div>
           ))}
-        </TeamsGrid>
-      </TeamsSection>
+        </motion.div>
+      </div>
 
-      <CaptainsSection>
-        <SectionTitle>
-          <motion.img
-            src={teamCaptain}
-            alt="Team Captains"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          />
-        </SectionTitle>
+      <div className="py-16 md:py-24 relative bg-cover bg-center" style={{ backgroundImage: `url(${bhojpuribackground_3})` }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-[rgba(255,246,214,0.9)] to-[rgba(147,112,219,0.95)]"></div>
+        
+        <div className="relative">
+          <div className="flex items-center justify-center gap-8 mb-16">
+            <div className="hidden md:block h-0.5 bg-[#214592] flex-1 max-w-sm"></div>
+            <motion.img
+              src={teamCaptain}
+              alt="Team Captains"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-sm w-full"
+            />
+            <div className="hidden md:block h-0.5 bg-[#214592] flex-1 max-w-sm"></div>
+          </div>
 
-        <CaptainsSwiper
-  modules={[Navigation, Autoplay, Pagination]}
-  navigation
-  pagination={{ clickable: true }}
-  autoplay={{ 
-    delay: 3000,
-    disableOnInteraction: false,
-  }}
-  loop={true}
-  effect="coverflow"
-  grabCursor={true}
-  centeredSlides={true}
-  slidesPerView={3}
-  coverflowEffect={{
-    rotate: 0,
-    stretch: 0,
-    depth: 100,
-    modifier: 1,
-    slideShadows: false,
-  }}
-  speed={800}
-  breakpoints={{
-    320: { slidesPerView: 1 },
-    768: { slidesPerView: 3 },
-  }}
->
-          {captains.map((captain, index) => (
-            <SwiperSlide key={captain.name}>
-              <CaptainCard>
-                <motion.img
-                  src={captain.img}
-                  alt={captain.name}
-                  whileHover={{ scale: 1.05 }}
-                />
-                <h3>{captain.name}</h3>
-                <p>{captain.team}</p>
-              </CaptainCard>
-            </SwiperSlide>
-          ))}
-        </CaptainsSwiper>
-      </CaptainsSection>
+          <Swiper
+            modules={[Navigation, Autoplay, Pagination]}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop={true}
+            effect="coverflow"
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={1}
+            breakpoints={{
+              768: { slidesPerView: 3 }
+            }}
+            speed={800}
+            className="max-w-6xl mx-auto px-4 md:px-8"
+          >
+            {captains.map((captain) => (
+              <SwiperSlide key={captain.name}>
+                <motion.div className="flex flex-col items-center p-8 text-center">
+                  <motion.img
+                    src={captain.img}
+                    alt={captain.name}
+                    whileHover={{ scale: 1.05 }}
+                    className="w-64 h-80 object-cover rounded-lg shadow-xl"
+                  />
+                  <h3 className="text-[#214592] text-xl font-bold mt-4">{captain.name}</h3>
+                  <p className="text-gray-600 text-lg mt-2">{captain.team}</p>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
 
-      <InfoSection>
+      <div className="h-[55vh] relative">
         <Swiper
           modules={[Autoplay, EffectFade]}
           effect="fade"
           loop
           autoplay={{ delay: 3000 }}
           speed={1000}
+          className="h-full"
         >
           {banners.map((banner, index) => (
-            <SwiperSlide key={index}>
-              <InfoContent>
-                <BannerImage src={banner.img} alt={banner.title} />
-                <InfoOverlay>
-                  <img src={CCLWhite} alt="CCL Logo" />
-                  <h2>{banner.title}</h2>
-                </InfoOverlay>
-              </InfoContent>
+            <SwiperSlide key={index} className="h-full">
+              <div className="relative h-full">
+                <img src={banner.img} alt={banner.title} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center p-8">
+                  <img src={CCLWhite} alt="CCL Logo" className="w-48 mb-8" />
+                  <h2 className="text-white text-2xl md:text-4xl font-bold text-center">{banner.title}</h2>
+                </div>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
-      </InfoSection>
+      </div>
 
       <ScrollToTop />
-    </PageContainer>
+    </div>
   );
 };
 

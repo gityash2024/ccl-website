@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import background from '../assets/background.png';
@@ -58,6 +58,10 @@ const FormContainer = styled(motion.div)`
   max-width: 600px;
   margin: 0 auto;
   border: 1px solid rgba(255, 255, 255, 0.2);
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
 `;
 
 const FormGroup = styled.div`
@@ -156,74 +160,45 @@ const ErrorMessage = styled(motion.div)`
 `;
 
 const ContactUs = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-
+  const formRef = useRef();
   const [status, setStatus] = useState({
     submitting: false,
     success: false,
-    error: false,
+    error: false
   });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ submitting: true, success: false, error: false });
 
     try {
-      // Replace with your Google Apps Script deployment URL
-      const scriptUrl = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
-      
-      const response = await fetch(scriptUrl, {
+      const formData = new FormData(e.target);
+      formData.append('to_email', 'gityash2024@gmail.com');
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify(formData),
+        body: formData
       });
 
-      setStatus({
-        submitting: false,
-        success: true,
-        error: false,
-      });
+      const data = await response.json();
 
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-      });
-
-      setTimeout(() => {
-        setStatus(prev => ({ ...prev, success: false }));
-      }, 5000);
-
+      if (data.success) {
+        setStatus({ submitting: false, success: true, error: false });
+        e.target.reset();
+      } else {
+        throw new Error('Something went wrong');
+      }
     } catch (error) {
       console.error('Error:', error);
-      setStatus({
-        submitting: false,
-        success: false,
-        error: true,
-      });
-
-      setTimeout(() => {
-        setStatus(prev => ({ ...prev, error: false }));
-      }, 5000);
+      setStatus({ submitting: false, success: false, error: true });
     }
+
+    setTimeout(() => {
+      setStatus(prev => ({ ...prev, success: false, error: false }));
+    }, 3000);
   };
 
   return (
@@ -269,14 +244,16 @@ const ContactUs = () => {
             </ErrorMessage>
           )}
 
-          <form onSubmit={handleSubmit}>
+          <form ref={formRef} onSubmit={handleSubmit}>
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+            <input type="hidden" name="subject" value="New Contact Form Submission - CCL" />
+            <input type="hidden" name="from_name" value="CCL Website Contact" />
+            
             <FormGroup>
               <Label>Name</Label>
               <Input
                 type="text"
                 name="name"
-                value={formData.name}
-                onChange={handleChange}
                 placeholder="Enter your name"
                 required
               />
@@ -287,8 +264,6 @@ const ContactUs = () => {
               <Input
                 type="email"
                 name="email"
-                value={formData.email}
-                onChange={handleChange}
                 placeholder="Enter your email"
                 required
               />
@@ -299,8 +274,6 @@ const ContactUs = () => {
               <Input
                 type="tel"
                 name="phone"
-                value={formData.phone}
-                onChange={handleChange}
                 placeholder="Enter your phone number"
                 required
               />
@@ -311,8 +284,6 @@ const ContactUs = () => {
               <Input
                 type="text"
                 name="subject"
-                value={formData.subject}
-                onChange={handleChange}
                 placeholder="Enter message subject"
                 required
               />
@@ -322,8 +293,6 @@ const ContactUs = () => {
               <Label>Message</Label>
               <TextArea
                 name="message"
-                value={formData.message}
-                onChange={handleChange}
                 placeholder="Enter your message"
                 required
               />
