@@ -205,7 +205,7 @@ const Footer = () => {
     { name: 'BHOJPURI DABANGGS', path: '/bhojpuri' },
     { name: 'CHENNAI RHINOS', path: '/chennai' },
     { name: 'KARNATAKA BULLDOZERS', path: '/karnataka' },
-    { name: 'C3 KERALA STRIKERS', path: '/kerala' },
+    { name: 'KERALA STRIKERS', path: '/kerala' },
     { name: 'MUMBAI HEROES', path: '/mumbai' },
     { name: 'PUNJAB DE SHER', path: '/punjab' },
     { name: 'TELUGU WARRIORS', path: '/telugu' }

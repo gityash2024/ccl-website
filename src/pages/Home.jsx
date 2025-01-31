@@ -29,10 +29,11 @@ import teamCaptain from '../assets/teamCaptain.png';
 import AryaCaptain from '../assets/AryaCaptain.jpg';
 import bhojpuri_3 from '../assets/bhojpuri_3.png';
 import jisshu from '../assets/jisshu.png';
-import mumai_3 from '../assets/mumai_3.jpg';
+import mumai_3 from '../assets/saquib.jpg';
 import bhojpuribackground_3 from '../assets/bhojpuribackground_3.png';
 import corousel1 from '../assets/corousel1.png';
 import corousel2 from '../assets/corousel2.png';
+import styled from 'styled-components';
 
 const PageContainer = styled.div`
   width: 100%;
@@ -247,7 +248,6 @@ const CaptainCard = styled(motion.div)`
   img {
     width: 250px;
     height: 300px;
-    object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   }
@@ -285,7 +285,6 @@ const InfoContent = styled.div`
 const BannerImage = styled.img`
   width: 100%;
   height: 125%;
-  object-fit: cover;
 `;
 
 const InfoOverlay = styled.div`
@@ -318,7 +317,7 @@ const HomePage = () => {
   const teams = [
     { img: bengal, name: 'BENGAL TIGERS' },
     { img: chennai, name: 'CHENNAI RHINOS' },
-    { img: kerala, name: 'C3 KERALA STRIKERS' },
+    { img: kerala, name: 'KERALA STRIKERS' },
     { img: mumbai, name: 'MUMBAI HEROES' },
     { img: bhojpuri, name: 'BHOJPURI DABANGGS' },
     { img: karnataka, name: 'KARNATAKA BULLDOZERS' },
@@ -329,11 +328,11 @@ const HomePage = () => {
   const captains = [
     { img: Akhil, name: 'AKHIL AKKINENI', team: 'TELUGU WARRIORS' },
     { img: Sudeep, name: 'SUDEEP KICHCHA', team: 'KARNATAKA BULLDOZERS' },
-    { img: indrajith, name: 'INDRAJITH SUKUMARAN', team: 'C3 KERALA STRIKERS' },
+    { img: indrajith, name: 'INDRAJITH SUKUMARAN', team: 'KERALA STRIKERS' },
     { img: AryaCaptain, name: 'ARYA', team: 'CHENNAI RHINOS' },
     { img: bhojpuri_3, name: 'MANOJ TIWARI', team: 'BHOJPURI DABANGGS' },
     { img: jisshu, name: 'JISSHU SENGUPTA', team: 'BENGAL TIGERS' },
-    { img: mumai_3, name: 'RITEISH DESHMUKH', team: 'MUMBAI HEROES' },
+    { img: mumai_3, name: 'SAQIB SALEEM', team: 'MUMBAI HEROES' },
     { img: Sonu, name: 'SONU SOOD', team: 'PUNJAB DE SHER' }
   ];
 
@@ -426,7 +425,7 @@ const HomePage = () => {
                     src={captain.img}
                     alt={captain.name}
                     whileHover={{ scale: 1.05 }}
-                    className="w-64 h-80 object-cover rounded-lg shadow-xl"
+                    className="w-64 h-80  rounded-lg shadow-xl"
                   />
                   <h3 className="text-[#214592] text-xl font-bold mt-4">{captain.name}</h3>
                   <p className="text-gray-600 text-lg mt-2">{captain.team}</p>
@@ -449,7 +448,7 @@ const HomePage = () => {
           {banners.map((banner, index) => (
             <SwiperSlide key={index} className="h-full">
               <div className="relative h-full">
-                <img src={banner.img} alt={banner.title} className="w-full h-full object-cover" />
+                <img src={banner.img} alt={banner.title} className="w-full h-full " />
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center p-8">
                   <img src={CCLWhite} alt="CCL Logo" className="w-48 mb-8" />
                   <h2 className="text-white text-2xl md:text-4xl font-bold text-center">{banner.title}</h2>
