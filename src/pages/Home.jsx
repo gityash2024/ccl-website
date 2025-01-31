@@ -34,6 +34,286 @@ import bhojpuribackground_3 from '../assets/bhojpuribackground_3.png';
 import corousel1 from '../assets/corousel1.png';
 import corousel2 from '../assets/corousel2.png';
 
+const PageContainer = styled.div`
+  width: 100%;
+  overflow: hidden;
+`;
+
+const HeroSection = styled.section`
+ position: relative;
+ height: 92vh;
+ width: 100%;
+ display: flex;
+ align-items: flex-start;
+ justify-content: center;
+ background-image: url(${background});
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ margin-bottom: -1px;
+
+ @media (max-width: 1024px) {
+   height: 80vh;
+   background-position: center;
+ }
+
+ @media (max-width: 768px) {
+   height: 70vh;
+   margin-bottom: 0;
+ }
+
+ @media (max-width: 480px) {
+   height: 60vh;
+   background-size: 100% 100%;
+   background-position: top center;
+ }
+
+ img {
+   max-width: 700px;
+   width: 90%;
+   height: auto;
+   object-fit: contain;
+   
+   @media (max-width: 768px) {
+     max-width: 500px;
+   }
+
+   @media (max-width: 480px) {
+     max-width: 350px;
+   }
+ }
+`;
+
+const CaptainsSwiper = styled(Swiper)`
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+
+  .swiper-wrapper {
+    align-items: center;
+  }
+
+  .swiper-slide {
+    transition: all 0.6s ease;
+    transform: scale(0.7);
+    opacity: 0.5;
+    filter: blur(1px);
+  }
+
+  .swiper-slide-active {
+    transform: scale(1);
+    opacity: 1;
+    z-index: 2;
+    filter: blur(0);
+  }
+
+  .swiper-slide-prev,
+  .swiper-slide-next {
+    transform: scale(0.85);
+    opacity: 0.8;
+    filter: blur(0.5px);
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    color: #214592;
+    
+    &::after {
+      font-size: 24px;
+    }
+
+    &:hover {
+      background: white;
+    }
+  }
+`;
+
+const TeamsSection = styled.section`
+  padding: 4rem 0;
+  background: white;
+  position: relative;
+`;
+
+const SectionTitle = styled.div`
+  text-align: center;
+  position: relative;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  img {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  &::before, &::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: #214592;
+    max-width: 300px;
+  }
+`;
+
+const TeamsGrid = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const TeamCard = styled(motion.div)`
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  min-height: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+  }
+
+  p {
+    color: #214592;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+  }
+`;
+
+const CaptainsSection = styled.section`
+  padding: 4rem 0;
+  background: url(${bhojpuribackground_3});
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 246, 214, 0.9) 20%,
+      rgba(255, 182, 193, 0.9) 60%,
+      rgba(147, 112, 219, 0.95) 100%
+    );
+  }
+`;
+
+
+const CaptainCard = styled(motion.div)`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 1rem;
+
+  img {
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  h3 {
+    color: #214592;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: #666;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+`;
+
+const InfoSection = styled.section`
+  height: 55vh;
+  position: relative;
+  overflow: hidden;
+
+  .swiper-slide {
+    height: 55vh;
+    width: 100%;
+  }
+`;
+const InfoContent = styled.div`
+  position: relative;
+  height: 100%;
+`;
+
+const BannerImage = styled.img`
+  width: 100%;
+  height: 125%;
+  object-fit: cover;
+`;
+
+const InfoOverlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 2;
+
+  img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+  }
+`;
+
 const HomePage = () => {
   const teams = [
     { img: bengal, name: 'BENGAL TIGERS' },
