@@ -124,18 +124,6 @@ const ManagementSection = styled.div`
   padding: 40px 20px;
 `;
 
-const Categories = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
-  gap: 40px;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
 const CategoryBlock = styled.div`
   h2 {
     color: white;
@@ -146,25 +134,65 @@ const CategoryBlock = styled.div`
   }
 `;
 
+const Categories = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 40px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
 const BrandAmbassadors = styled.div`
   display: flex;
   gap: 20px;
   justify-content: center;
+  flex-wrap: wrap;
+
+  @media (max-width: 480px) {
+    gap: 15px;
+  }
 `;
 
 const ProfileCard = styled(motion.div)`
+  text-align: center;
+  width: 180px;
+  margin-bottom: 15px;
+
   img {
     width: 180px;
     height: 180px;
+    object-fit: contain;
+    background: white;
     border-radius: 10px;
     margin-bottom: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    box-sizing: border-box;
   }
 
   h3 {
     color: white;
     font-size: 16px;
     font-weight: bold;
+  }
+
+  @media (max-width: 480px) {
+    width: calc(50% - 10px);
+    
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1/1;
+      object-fit: contain;
+    }
   }
 `;
 

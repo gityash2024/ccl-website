@@ -98,13 +98,7 @@ const ManagementSection = styled.div`
   padding: 40px 20px;
 `;
 
-const Categories = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-`;
+
 
 const CategoryBlock = styled.div`
   h2 {
@@ -116,21 +110,45 @@ const CategoryBlock = styled.div`
   }
 `;
 
+const Categories = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+`;
+
 const ProfileGrid = styled.div`
   display: flex;
   justify-content: center;
   gap: 30px;
+  flex-wrap: wrap;
+
+  @media (max-width: 480px) {
+    gap: 20px;
+  }
 `;
 
 const ProfileCard = styled(motion.div)`
   text-align: center;
+  width: 180px;
+  margin-bottom: 15px;
 
   img {
     width: 180px;
     height: 180px;
+    object-fit: contain;
+    background: white;
     border-radius: 10px;
     margin-bottom: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    box-sizing: border-box;
   }
 
   h3 {
@@ -138,8 +156,18 @@ const ProfileCard = styled(motion.div)`
     font-size: 16px;
     font-weight: bold;
   }
-`;
 
+  @media (max-width: 480px) {
+    width: calc(50% - 10px);
+    
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1/1;
+      object-fit: contain;
+    }
+  }
+`;
 const TeamSection = styled.div`
   max-width: 1200px;
   margin: 40px auto;
