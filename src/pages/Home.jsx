@@ -13,7 +13,7 @@ import cclbackground from '../assets/cclbackground.png';
 import CCLWhite from '../assets/CCLWhite.png';
 import bengal from '../assets/bengal.png';
 import chennai from '../assets/chennai.png';
-import kerala from '../assets/kerala.png';
+import kerala from '../assets/KeralaLogo.png';
 import mumbai from '../assets/mumbai.png';
 import bhojpuri from '../assets/bhojpuri.png';
 import karnataka from '../assets/karnataka.png';
