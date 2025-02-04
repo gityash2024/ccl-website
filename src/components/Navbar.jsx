@@ -301,7 +301,7 @@ const Navbar = () => {
         { label: 'BHOJPURI DABANGGS', path: '/bhojpuri' },
         { label: 'CHENNAI RHINOS', path: '/chennai' },
         { label: 'KARNATAKA BULLDOZERS', path: '/karnataka' },
-        { label: 'C3 KERALA STRIKERS', path: '/kerala' },
+        { label: 'KERALA STRIKERS', path: '/kerala' },
         { label: 'MUMBAI HEROES', path: '/mumbai' },
         { label: 'PUNJAB DE SHER', path: '/punjab' },
         { label: 'TELUGU WARRIORS', path: '/telugu' }
