@@ -19,7 +19,7 @@ import bhojpuri from '../assets/bhojpuri.png';
 import karnataka from '../assets/karnataka.png';
 import punjab from '../assets/punjab.png';
 import telugu from '../assets/telugu.png';
-import Akhil from '../assets/Akhil.png';
+import Akhil from '../assets/Akhil.jpg';
 import Sudeep from '../assets/Sudeep.png';
 import indrajith from '../assets/indrajith.png';
 import Sonu from '../assets/Sonu.png';

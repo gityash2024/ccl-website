@@ -26,6 +26,10 @@ import bhojpuri_8 from '../assets/bhojpuri_8.jpg';
 import bhojpuri_9 from '../assets/bhojpuri_9.jpg';
 import bhojpuri_10 from '../assets/bhojpuri_10.jpg';
 import bhojpuri_11 from '../assets/bhojpuri_11.jpg';
+import KanishkSheel from '../assets/KanishkSheel.png';
+import RahulMishra from '../assets/RahulMishra.png';
+import sushilmalik from '../assets/sushilmalik.png';
+import SushilSharma from '../assets/SushilSharma.png';
 
 const TeamContainer = styled.div`
   width: 100%;
@@ -322,11 +326,11 @@ const Bhojpuri = () => {
   const [visiblePlayers, setVisiblePlayers] = useState(10);
 
   const management = [
-    { img: owners_1, name: "Mr. Sachin J Joshi", role: "OWNER" },
-    { img: owners_2, name: "Venkatesh", role: "MENTOR" },
-    { img: owners_3, name: "Venkatesh", role: "MENTOR" },
-    { img: owners_4, name: "Venkatesh", role: "MENTOR" },
-    { img: teamAB, name: "REGINA CASSANDRA", role: "BRAND AMBASSADOR" }
+    { img: KanishkSheel, name: "Kanishk Sheel", role: "OWNER" },
+    { img: RahulMishra, name: "Rahul Mishra", role: "MENTOR" },
+    { img: sushilmalik, name: "sushil Malik", role: "MENTOR" },
+    { img: SushilSharma, name: "Sushil Sharma", role: "MENTOR" },
+    // { img: teamAB, name: "REGINA CASSANDRA", role: "BRAND AMBASSADOR" }
   ];
 
   const teamMembers = [
