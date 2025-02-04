@@ -3,6 +3,27 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import background from '../assets/background.png';
 
+const LoaderOverlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+const Loader = styled(motion.div)`
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #214592;
+  border-radius: 50%;
+`;
+
 const ContactContainer = styled.div`
   min-height: 100vh;
   background: url(${background}) no-repeat center center;
@@ -173,19 +194,25 @@ const ContactUs = () => {
 
     try {
       const formData = new FormData(e.target);
-      formData.append('to_email', 'gityash2024@gmail.com');
+      const data = {
+        timestamp: new Date().toISOString(),
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        subject: formData.get('subject'),
+        message: formData.get('message')
+      };
 
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbz6rhr-COZ0g4dDG5ujl498mYdCADyU6tsK257s61gnqRCUs8_VVZ91cXovnjmlh9pL/exec', {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
-          'Accept': 'application/json'
+          'Content-Type': 'text/plain',
         },
-        body: formData
+        body: JSON.stringify(data)
       });
 
-      const data = await response.json();
-
-      if (data.success) {
+      if (response.type === 'opaque' || response.ok) {
         setStatus({ submitting: false, success: true, error: false });
         e.target.reset();
       } else {
@@ -203,6 +230,18 @@ const ContactUs = () => {
 
   return (
     <ContactContainer>
+      {status.submitting && (
+        <LoaderOverlay
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <Loader
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          />
+        </LoaderOverlay>
+      )}
       <ContentWrapper>
         <Title
           initial={{ opacity: 0, y: 20 }}
@@ -245,10 +284,6 @@ const ContactUs = () => {
           )}
 
           <form ref={formRef} onSubmit={handleSubmit}>
-            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
-            <input type="hidden" name="subject" value="New Contact Form Submission - CCL" />
-            <input type="hidden" name="from_name" value="CCL Website Contact" />
-            
             <FormGroup>
               <Label>Name</Label>
               <Input
