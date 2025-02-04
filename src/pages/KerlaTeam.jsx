@@ -274,7 +274,7 @@ const PlayerCard = styled(motion.div)`
       top: 0;
       left: 0;
       width: 100%;
-      height: 125%;
+      height: 150%;
       object-fit: cover;
       transition: transform 0.3s ease;
     }
