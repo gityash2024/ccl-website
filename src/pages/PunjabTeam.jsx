@@ -27,6 +27,7 @@ import punjab_14 from '../assets/punjab_14.jpg';
 import punjab_15 from '../assets/punjab_15.jpg';
 import punjabteambackgroud from '../assets/punjabteambackgroud.png';
 import punjabheadingimage from '../assets/punjabheadingimage.png';
+import SEO from '../components/SEO';
 
 const TitleSection = styled.div`
   text-align: center;
@@ -309,6 +310,12 @@ const Punjab = () => {
   };
 
   return (
+    <>
+          <SEO
+        title="Teams - Punjab De Sher"
+        description="Join the excitement of the Celebrity Cricket League! Catch live matches, cheer for the Punjab De Sher, and support your favorite team in every thrilling moment!"
+      />
+
     <TeamContainer>
       <ContentWrapper>
         <TopSection>
@@ -398,6 +405,7 @@ const Punjab = () => {
         </TeamSection>
       </ContentWrapper>
     </TeamContainer>
+    </>
   );
 };
 

@@ -20,6 +20,7 @@ import VideoGallary from '../pages/VideoGallery';
 import CclSchedule from '../pages/CclSchedule';
 import ContactUs from '../pages/ContactUs';
 import Termsandcondtion from '../pages/Termsandcondtion';
+import CCL2025 from '../pages/CCL2025';
 
 const AppRoutes = () => {
   return (
@@ -42,6 +43,7 @@ const AppRoutes = () => {
         <Route path="telugu" element={<TeluguTeam />}/>
         <Route path="photos" element={<PhotoGallary />}/>
         <Route path="videos" element={<VideoGallary />}/>
+        <Route path="2025" element={<CCL2025 />}/>
         <Route path="schedule" element={<CclSchedule />}/>
         <Route path="contact" element={<ContactUs />}/>
         <Route path="termsandcondtion" element={<Termsandcondtion />}/>

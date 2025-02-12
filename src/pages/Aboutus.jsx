@@ -5,6 +5,7 @@ import background from '../assets/background.png';
 import Aboutus_logo from '../assets/Aboutus.png';
 import welcometoccl from '../assets/welcometoccl.png';
 import it from '../assets/It.png';
+import SEO from '../components/SEO';
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -36,6 +37,11 @@ const HeroTitle = styled.div`
     width: 100%;
     height: auto;
   }
+    @media (max-width: 768px) {
+      margin-bottom: 50px;
+    }
+
+  
 `;
 
 const ContentSection = styled.div`
@@ -64,7 +70,7 @@ const StoryContent = styled(motion.div)`
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Oswald';
   letter-spacing: 0.5px;
 
   .intro-image {
@@ -82,10 +88,16 @@ const StoryContent = styled(motion.div)`
 const AboutContainer = styled.div`
   width: 100%;
   min-height: 100vh;
+  background-color: #f8f9fa;
 `;
 
 const AboutUsPage = () => {
   return (
+    <>
+      <SEO
+        title="About Us - CCL (Celebrity Cricket League 2025)"
+        description="Catch the action of the Celebrity Cricket League! Follow live matches, explore player profiles, and discover what makes our league a must-watch event."
+      />
     <AboutContainer>
       <HeroSection>
         <HeroTitle>
@@ -112,6 +124,7 @@ const AboutUsPage = () => {
         </StoryContent>
       </ContentSection>
     </AboutContainer>
+    </>
   );
 };
 

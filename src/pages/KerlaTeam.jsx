@@ -47,6 +47,7 @@ import SanjuSivram from '../assets/SanjuSivram.jpg';
 import SiddharthMenon from '../assets/SiddharthMenon.jpg';
 import SijuWilson from '../assets/SijuWilson.jpg';
 import VivekGopan from '../assets/VivekGopan.jpg';
+import SEO from '../components/SEO';
 
 const TeamContainer = styled.div`
   width: 100%;
@@ -367,7 +368,13 @@ const Kerala = () => {
   };
 
   return (
+    <>
+     <SEO 
+        title="Teams - Kerala Strikers"
+        description="Join the excitement of the Celebrity Cricket League! Catch live matches, cheer for the Kerala Strikers, and support your favorite team in every thrilling moment!"
+      />
     <TeamContainer>
+      
       <ContentWrapper>
         <TopSection>
           <motion.img 
@@ -452,6 +459,7 @@ const Kerala = () => {
         </TeamSection>
       </ContentWrapper>
     </TeamContainer>
+    </>
   );
 };
 

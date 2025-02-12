@@ -10,6 +10,8 @@ import ScrollToTop from '../components/ScrollToTop';
 import background from '../assets/background.png';
 import teamcaptains from '../assets/teamcaptains.png';
 import cclbackground from '../assets/cclbackground.png';
+import liveBanner from '../assets/liveBanner.jpg';
+import scheduleBanner from '../assets/scheduleBanner.jpg';
 import CCLWhite from '../assets/CCLWhite.png';
 import bengal from '../assets/bengal.png';
 import chennai from '../assets/chennai.png';
@@ -34,6 +36,7 @@ import bhojpuribackground_3 from '../assets/bhojpuribackground_3.png';
 import corousel1 from '../assets/corousel1.png';
 import corousel2 from '../assets/corousel2.png';
 import styled from 'styled-components';
+import SEO from '../components/SEO';
 
 const PageContainer = styled.div`
   width: 100%;
@@ -337,12 +340,17 @@ const HomePage = () => {
   ];
 
   const banners = [
-    { img: cclbackground, title: 'EVERYTHING YOU NEED TO KNOW' },
-    { img: corousel1, title: 'WITNESS THE EXCITEMENT' },
-    { img: corousel2, title: 'JOIN THE CELEBRATION' }
+    { img: scheduleBanner, title: 'EVERYTHING YOU NEED TO KNOW' },
+    { img: liveBanner, title: 'WITNESS THE EXCITEMENT' },
+    // { img: corousel2, title: 'JOIN THE CELEBRATION' }
   ];
 
   return (
+    <>
+      <SEO
+        title="Celebrity Cricket League 2025 - Live CCL Matches"
+        description="Get ready for the Celebrity Cricket League 2025! Watch live matches and support your favorite celebrities as they battle it out on the cricket field."
+      />
     <div className="min-h-screen bg-white overflow-hidden">
       <div className="relative h-screen w-full bg-cover bg-center" style={{ backgroundImage: `url(${background})` }}>
         <motion.div
@@ -450,8 +458,8 @@ const HomePage = () => {
               <div className="relative h-full">
                 <img src={banner.img} alt={banner.title} className="w-full h-full " />
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center p-8">
-                  <img src={CCLWhite} alt="CCL Logo" className="w-48 mb-8" />
-                  <h2 className="text-white text-2xl md:text-4xl font-bold text-center">{banner.title}</h2>
+                  {/* <img src={CCLWhite} alt="CCL Logo" className="w-48 mb-8" />
+                  <h2 className="text-white text-2xl md:text-4xl font-bold text-center">{banner.title}</h2> */}
                 </div>
               </div>
             </SwiperSlide>
@@ -461,6 +469,7 @@ const HomePage = () => {
 
       <ScrollToTop />
     </div>
+    </>
   );
 };
 
