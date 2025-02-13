@@ -348,7 +348,7 @@ const Bhojpuri = () => {
   const management = [
     { img: KanishkSheel, name: "Kanishk Sheel", role: "OWNER" },
     { img: RahulMishra, name: "Rahul Mishra", role: "OWNER" },
-    { img: sushilmalik, name: "sushil Malik", role: "OWNER" },
+    { img: sushilmalik, name: "Sushil Malik", role: "OWNER" },
     { img: SushilSharma, name: "Sushil Sharma", role: "OWNER" },
     // { img: teamAB, name: "REGINA CASSANDRA", role: "BRAND AMBASSADOR" }
   ];

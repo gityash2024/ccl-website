@@ -351,15 +351,15 @@ const Telugu = () => {
               <BrandAmbassadors>
                 <ProfileCard>
                   <img src={telugubrand_1} alt="REGINA CASSANDRA" />
-                  <h3>REGINA CASSANDRA</h3>
+                  <h3>Regina Cassandra</h3>
                 </ProfileCard>
                 <ProfileCard>
                   <img src={telugubrand_2} alt="PRANITHA SUBHASH" />
-                  <h3>PRANITHA SUBHASH</h3>
+                  <h3>Pranitha Subhash</h3>
                 </ProfileCard>
                 <ProfileCard>
                   <img src={telugubrand_3} alt="ADAH SHARMA" />
-                  <h3>ADAH SHARMA</h3>
+                  <h3>Adah Sharma</h3>
                 </ProfileCard>
               </BrandAmbassadors>
             </CategoryBlock>

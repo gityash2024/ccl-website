@@ -160,8 +160,8 @@ const ProfileCard = styled(motion.div)`
 
   h3 {
     color: white;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: bolder;
     text-align: center;
   }
 `;
@@ -374,7 +374,7 @@ const Karnataka = () => {
                 transition={{ delay: 0.1 }}
               >
                 <img src={karnatkateowner} alt="Mr. Ashok Kheny" />
-                <h3>Mr. ASHOK KHENY</h3>
+                <h3>Mr.Ashok Kheny</h3>
               </ProfileCard>
             </CategoryBlock>
 
@@ -387,7 +387,7 @@ const Karnataka = () => {
                   transition={{ delay: 0.2 }}
                 >
                   <img src={karnatkateabassadors} alt="Shanvi" />
-                  <h3>SHANVI</h3>
+                  <h3>Shanvi</h3>
                 </ProfileCard>
                 <ProfileCard
                   initial={{ opacity: 0, y: 20 }}
@@ -395,7 +395,7 @@ const Karnataka = () => {
                   transition={{ delay: 0.3 }}
                 >
                   <img src={karnatkateabassadors_1} alt="Sapthani Gowda" />
-                  <h3>SAPTHANI GOWDA</h3>
+                  <h3>Sapthani Gowda</h3>
                 </ProfileCard>
               </BrandAmbassadors>
             </CategoryBlock>

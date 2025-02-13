@@ -384,7 +384,7 @@ const Bengal = () => {
           {[
             { img: teamowners_1, name: "Mr. Boney Kapoor" },
             { img: teamowners_2, name: "Mr. Raj Shah" },
-            { img: brandambassadors, name: "SAYANTIKA" }
+            { img: brandambassadors, name: "Sayantika" }
           ].map((profile, index) => (
             <ProfileCard
               key={index}

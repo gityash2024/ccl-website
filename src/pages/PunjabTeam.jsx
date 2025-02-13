@@ -28,7 +28,6 @@ import punjab_15 from '../assets/punjab_15.jpg';
 import punjabteambackgroud from '../assets/punjabteambackgroud.png';
 import punjabheadingimage from '../assets/punjabheadingimage.png';
 import SEO from '../components/SEO';
-
 import JassieGill from '../assets/JassieGill.jpeg';
 import KaranWahi from '../assets/KaranWahi.jpg';
 import SuyyashRai from '../assets/SuyyashRai.jpg';
@@ -375,11 +374,11 @@ const Punjab = () => {
               <ProfileGrid>
                 <ProfileCard>
                   <img src={punjanbrand_1} alt="DALER MEHNDI" />
-                  <h3>DALER MEHNDI</h3>
+                  <h3>Daler Mehndi</h3>
                 </ProfileCard>
                 <ProfileCard>
                   <img src={punjanbrand_2} alt="MIKA SINGH" />
-                  <h3>MIKA SINGH</h3>
+                  <h3>Mika Singh</h3>
                 </ProfileCard>
               </ProfileGrid>
             </CategoryBlock>
