@@ -9,7 +9,7 @@ import { PageContainer } from '../styles/Container.styled';
 const MainContent = styled.main`
   flex: 1;
   width: 100%;
-  margin-top: 80px; // Height of the navbar
+  margin-top: 50px; // Height of the navbar
 `;
 
 const MainLayout = () => {

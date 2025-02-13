@@ -6,9 +6,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   return (
+    <HelmetProvider>
+
     <Router>
       <ScrollToTop />
       <Toaster 
@@ -23,6 +26,7 @@ function App() {
       />
       <AppRoutes />
     </Router>
+    </HelmetProvider>
   );
 }
 

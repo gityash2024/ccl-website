@@ -23,6 +23,7 @@ import teluguteam_10 from '../assets/teluguteam_10.jpg';
 import teluguteam_11 from '../assets/teluguteam_11.jpg';
 import bhojpuribackground from '../assets/bhojpuribackground.png';
 import commanboll from '../assets/commanboll.png';
+import SEO from '../components/SEO';
 
 const Description = styled.p`
   max-width: 1000px;
@@ -299,6 +300,11 @@ const Telugu = () => {
   };
 
   return (
+    <>
+     <SEO
+        title="Teams - Telugu Warriors"
+        description="Join the excitement of the Celebrity Cricket League! Catch live matches, cheer for the Telugu Warriors, and support your favorite team in every thrilling moment!"
+      />
     <TeamContainer>
       <ContentWrapper>
         <TopSection>
@@ -390,6 +396,7 @@ const Telugu = () => {
         </TeamSection>
       </ContentWrapper>
     </TeamContainer>
+    </>
   );
 };
 

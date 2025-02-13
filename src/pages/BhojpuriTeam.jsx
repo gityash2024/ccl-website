@@ -30,6 +30,7 @@ import KanishkSheel from '../assets/KanishkSheel.png';
 import RahulMishra from '../assets/RahulMishra.png';
 import sushilmalik from '../assets/sushilmalik.png';
 import SushilSharma from '../assets/SushilSharma.png';
+import SEO from '../components/SEO';
 
 import Aditiyaojha from '../assets/Aditiyaojha.jpg';
 import AjhoyShrama from '../assets/AjhoyShrama.jpg';
@@ -346,9 +347,9 @@ const Bhojpuri = () => {
 
   const management = [
     { img: KanishkSheel, name: "Kanishk Sheel", role: "OWNER" },
-    { img: RahulMishra, name: "Rahul Mishra", role: "MENTOR" },
-    { img: sushilmalik, name: "sushil Malik", role: "MENTOR" },
-    { img: SushilSharma, name: "Sushil Sharma", role: "MENTOR" },
+    { img: RahulMishra, name: "Rahul Mishra", role: "OWNER" },
+    { img: sushilmalik, name: "sushil Malik", role: "OWNER" },
+    { img: SushilSharma, name: "Sushil Sharma", role: "OWNER" },
     // { img: teamAB, name: "REGINA CASSANDRA", role: "BRAND AMBASSADOR" }
   ];
 
@@ -377,6 +378,11 @@ const Bhojpuri = () => {
   };
 
   return (
+    <>
+       <SEO
+        title="Teams - Bhojpuri Dabanggs"
+        description="Join the excitement of the Celebrity Cricket League! Catch live matches, cheer for the Bhojpuri Dabanggs, and support your favorite team in every thrilling moment!"
+      />
     <TeamContainer>
       <ContentWrapper>
         <TitleSection>
@@ -466,6 +472,7 @@ const Bhojpuri = () => {
 </TeamSection>
     </ContentWrapper>
   </TeamContainer>
+    </>
 );
 };
 

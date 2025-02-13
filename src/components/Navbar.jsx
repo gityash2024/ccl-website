@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo.png';
 
@@ -15,6 +15,7 @@ const NavContainer = styled.nav`
   background: ${props => props.$isScrolled ? 'rgba(33, 69, 146, 0.95)' : '#214592'};
   backdrop-filter: ${props => props.$isScrolled ? 'blur(8px)' : 'none'};
   transition: all 0.3s ease;
+   margin-bottom: -1px;
 `;
 
 const NavWrapper = styled.div`
@@ -323,6 +324,7 @@ const Navbar = () => {
       ]
     },
     { label: 'NEWS', path: '/news' },
+    { label: '2025', path: '/2025' },
     { label: 'ABOUT US', path: '/aboutus' }
   ];
 

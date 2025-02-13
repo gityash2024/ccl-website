@@ -23,6 +23,7 @@ import Jammy from '../assets/Jammy.jpg';
 import Indrasish from '../assets/Indrasish.jpg';
 import Aditya from '../assets/Aditya.jpg';
 import Boney from '../assets/Boney.jpg';
+import SEO from '../components/SEO';
 
 const TeamContainer = styled.div`
   width: 100%;
@@ -326,6 +327,11 @@ const Bengal = () => {
   };
 
   return (
+    <>
+     <SEO
+        title="Teams - Bengal Tigers"
+        description="Join the excitement of the Celebrity Cricket League! Catch live matches, cheer for the Bengal Tigers, and support your favorite team in every thrilling moment!"
+      />
     <TeamContainer>
       <TitleSection>
         <motion.img 
@@ -428,6 +434,7 @@ const Bengal = () => {
         )}
       </TeamSection>
     </TeamContainer>
+    </>
   );
 };
 

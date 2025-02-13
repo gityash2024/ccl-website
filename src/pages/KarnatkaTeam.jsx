@@ -26,6 +26,7 @@ import karnatka_10 from '../assets/karnatka_10.jpg';
 import karnatka_11 from '../assets/karnatka_11.jpg';
 import karnatka_12 from '../assets/karnatka_12.jpg';
 import karnatakaheadingimage from '../assets/karnatakaheadingimage.png';
+import SEO from '../components/SEO';
 
 const TeamContainer = styled.div`
   width: 100%;
@@ -333,6 +334,11 @@ const Karnataka = () => {
   };
 
   return (
+    <>
+       <SEO
+        title="Teams - Karnataka Bulldozers"
+        description="Join the excitement of the Celebrity Cricket League! Catch live matches, cheer for the Karnataka Bulldozers, and support your favorite team in every thrilling moment!"
+      />
     <TeamContainer>
       <ContentWrapper>
         <TopSection>
@@ -434,6 +440,7 @@ const Karnataka = () => {
         </TeamSection>
       </ContentWrapper>
     </TeamContainer>
+    </>
   );
 };
 

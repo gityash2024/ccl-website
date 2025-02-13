@@ -25,6 +25,7 @@ import mumai_12 from '../assets/mumai_12.jpg';
 import mumai_13 from '../assets/mumai_13.jpg';
 import mumai_14 from '../assets/mumai_14.jpg';
 import mumai_15 from '../assets/mumai_15.jpg';
+import SEO from '../components/SEO';
 
 const Description = styled.p`
   max-width: 1000px;
@@ -295,6 +296,11 @@ const Mumbai = () => {
   };
 
   return (
+    <>
+      <SEO 
+        title="Teams - Mumbai Heroes"
+        description="Join the excitement of the Celebrity Cricket League! Catch live matches, cheer for the Mumbai Heroes, and support your favorite team in every thrilling moment!"
+      />
     <TeamContainer>
       <ContentWrapper>
         <TopSection>
@@ -379,6 +385,7 @@ const Mumbai = () => {
         </TeamSection>
       </ContentWrapper>
     </TeamContainer>
+    </>
   );
 };
 

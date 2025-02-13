@@ -22,6 +22,7 @@ import Sharan from '../assets/Sharan.jpg';
 import vikranth from '../assets/vikranth.jpg';
 import VishnuVishal from '../assets/VishnuVishal.jpg';
 import chennaiheadingimage from '../assets/chennaiheadingimage.svg';
+import SEO from '../components/SEO';
 
 const TeamContainer = styled.div`
   width: 100%;
@@ -415,6 +416,11 @@ const Chennai = () => {
   };
 
   return (
+    <>
+     <SEO 
+        title="Teams - Chennai Rhinos"
+        description="Join the excitement of the Celebrity Cricket League! Catch live matches, cheer for the Chennai Rhinos, and support your favorite team in every thrilling moment!"
+      />
     <TeamContainer>
       <ContentWrapper>
         <TopSection>
@@ -516,6 +522,7 @@ const Chennai = () => {
         </TeamSection>
       </ContentWrapper>
     </TeamContainer>
+    </>
   );
 };
 
