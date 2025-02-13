@@ -28,6 +28,13 @@ import punjab_15 from '../assets/punjab_15.jpg';
 import punjabteambackgroud from '../assets/punjabteambackgroud.png';
 import punjabheadingimage from '../assets/punjabheadingimage.png';
 
+import JassieGill from '../assets/JassieGill.jpeg';
+import KaranWahi from '../assets/KaranWahi.jpg';
+import SuyyashRai from '../assets/SuyyashRai.jpg';
+import RahulJaittly from '../assets/RahulJaittly.jpg';
+import NavrajHans from '../assets/NavrajHans.jpg';
+import BalrajSayal from '../assets/BalrajSayal.png';
+
 const TitleSection = styled.div`
   text-align: center;
   padding: 40px 20px;
@@ -299,9 +306,13 @@ const Punjab = () => {
     { img: punjab_10, name: "Hardy Sandu", role: "All Rounder" },
     { img: punjab_11, name: "Harmeet Singh", role: "All Rounder" },
     { img: punjab_12, name: "Manmeet Singh", role: "All Rounder" },
-    { img: punjab_13, name: "Manmeet Singh", role: "All Rounder" },
-    { img: punjab_14, name: "Mayur Mehta", role: "All Rounder" },
-    { img: punjab_15, name: "Mayur Mehta", role: "All Rounder" },
+    { img: punjab_13, name: "Mayur Mehta", role: "All Rounder" },
+    { img: RahulJaittly, name: "Rahul Jaittly", role: "All Rounder" },
+    { img: NavrajHans, name: "Navraj Hans", role: "All Rounder" },
+    { img: JassieGill, name: "Jassie Gill", role: "All Rounder" },
+    { img: KaranWahi, name: "Karan Wahi", role: "All Rounder" },
+    { img: SuyyashRai, name: "Suyyash Rai", role: "All Rounder" },
+    { img: BalrajSayal, name: "Balraj Sayal", role: "All Rounder" },
   ];
 
   const loadMore = () => {

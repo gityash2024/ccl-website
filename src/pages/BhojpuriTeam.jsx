@@ -31,6 +31,24 @@ import RahulMishra from '../assets/RahulMishra.png';
 import sushilmalik from '../assets/sushilmalik.png';
 import SushilSharma from '../assets/SushilSharma.png';
 
+import Aditiyaojha from '../assets/Aditiyaojha.jpg';
+import AjhoyShrama from '../assets/AjhoyShrama.jpg';
+import Anshuman from '../assets/Anshuman.jpg';
+import Asgarkhan from '../assets/Asgarkhan.jpg';
+import Ayazkhan from '../assets/Ayazkhan.jpg';
+import dineshlalyadav from '../assets/dineshlalyadav.jpg';
+import Jayprakashyadav from '../assets/Jayprakashyadav.jpg';
+import Khesarilalyadav from '../assets/Khesarilalyadav.jpg';
+import Kumarsudhirsingh from '../assets/Kumarsudhirsingh.jpg';
+import Manmohan from '../assets/Manmohan.jpg';
+import Manojtiwari from '../assets/Manojtiwari.jpg';
+import Neel from '../assets/Neel.jpg';
+import Pariveshyadav from '../assets/Pariveshyadav.jpg';
+import Uadaytiwari from '../assets/Uadaytiwari.jpg';
+import Vaibhav from '../assets/Vaibhav.jpg';
+import Vikassingh from '../assets/Vikassingh.jpg';
+import Vikrantsingh from '../assets/Vikrantsingh.jpg';
+
 const TeamContainer = styled.div`
   width: 100%;
   min-height: 100vh;
@@ -243,7 +261,8 @@ const ManagementCard = styled(ProfileCard)`
     color: #4F378B;
     padding: 15px;
     background: white;
-    font-size: 14px;
+    font-size: 16px;
+    text-align: center;
   }
 `;
 
@@ -334,17 +353,23 @@ const Bhojpuri = () => {
   ];
 
   const teamMembers = [
-    { img: bhojpuri_1, name: 'Vikranh', role: "All Rounder" },
-    { img: bhojpuri_2, name: 'Vaibhav', role: "All Rounder" },
-    { img: bhojpuri_3, name: 'Manoj Tiwari', role: "CAPTAIN" },
-    { img: bhojpuri_4, name: 'Uday', role: "All Rounder" },
-    { img: bhojpuri_5, name: 'Ravi Kishan', role: "All Rounder" },
-    { img: bhojpuri_6, name: 'Raghav', role: "All Rounder" },
-    { img: bhojpuri_7, name: 'Pravesh', role: "All Rounder" },
-    { img: bhojpuri_8, name: 'Nirahua', role: "All Rounder" },
-    { img: bhojpuri_9, name: 'Jay', role: "All Rounder" },
-    { img: bhojpuri_10, name: 'Anshuman', role: "All Rounder" },
-    { img: bhojpuri_11, name: 'Aditya', role: "All Rounder" }
+    { img: Aditiyaojha, name: 'Aditiyaojha', role: "All Rounder" },
+    { img: AjhoyShrama, name: 'Ajhoy Shrama', role: "All Rounder" },
+    { img: Manojtiwari, name: 'Manoj tiwari', role: "CAPTAIN" },
+    { img: Anshuman, name: 'Anshuman', role: "All Rounder" },
+    { img: Asgarkhan, name: 'Asgar khan', role: "All Rounder" },
+    { img: Ayazkhan, name: 'Ayaz khan', role: "All Rounder" },
+    { img: dineshlalyadav, name: 'dinesh lal yadav', role: "All Rounder" },
+    { img: Jayprakashyadav, name: 'Jayprakash yadav', role: "All Rounder" },
+    { img: Khesarilalyadav, name: 'Khesari lal yadav', role: "All Rounder" },
+    { img: Kumarsudhirsingh, name: 'Kumar sudhir singh', role: "All Rounder" },
+    { img: Manmohan, name: 'Manmohan', role: "All Rounder" },
+    { img: Neel, name: 'Neel', role: "All Rounder" },
+    { img: Pariveshyadav, name: 'Parivesh yadav', role: "All Rounder" },
+    { img: Uadaytiwari, name: 'Uaday tiwari', role: "All Rounder" },
+    { img: Vaibhav, name: 'Vaibhav', role: "All Rounder" },
+    { img: Vikassingh, name: 'Vikas singh', role: "All Rounder" },
+    { img: Vikrantsingh, name: 'Vikrant singh', role: "All Rounder" }
   ];
 
   const loadMore = () => {

@@ -337,10 +337,10 @@ const Kerala = () => {
 
   const owners = [
     { img: keralateamowners_1, name: "Mohanlal", role: "Owner" },
-    { img: keralateamowners_2, name: "Sripriya", role: "Owner" },
-    { img: keralateamowners_3, name: "Shaji", role: "Owner" },
-    { img: keralateamowners_4, name: "Jaison", role: "Owner" },
-    { img: keralateamowners_5, name: "Venkatesh", role: "Owner" }
+    { img: keralateamowners_2, name: "Rajkumar", role: "Owner" },
+    { img: keralateamowners_3, name: "Sripriya", role: "Owner" },
+    { img: keralateamowners_5, name: "Jaison", role: "Owner" },
+    { img: keralateamowners_4, name: "Shaji", role: "Owner" }
   ];
 
   const teamMembers = [

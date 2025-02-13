@@ -448,7 +448,7 @@ const Chennai = () => {
           </TeamPhoto>
         </TopSection>
 
-        <ManagementSection>
+        {/* <ManagementSection>
           <Categories>
             <CategoryBlock>
               <h2>TEAM OWNERS</h2>
@@ -476,7 +476,7 @@ const Chennai = () => {
               </ManagementCard>
             </CategoryBlock>
           </Categories>
-        </ManagementSection>
+        </ManagementSection> */}
 
         <TeamSection>
           <TeamTitle>
